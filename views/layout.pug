@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/styles.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+  body
+    block header
+
+    block home
+      .container
+        .row
+          .col-md-12.text-center.pt-20
+            h2 Coming Soon...
+
+    block messages
+      if locals.flashes
+        .inner
+          .flash-messages
+            - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
+    .content
+      block content
+
+    block scripts
+      script(src="/dist/main.bundle.js")
