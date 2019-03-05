@@ -1,0 +1,31 @@
+#glitchHome {    
+    canvas {
+        position: absolute;
+        z-index: -1;
+    }
+    .play__screen--holder {
+        // position: relative;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+    
+        .play__screen {
+            text-align: center;
+            padding-top: calc(15em + 3vh);
+            .play__button {
+                font-family: $font-family-montserrat;
+                letter-spacing: 3px;
+                font-weight: $font-weight-semibold;
+                text-transform: uppercase;            
+                color: $color-white;
+                font-size: 20px;
+                &:hover {
+                    border-bottom: 1px dotted white;
+                }
+                @media screen and (min-width: $screen-sm-min) {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

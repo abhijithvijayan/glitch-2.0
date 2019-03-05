@@ -1,0 +1,115 @@
+#auth {
+    .auth__holder {
+        margin-top: 20vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        .auth__content--head {
+            margin-bottom: 40px;
+            .auth__content--title {
+                h1 {
+                    font-size: 4em;
+                    letter-spacing: 6px;
+                    font-weight: $font-weight-regular;
+                    text-transform: uppercase;
+                }
+            }
+        }        
+        .auth__content--holder {
+            margin-bottom: 200px;
+            .auth__content--inner {
+                .google__login--btn {
+                    svg {
+                        width: 26px;
+                        transition: all 0.2s;
+                        fill: white;
+                    }
+                    display: flex;
+                    align-items: center;
+                    color: $color-white;
+                    padding: 15px;
+                    width: 250px;
+                    border: 1px solid #0097e6;
+                    background: transparent;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    justify-content: space-evenly;
+                    &:focus {
+                    outline: none;
+                    }
+                    span {
+                        font-size: 16px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@mixin glitchCopy {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.login__glitch {
+	position: relative;
+	color: white;
+	font-size: 4em;
+	letter-spacing: .5em;
+	animation: glitch-skew 1s infinite linear alternate-reverse;
+
+	&::before {
+		@include glitchCopy;
+		left: 2px;
+		text-shadow: -2px 0 #ff00c1;
+		clip: rect(44px, 450px, 56px, 0);
+		animation: glitch-anim 5s infinite linear alternate-reverse;
+	}
+
+	&::after {
+		@include glitchCopy;
+		left: -2px;
+		text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+		animation: glitch-anim2 1s infinite linear alternate-reverse;
+	}
+}
+
+@keyframes glitch-anim {
+	$steps: 20;
+
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+		}
+	}
+}
+
+@keyframes glitch-anim2 {
+	$steps: 20;
+
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+		}
+	}
+}
+
+@keyframes glitch-skew {
+	$steps: 10;
+
+	@for $i from 0 through $steps {
+		#{percentage($i*(1/$steps))} {
+			transform: skew((random(10) - 5) + deg);
+		}
+	}
+}

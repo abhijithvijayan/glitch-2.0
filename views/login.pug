@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_loginHeader
+include mixins/_loginForm
+
+block header
+    +loginHeader()
+
+block content
+    +loginForm()
+
+    

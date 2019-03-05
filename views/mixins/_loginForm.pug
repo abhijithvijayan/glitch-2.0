@@ -1,0 +1,11 @@
+mixin loginForm() 
+    section#auth
+        .container.auth__holder
+            .row.auth__content--head
+                .col-md-12.auth__content--title
+                    h1.login__glitch(data-text="Login") Login
+            .row.auth__content--holder
+                .col-md-12.auth__content--inner
+                    a(href="/auth/google" class="btn google__login--btn")
+                        != h.icon('google')
+                        span Continue with Google 

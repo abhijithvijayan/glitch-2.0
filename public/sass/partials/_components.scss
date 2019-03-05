@@ -1,3 +1,30 @@
 .pt-20 {
     padding-top: 20px;
 }
+.scrambleSymbol {
+    color: #757575;
+}
+.user__thumbnail {
+    border-radius: 100%;
+}
+.alert {
+    margin-bottom: 0;
+}
+.flash__text {
+    margin-bottom: 0;
+}
+.flash--success {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
+.flash--info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.flash--error {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba
+}

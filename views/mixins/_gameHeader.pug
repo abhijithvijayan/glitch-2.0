@@ -1,0 +1,18 @@
+mixin gameHeader()
+    header#header
+        nav.navbar.navbar-expand-md.navbar-dark.container
+            a.navbar-brand(href="/") Glitch 2.0
+            button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation")
+                span.navbar-toggler-icon
+            .collapse.navbar-collapse#navbarNav
+                ul.navbar-nav
+                    li.nav-item
+                        a(href="#").nav-link Leaderboard
+                            != h.icon('computer')
+                    li.nav-item.dropdown
+                        a(href="#" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown User
+                                != h.icon('user')
+                        .dropdown-menu(aria-labelledby="profileDropdown")
+                            a(href="/logout").dropdown-item Logout

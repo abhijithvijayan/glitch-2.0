@@ -1,0 +1,42 @@
+#header {
+    .navbar {
+        // padding-top: 20px;
+        .navbar-brand {
+            color: $color-white;
+        }
+        .navbar-toggler {
+            color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        #navbarNav {
+            justify-content: flex-end;
+            .navbar-nav {
+                // float: right;
+                // align-items: center;
+                @media screen and (max-width: $screen-xs-max) {      
+                    padding-top: 20px;
+                }
+                .nav-item {
+                    @media screen and (min-width: $screen-sm-min) {                        
+                        padding: 20px;
+                    }
+                    padding-bottom: 5px;
+                    .nav-link {
+                        color: aliceblue;
+                        font-size: 18px;
+                        border-bottom: 1px dotted rgba(255, 255, 255, 0);;
+                        &:hover {
+                            border-bottom: 1px dotted rgba(255, 255, 255, 0.5);;
+                        }
+                        svg {
+                            width: 25px;
+                            height: 25px;
+                            color: aliceblue;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    section#glitchHome
+        canvas
+        //- bring flashes here
+        if locals.flashes
+            .row.justify-content-center
+                .col-md-6
+                    - const categories = Object.keys(locals.flashes)
+                    each category in categories
+                        each message in flashes[category]
+                            .alert.alert-dismissible.fade.show(class=`flash--${category}` role="alert")
+                                p.flash__text!= message
+                                button.close(type="button" data-dismiss="alert" aria-label="Close") 
+                                    span(aria-hidden="true") &times; 
+        .row.play__screen--holder
+            .col-md-12.play__screen
+                a.btn.play__button(href="/play") Play Now
+
+block messages            

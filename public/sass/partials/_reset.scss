@@ -17,7 +17,10 @@ body {
     line-height: 1.3;
     width: 100%;  
     color: $color-white;
-    background: $color-black;
+    background: url('/images/photos/bg-login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #1a191c;
     font-family: $font-family-montserrat;
 }
 

@@ -14,7 +14,8 @@ module.exports = (env, options) => ({
     hints: false
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(js)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
