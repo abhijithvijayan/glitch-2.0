@@ -7,10 +7,10 @@ exports.login = passport.authenticate('google', {
 
 // after login -> comes here(get url code) // callback fn fires
 exports.redirectLogin = passport.authenticate('google', {
-    successRedirect: '/play',
-    failureRedirect: '/login',
+    successFlash: 'You are now Logged In',
+    successRedirect: '/account',
     failureFlash: 'Failed to Login!',
-    successFlash: 'You are now Logged In'
+    failureRedirect: '/login'
 });
 
 exports.logout = (req, res) => {
@@ -24,6 +24,15 @@ exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }
-    // req.flash('error', 'You must log in first!');
+    req.flash('error', 'You must log in first!');
     res.redirect('/login');
+};
+
+exports.isNotLoggedIn = (req, res, next) => {
+    // check if user is authenticated
+    if (!req.isAuthenticated()) {
+        return next();
+    }
+    req.flash('info', 'Already Logged in');
+    res.redirect('/play');
 };

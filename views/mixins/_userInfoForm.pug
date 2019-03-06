@@ -1,0 +1,10 @@
+mixin userInfoForm()
+    block content       
+        form.secondary__form(action="/account" method="POST")
+            div
+                label.secondary__form--label(for="nickname") Nickname
+                input.secondary__form--input#nickname(name="nickname" type="text" placeholder="Daenerys" spellcheck="false" autocomplete="off" required autofocus maxlength="18")
+            div
+                label.secondary__form--label(for="collegeName") Name of College
+                input.secondary__form--input#collegeName(name="collegeName" type="text" placeholder="College of Engineering Adoor" spellcheck="false" autocomplete="off" required maxlength="70")
+            button.secondary__form--btn#submit__info(type="submit") Finish Creating Account

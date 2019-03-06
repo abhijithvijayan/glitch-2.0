@@ -1,0 +1,73 @@
+.secondary__form {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 10vh 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .secondary__form--input,
+    .secondary__form--btn {
+        display: block;
+        width: 70vw;
+        transition: all .5s cubic-bezier(.4, .25, .8, .3);
+
+        &:focus {
+            z-index: 10;
+        }
+    }
+
+    .secondary__form--btn {
+        font-size: 2.8vw;
+        // font-size: 2rem;
+        margin-top: 50px;
+        padding: .25em 0;
+        border: 0;
+        outline: 0;
+        background: #bb1515;
+        color: rgba(#fff, 0.85);
+        line-height: 3.6rem;
+        letter-spacing: .0625rem;
+        box-shadow: 0 3px 5px 1px rgba(#000, 0.25);
+        text-shadow: 0 -2px 0 rgba(#000, 0.25), 0 1px 0 rgba(#fff, 0.2);
+        @media screen and (max-width: $screen-xxs-max) {
+            font-size: 3.9vw;
+        }
+    }
+
+    .secondary__form--input {
+        padding: .25rem 0;
+        border: 0;
+        border-bottom: 1px solid #bb1515;
+        outline: 0;
+        background: transparent;
+        color: #fff;
+        line-height: 4rem;
+        letter-spacing: .125rem;
+        transition: all .5s cubic-bezier(.4, .25, .8, .3);
+        // font-size: 3rem;
+        font-size: 3.5vw;
+        &::selection {
+            background: rgba(#bb1515, 0.25);
+        }
+        @media screen and (max-width: $screen-xxs-max) {
+            font-size: 4.3vw;
+        }
+    }
+
+    .secondary__form--label {
+        width: 70vw;
+        padding: 3.125rem 0 1.5rem;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 300;
+        letter-spacing: .125rem;
+        pointer-events: none;
+        transition: all .4s cubic-bezier(.4, .25, .8, .3) .05s;
+        font-size: 1.125rem;
+    }
+
+}

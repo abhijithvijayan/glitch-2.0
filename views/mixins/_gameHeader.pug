@@ -1,4 +1,4 @@
-mixin gameHeader()
+mixin gameHeader(user = {})
     header#header
         nav.navbar.navbar-expand-md.navbar-dark.container
             a.navbar-brand(href="/") Glitch 2.0
@@ -10,9 +10,15 @@ mixin gameHeader()
                     li.nav-item
                         a(href="#").nav-link Leaderboard
                             != h.icon('computer')
+                    if (user && user.permission > 10)
+                        li.nav-item
+                            a(href="/add").nav-link Edit Game
+                                != h.icon('edit')                            
                     li.nav-item.dropdown
-                        a(href="#" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown User
-                                != h.icon('user')
+                        a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown #{user.nickname}
+                            img.user__thumbnail(src=user.photo)
+                                //- != h.icon('user')
                         .dropdown-menu(aria-labelledby="profileDropdown")
+                            if !currentPath.startsWith('/account/edit') 
+                                a(href="/account/edit").dropdown-item Edit
                             a(href="/logout").dropdown-item Logout

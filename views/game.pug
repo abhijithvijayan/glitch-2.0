@@ -3,7 +3,8 @@ extends layout
 include mixins/_gameHeader
 
 block header
-    +gameHeader()
+    //- pre= h.dump(user)
+    +gameHeader(user)
 
 block content
     .container

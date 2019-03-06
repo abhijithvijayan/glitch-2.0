@@ -1,7 +1,7 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { catchErrors } = require('../handlers/errorHandlers');
 
 
@@ -12,10 +12,11 @@ const validateUser = async (accessToken, refreshToken, profile, done) => {
   });
   if (!foundUser) {
     // console.log(profile);
+    // console.log(profile.emails[0].value);
     const newUser = await new User({
       username: profile.displayName,
       googleId: profile.id,
-      email: profile.email,
+      email: profile.emails[0].value,
       photo: profile._json.image.url
     }).save(); // save to db
 
