@@ -7,7 +7,7 @@ block header
 
 block content
     //- pre= h.dump(user)
-    form.secondary__form.pt-3(action="/account" method="POST")
+    form.secondary__form.py-3(action="/account" method="POST")
         div
             label.secondary__form--label(for="nickname") Nickname
             input.secondary__form--input#nickname(name="nickname" value=user.nickname type="text" placeholder="Daenerys" spellcheck="false" autocomplete="off" required maxlength="18")

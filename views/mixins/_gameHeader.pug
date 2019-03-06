@@ -10,7 +10,7 @@ mixin gameHeader(user = {})
                     li.nav-item
                         a(href="#").nav-link Leaderboard
                             != h.icon('computer')
-                    if (user && user.permission > 10)
+                    if (user && user.permission > 10 && !currentPath.startsWith('/edit'))
                         li.nav-item
                             a(href="/edit").nav-link Edit Game
                                 != h.icon('edit')                            

@@ -49,7 +49,7 @@ exports.isAdmin = async (req, res, next) => {
         return next();
     }
     else {
-        req.flash('error', 'Nice Try');
+        req.flash('error', 'Nice try, You must be an admin to do that!');
         res.redirect('/');
     }
 };
@@ -67,13 +67,12 @@ exports.updateAccount = async (req, res) => {
         nickname: req.body.nickname,
         college: req.body.collegeName
     };
-    // (q, u, o)
-    const user = await User.findOneAndUpdate(
+    
+    await User.findOneAndUpdate(
         { _id: req.user._id },
         { $set: updates },
         { new: true, runValidators: true, context: 'query' }
     );
-
     
     req.flash('success', 'Updated successfully');
     // res.json(user);

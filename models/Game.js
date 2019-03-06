@@ -17,9 +17,13 @@ const gameSchema = new Schema({
     lastAnsSavedLevel: {
         type: Number,
         default: 0
-    }
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    author: String
 });
-
 
 
 

@@ -1,11 +1,15 @@
 mixin saveSolution(levels)
-    form.secondary__form.pt-3(action="/answers" method="POST")
+    form.secondary__form.py-3(action=(currentPath.startsWith('/answers') ? '/answers' : '/modify') method="POST")
         .secondary__form--selectors
             label.secondary__form--label(for="levels__selector") Level
             select.secondary__form--menu#levels__selector(name="level")
-                - let n = 1;
-                while n <= levels
-                    option(value=n) #{n++}                    
+                if (levels && Array.isArray(levels))
+                    for each in levels
+                        option(value=each) #{each}      
+                else
+                    - let n = 1;
+                    while n <= levels
+                        option(value=n) #{n++}                    
         div
             label.secondary__form--label(for="answer") Answer
             input.secondary__form--input#answer(name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
-const mongodbErrorHandler = require('mongoose-mongodb-errors');
+// const mongodbErrorHandler = require('mongoose-mongodb-errors');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const solutionSchema = new Schema({
     level: {
@@ -18,9 +19,16 @@ const solutionSchema = new Schema({
     }
 });
 
-// set whoModified, lastModifiedtime
+
+// solutionSchema.index({
+//     level: 'text',
+//     answer: 'text'
+// });
+
 
 // nice error looks
-solutionSchema.plugin(mongodbErrorHandler);
+solutionSchema.plugin(uniqueValidator, { message: 'Error, Already saved the answer for this level.' });
+// solutionSchema.plugin(mongodbErrorHandler);
+
 
 module.exports = mongoose.model('Solution', solutionSchema);

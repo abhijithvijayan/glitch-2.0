@@ -59,6 +59,14 @@ router.get('/answers',
 
 router.post('/answers', catchErrors(appController.saveSolution));
 
+router.get('/modify', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),
+    catchErrors(appController.editAnswers)
+);
+
+router.post('/modify', catchErrors(appController.updateAnswers));
+
 
 /* ----------------------------------------------------------------- */
 
