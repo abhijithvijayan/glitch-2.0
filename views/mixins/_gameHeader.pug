@@ -12,7 +12,7 @@ mixin gameHeader(user = {})
                             != h.icon('computer')
                     if (user && user.permission > 10)
                         li.nav-item
-                            a(href="/add").nav-link Edit Game
+                            a(href="/edit").nav-link Edit Game
                                 != h.icon('edit')                            
                     li.nav-item.dropdown
                         a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown #{user.nickname}
@@ -20,5 +20,5 @@ mixin gameHeader(user = {})
                                 //- != h.icon('user')
                         .dropdown-menu(aria-labelledby="profileDropdown")
                             if !currentPath.startsWith('/account/edit') 
-                                a(href="/account/edit").dropdown-item Edit
+                                a(href="/account/edit").dropdown-item Edit Profile
                             a(href="/logout").dropdown-item Logout

@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5 {
     margin: 0px 0px 10px;
 }
 
-.btn:focus, .btn:active, button:focus {
+.btn:focus, .btn:active, button:focus, select:focus {
     outline: none !important;
     box-shadow: none !important;
 }

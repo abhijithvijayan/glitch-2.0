@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_gameHeader
+
+block header
+    +gameHeader(user)
+
+block content
+
+    form.secondary__form.pt-3(action="/modes" method="POST")
+        div
+            h2 Edit Game
+        div
+            label.secondary__form--label(for="levels") levels
+            input.secondary__form--input#levels(name="levels" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")    
+            label.secondary__form--label(for="stages") stages
+            input.secondary__form--input#stages(name="stages" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")    
+        button.secondary__form--btn#submit__info(type="submit") Save

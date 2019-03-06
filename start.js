@@ -14,6 +14,7 @@ mongoose.connection.on('error', (err) => {
 // import all mongodb models once here
 require('./models/User');
 require('./models/Game');
+require('./models/Solution');
 
 
 // Start our app!

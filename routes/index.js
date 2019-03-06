@@ -7,7 +7,9 @@ const appController = require('../controllers/appController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 
+/* ----------------------------------------------------------------- */
 
+// basic routes
 router.get('/', appController.getHomePage);
 
 router.get('/account',
@@ -32,15 +34,35 @@ router.get('/account/edit',
     catchErrors(userController.editProfile)
 );
 
-// edit game levels
-router.get('/add', 
+/* ----------------------------------------------------------------- */
+
+// game routes
+router.get('/edit', 
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     appController.editGame
 );
 
+router.get('/modes', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),    
+    appController.setGameMode
+);
 
-// Authentication
+router.post('/modes', catchErrors(appController.saveGameMode));
+
+router.get('/answers',
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin), 
+    catchErrors(appController.setAnswers)
+);
+
+router.post('/answers', catchErrors(appController.saveSolution));
+
+
+/* ----------------------------------------------------------------- */
+
+// Authentication routes
 router.get('/login', 
     authController.isNotLoggedIn,
     userController.loginForm

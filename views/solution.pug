@@ -1,0 +1,11 @@
+extends layout
+
+include mixins/_gameHeader
+include mixins/_saveSolution
+
+block header
+    +gameHeader(user)
+
+block content
+    +saveSolution(levels)
+

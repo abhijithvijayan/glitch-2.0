@@ -49,7 +49,7 @@
         letter-spacing: .125rem;
         transition: all .5s cubic-bezier(.4, .25, .8, .3);
         // font-size: 3rem;
-        font-size: 3.5vw;
+        font-size: 3.6vw;
         &::selection {
             background: rgba(#bb1515, 0.25);
         }
@@ -70,4 +70,24 @@
         font-size: 1.125rem;
     }
 
+    .secondary__form--selectors {
+        width: 70vw;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        #levels__selector {
+            padding: 8px 40px;
+        }
+        .secondary__form--menu {
+            background: rgba(#bb1515, 0.25);
+            border: 1px solid #bb1515;
+            color: white;
+            display: block;
+            option {
+                color: #000;
+                padding: 12px 0;
+                background: rgba(#bb1515, 0.25);
+            }
+        }
+    }
 }
