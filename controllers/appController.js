@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
-const shajs = require('sha.js');
+const crypto = require('crypto');
+const User = mongoose.model('User');
 const Game = mongoose.model('Game');
 const Solution = mongoose.model('Solution');
 
-
 // hashing function
-const hashThis = (value) => {
-    return shajs('sha256').update(value).digest('hex');
+const hashThis = (salt, answer) => {
+    const hash = crypto.createHmac('sha256', salt);
+    hash.update(answer);
+    const hashedAnswer = hash.digest('hex');
+    return hashedAnswer;
+};
+
+const genSalt = () => {
+    return crypto.randomBytes(20).toString('hex');
 };
 
 
@@ -14,27 +21,57 @@ exports.getHomePage = (req, res) => {
     res.render('welcome', { title: 'Let\'s begin' });
 };
 
+
 exports.startGame = (req, res) => {
     res.redirect('/play');
 };
+
 
 exports.preCheck = (req, res) => {
     res.redirect('/account');
 };
 
-exports.renderGame = (req, res) => {
-    // res.json(req.user);
-    res.render('game', { title: 'Let\'s Play' });
+
+exports.renderGame = async (req, res) => {
+
+    // get max levels from db, pass to game;
+    const [gameMode] = await Game
+    .find()
+    .sort({ _id: -1 })
+    .limit(1);
+
+    if (gameMode) {
+        const levels = gameMode.levels;
+        res.render('game', { title: 'Let\'s Play', levels });
+    }
+    else {
+
+        const user = await User.findOne({
+            _id: req.user._id
+        });
+    
+        if (user.permission > 10) {
+            res.redirect('/edit');
+            return;
+        }
+
+        req.flash('error', 'Game not yet ready, Please come back later.');
+        res.redirect('/');
+    }
+
 };
+
 
 exports.editGame = (req, res) => {
     // res.send('Time to break the wheel');
     res.render('setData', { title: 'Add' });
 };
 
+
 exports.setGameMode = (req, res) => {
-    res.render('modes', { title: 'Set Game Modes' });
+    res.render('modes', { title: 'Set Game Options' });
 };
+
 
 exports.setAnswers = async (req, res) => {
     // get latest game mode
@@ -45,14 +82,14 @@ exports.setAnswers = async (req, res) => {
 
     if (gameMode) {
         const levels = gameMode.levels;
-        // console.log(gameMode);
-    
         res.render('solution', { title: 'Set Answers', levels});
     } else {
-        res.redirect('/modes');
+        req.flash('error', 'Please set the game options first!');
+        res.redirect('/options');
     }
 
 };
+
 
 exports.saveGameMode = async (req, res, next) => {
     // save to db in Game model
@@ -64,9 +101,10 @@ exports.saveGameMode = async (req, res, next) => {
     const newModel = new Game(model);
     await newModel.save();
 
-    req.flash('success', 'Game modes set');
+    req.flash('success', 'Set Game Options successfully');
     res.redirect('/edit');
 };
+
 
 exports.saveSolution = async (req, res) => {
 
@@ -83,11 +121,13 @@ exports.saveSolution = async (req, res) => {
             // submitted level lies between the set
             if (req.body.level <= levels) {
 
-                const hash = hashThis(req.body.answer);
-                // console.log(hash);
+                const salt = genSalt();
+                const hash = hashThis(salt, req.body.answer);
+                // console.log(hash, salt);
             
                 const solution = {
                     answer: hash,
+                    salt: salt,
                     level: req.body.level,
                     author: req.user.email
                 };
@@ -104,8 +144,8 @@ exports.saveSolution = async (req, res) => {
             }
         }
         else {
-            req.flash('error', 'Please set the game modes');
-            res.redirect('/modes');
+            req.flash('error', 'Please set the game options first!');
+            res.redirect('/options');
         }
     }
     else {
@@ -140,11 +180,13 @@ exports.updateAnswers = async (req, res) => {
     // res.json(req.body);
     // res.json(req.user);
 
-    const hash = hashThis(req.body.answer);
+    const salt = genSalt();
+    const hash = hashThis(salt, req.body.answer);
     // console.log(hash);
 
     const updatedAnswer = {
         answer: hash,
+        salt: salt,
         lastModified: Date.now(),
         author: req.user.email
     };

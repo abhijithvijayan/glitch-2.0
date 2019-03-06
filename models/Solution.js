@@ -12,6 +12,7 @@ const solutionSchema = new Schema({
         required: 'Please provide the question level'
     },
     answer: String,
+    salt: String,
     author: String,
     lastModified: {
         type: Date,

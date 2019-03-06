@@ -1,11 +1,15 @@
 extends layout
 
 include mixins/_gameHeader
+include mixins/_question
+include mixins/_submitAnswer
 
 block header
     //- pre= h.dump(user)
     +gameHeader(user)
 
 block content
-    .container
-        h2.pt-20 Let's Play
+    //- pass the db levels total number
+    +question(levels, user)
+    if (user && user.level <= levels)
+        +submitAnswer()

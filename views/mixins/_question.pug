@@ -1,0 +1,17 @@
+mixin question(levels, user)
+    - const level = user.level
+    - const totalLevels = levels
+    .container.text-center
+        if (level <= totalLevels)
+            h2 Level #{level}
+            case level
+                when 1
+                    p What is CEA in lowercase?
+                when 2
+                    p What is 10+2?
+                when 3
+                    p s_cks
+                default
+                    p Not a question.
+        else
+            p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.
