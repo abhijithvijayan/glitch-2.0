@@ -16,7 +16,3 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // Some details about the site
 exports.siteName = `Glitch`;
-
-exports.menu = [
-  { title: 'Add', icon: 'add', }
-];

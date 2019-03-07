@@ -33,19 +33,24 @@ exports.preCheck = (req, res) => {
 
 
 exports.renderGame = async (req, res) => {
-
-    // get max levels from db, pass to game;
-    const [gameMode] = await Game
+    const gameOptionsPromise = Game
     .find()
     .sort({ _id: -1 })
     .limit(1);
 
-    if (gameMode) {
-        const levels = gameMode.levels;
+    // check if number of ans equals total num of levels in db
+    const countPromise = Solution.countDocuments();
+    const [gameOptions, totalAnswers] = await Promise.all([gameOptionsPromise, countPromise]);
+    const [Options] = gameOptions;
+    // res.json(gameOptions);
+    // res.json(totalAnswers);
+
+    // check if number of ans equals total num of levels in db
+    if (Options && Options.levels <= totalAnswers) {
+        const levels = Options.levels;
         res.render('game', { title: 'Let\'s Play', levels });
     }
     else {
-
         const user = await User.findOne({
             _id: req.user._id
         });
@@ -55,10 +60,9 @@ exports.renderGame = async (req, res) => {
             return;
         }
 
-        req.flash('error', 'Game not yet ready, Please come back later.');
+        req.flash('error', 'Game not ready yet, Please come back later.');
         res.redirect('/');
     }
-
 };
 
 

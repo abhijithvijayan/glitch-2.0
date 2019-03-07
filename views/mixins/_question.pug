@@ -1,17 +1,21 @@
 mixin question(levels, user)
     - const level = user.level
     - const totalLevels = levels
-    .container.text-center
+    .container.pt-5
         if (level <= totalLevels)
-            h2 Level #{level}
+            h4 Level #{level}
             case level
                 when 1
-                    p What is CEA in lowercase?
+                    h2 What is 10+2?                
                 when 2
-                    p What is 10+2?
+                    h2 What is CEA in lowercase?
                 when 3
-                    p s_cks
+                    h2 What is the name of CEA's techfest(in lowercase)?
+                when 4
+                    h2 1 in words(lowercase)?
+                when 5
+                    h2 Place where our college is situated?
                 default
-                    p Not a question.
+                    h2 Not a question.
         else
             p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.

@@ -44,7 +44,7 @@ exports.submitInfo = async (req, res) => {
         hasSubmitted: 1
     };
 
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
         { _id: req.user._id },
         { $set: submittedData },
         { new: true, runValidators: true, context: 'query' }
@@ -133,7 +133,7 @@ exports.submitAnswer = async (req, res) => {
         res.redirect('back');
     }
     else {
-        // req.flash('error', 'Game not yet ready to play!!!');
+        // if solution for that submission is not found!!!!
         res.render('pause', { title: 'Coming Soon' });
     }
 };

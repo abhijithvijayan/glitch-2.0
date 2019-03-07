@@ -11,12 +11,3 @@ If you have previously loaded in this data, you can wipe your database 100% clea
 ```bash
 npm run blowitallaway
 ```
-
-The logins for the authors are as follows:
-
-|Name|Email (login)|Password|
-|---|---|---|
-|Debbie Downer|debbie@example.com|debbie|
-|Beau|beau@example.com|beau|
-
-
