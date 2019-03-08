@@ -1,8 +1,7 @@
 import 'bootstrap';
 import '../sass/main.scss';
 
-import { $, $$ } from './modules/bling';
-import { glitch, clearGlitch } from './modules/glitchEffect';
+import glitch from './modules/glitchEffect';
 
 
 // call the glitch effect function

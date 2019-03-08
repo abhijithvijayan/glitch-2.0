@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const crypto = require('crypto');
 const Solution = mongoose.model('Solution');
-
-
-// hashing function
-const hashThis = (salt, answer) => {
-    const hash = crypto.createHmac('sha256', salt);
-    hash.update(answer);
-    const hashedAnswer = hash.digest('hex');
-    return hashedAnswer;
-};
-
-// salt generating function
-const genSalt = () => {
-    return crypto.randomBytes(20).toString('hex');
-};
 
 
 /* ---------------------------------------------------- */
@@ -29,7 +14,6 @@ exports.hasSubmittedInfo = async (req, res, next) => {
         _id: req.user._id
     });
     // res.json(user);
-    //console.log(user);
     if (user.hasSubmitted) {
         return next();
     }
@@ -104,13 +88,11 @@ exports.submitAnswer = async (req, res) => {
         
         // get hashed answer from db
         const savedAnswer = savedSolutionData.answer;
-        // get salt from db
-        const salt = savedSolutionData.salt;
         // hash the user submitted answer
-        const hashSubmitted = hashThis(salt, req.body.answer);
+        const submitted = req.body.answer;
 
         // check if hashes match
-        if (hashSubmitted === savedAnswer) {
+        if (submitted === savedAnswer) {
             // res.send('Right answer');            
             const newLevel = ++req.user.level;
             // update user level and time

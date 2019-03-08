@@ -10,14 +10,6 @@ const gameSchema = new Schema({
         type: Number,
         required: 'Please supply number of levels in the game'
     },
-    stages: {
-        type: Number,
-        required: 'Please supply number of stages in the game'
-    },
-    lastAnsSavedLevel: {
-        type: Number,
-        default: 0
-    },
     created: {
         type: Date,
         default: Date.now

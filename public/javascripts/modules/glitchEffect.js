@@ -105,12 +105,4 @@ window.addEventListener('resize', () => {
   }
 });
 
-
-function clearGlitch() {
-  canvas.parentNode.removeChild(canvas);
-}
-
-export {
-  glitch,
-  clearGlitch
-};
+export default glitch;

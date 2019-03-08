@@ -1,20 +1,7 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
 const User = mongoose.model('User');
 const Game = mongoose.model('Game');
 const Solution = mongoose.model('Solution');
-
-// hashing function
-const hashThis = (salt, answer) => {
-    const hash = crypto.createHmac('sha256', salt);
-    hash.update(answer);
-    const hashedAnswer = hash.digest('hex');
-    return hashedAnswer;
-};
-
-const genSalt = () => {
-    return crypto.randomBytes(20).toString('hex');
-};
 
 
 exports.getHomePage = (req, res) => {
@@ -68,7 +55,7 @@ exports.renderGame = async (req, res) => {
 
 exports.editGame = (req, res) => {
     // res.send('Time to break the wheel');
-    res.render('setData', { title: 'Add' });
+    res.render('options', { title: 'Add' });
 };
 
 
@@ -86,7 +73,7 @@ exports.setAnswers = async (req, res) => {
 
     if (gameMode) {
         const levels = gameMode.levels;
-        res.render('solution', { title: 'Set Answers', levels});
+        res.render('solution', { title: 'Set Answers', levels });
     } else {
         req.flash('error', 'Please set the game options first!');
         res.redirect('/options');
@@ -99,13 +86,12 @@ exports.saveGameMode = async (req, res, next) => {
     // save to db in Game model
     const model = {
         levels: req.body.levels,
-        stages: req.body.stages,
         author: req.user.email
     };
     const newModel = new Game(model);
     await newModel.save();
 
-    req.flash('success', 'Set Game Options successfully');
+    req.flash('success', 'Game Options saved successfully');
     res.redirect('/edit');
 };
 
@@ -124,14 +110,9 @@ exports.saveSolution = async (req, res) => {
             const levels = gameMode.levels;
             // submitted level lies between the set
             if (req.body.level <= levels) {
-
-                const salt = genSalt();
-                const hash = hashThis(salt, req.body.answer);
-                // console.log(hash, salt);
             
                 const solution = {
-                    answer: hash,
-                    salt: salt,
+                    answer: req.body.answer,
                     level: req.body.level,
                     author: req.user.email
                 };
@@ -184,19 +165,14 @@ exports.updateAnswers = async (req, res) => {
     // res.json(req.body);
     // res.json(req.user);
 
-    const salt = genSalt();
-    const hash = hashThis(salt, req.body.answer);
-    // console.log(hash);
-
     const updatedAnswer = {
-        answer: hash,
-        salt: salt,
+        answer: req.body.answer,
         lastModified: Date.now(),
         author: req.user.email
     };
 
     const solution = await Solution.findOneAndUpdate(
-        { level: req.body.level},
+        { level: req.body.level },
         { $set: updatedAnswer },
         { new: true, runValidators: true, context: 'query' }
     );
