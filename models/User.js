@@ -28,6 +28,12 @@ const userSchema = new Schema({
         trim: true,
         default: 'College'
     },
+    contact: {
+        type: String,
+        required: 'Please give a contact number',
+        trim: true,
+        default: +91-888-888-8888
+    },
     hasSubmitted: {
         type: Number,
         default: 0
@@ -52,6 +58,11 @@ userSchema.path('college').validate(function (college) {
     return college.length <= 70;
 }, 'The maximum length for college name is 70.');
 
+
+userSchema.path('contact').validate(function (number) {
+    // validate at https://regex101.com/
+    return /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/.test(number);
+}, 'Enter a valid mobile number!');
 
 
 

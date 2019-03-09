@@ -25,6 +25,7 @@ exports.submitInfo = async (req, res) => {
     const submittedData = {
         nickname: req.body.nickname,
         college: req.body.collegeName,
+        contact: req.body.number,
         hasSubmitted: 1
     };
 
@@ -60,7 +61,8 @@ exports.updateAccount = async (req, res) => {
     // res.send(req.body);
     const updates = {
         nickname: req.body.nickname,
-        college: req.body.collegeName
+        college: req.body.collegeName,
+        contact: req.body.number
     };
     
     await User.findOneAndUpdate(

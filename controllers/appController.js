@@ -73,6 +73,13 @@ exports.setAnswers = async (req, res) => {
 
     if (gameMode) {
         const levels = gameMode.levels;
+
+        // get levels that has answers
+        // find levels that don't have it
+        // get that number array
+        // render it        
+
+
         res.render('solution', { title: 'Set Answers', levels });
     } else {
         req.flash('error', 'Please set the game options first!');
