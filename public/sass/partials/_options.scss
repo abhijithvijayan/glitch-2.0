@@ -15,7 +15,10 @@
             color: rgba(#fff, 0.85);
             line-height: 3.6rem;
             letter-spacing: .0625rem;
-            box-shadow: 0 3px 5px 1px rgba(#fff, 0.25);
+            border-bottom: 1px dotted transparent;
+            &:hover {
+                border-bottom: 1px dotted white;
+            }
             @media screen and (max-width: $screen-xs-max) {
                 font-size: 2.3rem;
             }

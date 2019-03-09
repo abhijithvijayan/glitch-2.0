@@ -73,19 +73,51 @@ exports.setAnswers = async (req, res) => {
 
     if (gameMode) {
         const levels = gameMode.levels;
-
+        const totalLevels = levels;
         // get levels that has answers
-        // find levels that don't have it
-        // get that number array
-        // render it        
+        const levelsObj = await Solution
+        .find({}, 'level -_id')
+        .sort({ level: 1 });
+    
+        // console.log(levelsObj);
 
+        if (levelsObj.length) {
+            // extract from array of objects
+            let hasAnsLevels = levelsObj.map(a => a.level);
+            let noAnsLevels = [];
+            // console.log(hasAnsLevels);
 
-        res.render('solution', { title: 'Set Answers', levels });
-    } else {
+            let i = 1;
+            // find levels that don't have answers
+            while (i <= totalLevels) {
+                if (!hasAnsLevels.includes(i)) {
+                    // console.log(i);
+                    noAnsLevels.push(i);
+                }
+                ++i;
+            }
+
+            // console.log(noAnsLevels.length);
+            if (!noAnsLevels.length) {
+                // exists answers for all levels
+                req.flash('error', 'No levels without any answer. Try editing existing ones.');
+                res.redirect('/modify');
+            }
+
+            let levels = noAnsLevels;
+            // console.log(levels);
+            // render to collect answers of the levels that doesn't have an answer saved
+            res.render('solution', { title: 'Set Answers', levels });
+        }
+        else {
+            // render to collect answers of all levels
+            res.render('solution', { title: 'Set Answers', levels });
+        }
+    }
+    else {
         req.flash('error', 'Please set the game options first!');
         res.redirect('/options');
     }
-
 };
 
 

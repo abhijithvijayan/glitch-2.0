@@ -32,7 +32,7 @@ const userSchema = new Schema({
         type: String,
         required: 'Please give a contact number',
         trim: true,
-        default: +91-888-888-8888
+        default: '+91-888-888-8888'
     },
     hasSubmitted: {
         type: Number,
