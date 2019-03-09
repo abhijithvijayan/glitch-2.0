@@ -9,6 +9,7 @@ exports.loginForm = (req, res) => {
     res.render('login', { title: 'Login' });
 };
 
+
 exports.hasSubmittedInfo = async (req, res, next) => {
     const user = await User.findOne({
         _id: req.user._id

@@ -88,6 +88,18 @@ router.post('/modify',
     catchErrors(appController.updateAnswers)
 );
 
+router.get('/resume', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),    
+    appController.updateEndPoint
+);
+
+router.post('/resume', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),    
+    catchErrors(appController.resumeGame)
+);
+
 
 /* ----------------------------------------------------------------- */
 

@@ -9,11 +9,6 @@ exports.getHomePage = (req, res) => {
 };
 
 
-exports.startGame = (req, res) => {
-    res.redirect('/play');
-};
-
-
 exports.preCheck = (req, res) => {
     res.redirect('/account');
 };
@@ -29,13 +24,10 @@ exports.renderGame = async (req, res) => {
     const countPromise = Solution.countDocuments();
     const [gameOptions, totalAnswers] = await Promise.all([gameOptionsPromise, countPromise]);
     const [Options] = gameOptions;
-    // res.json(gameOptions);
-    // res.json(totalAnswers);
 
-    // check if number of ans equals total num of levels in db
-    if (Options && Options.levels <= totalAnswers) {
-        const levels = Options.levels;
-        res.render('game', { title: 'Let\'s Play', levels });
+    if (Options && Options.renderLevel <= totalAnswers) {
+        const renderLevel = Options.renderLevel;
+        res.render('game', { title: 'Let\'s Play', renderLevel });
     }
     else {
         const user = await User.findOne({
@@ -53,6 +45,11 @@ exports.renderGame = async (req, res) => {
 };
 
 
+exports.startGame = (req, res) => {
+    res.redirect('/play');
+};
+
+
 exports.editGame = (req, res) => {
     // res.send('Time to break the wheel');
     res.render('options', { title: 'Add' });
@@ -61,6 +58,35 @@ exports.editGame = (req, res) => {
 
 exports.setGameMode = (req, res) => {
     res.render('modes', { title: 'Set Game Options' });
+};
+
+
+exports.saveGameMode = async (req, res, next) => {
+
+    let renderLevel;
+    // fetch end level from db (if it exists)
+    const [gameMode] = await Game
+    .find()
+    .sort({ _id: -1 })
+    .limit(1);
+
+    // store new model with old end level
+    if (gameMode) {
+        // console.log(gameMode);
+        renderLevel = gameMode.renderLevel;
+    }
+
+    const model = {
+        levels: req.body.levels,
+        author: req.user.email,
+        renderLevel: renderLevel
+    };
+
+    const newModel = new Game(model);
+    await newModel.save();
+
+    req.flash('success', 'Game Levels set successfully');
+    res.redirect('/edit');
 };
 
 
@@ -121,20 +147,6 @@ exports.setAnswers = async (req, res) => {
 };
 
 
-exports.saveGameMode = async (req, res, next) => {
-    // save to db in Game model
-    const model = {
-        levels: req.body.levels,
-        author: req.user.email
-    };
-    const newModel = new Game(model);
-    await newModel.save();
-
-    req.flash('success', 'Game Options saved successfully');
-    res.redirect('/edit');
-};
-
-
 exports.saveSolution = async (req, res) => {
 
     if (req.body.answer) {
@@ -185,8 +197,6 @@ exports.editAnswers = async (req, res) => {
     .find({}, 'level -_id')
     .sort({ level: 1 });
 
-    // console.log(levelsObj);
-
     if (levelsObj.length) {
         // extract from array of objects
         let levels = levelsObj.map(a => a.level);
@@ -203,7 +213,6 @@ exports.editAnswers = async (req, res) => {
 exports.updateAnswers = async (req, res) => {
     // res.json(req.body);
     // res.json(req.user);
-
     const updatedAnswer = {
         answer: req.body.answer,
         lastModified: Date.now(),
@@ -223,6 +232,39 @@ exports.updateAnswers = async (req, res) => {
         req.flash('error', 'No solution for that level to modify');        
     }
 
-    // res.json(user);
+    res.redirect('back');
+};
+
+
+exports.updateEndPoint = (req, res) => {
+    res.render('renderLevel', { title: 'Resume Game' });
+};
+
+
+exports.resumeGame = async (req, res) => {
+    
+    const resumeLevel = {
+        renderLevel: req.body.newFinalLevel
+    };
+    // get latest game options (1 entry)
+    const [gameMode] = await Game
+    .find()
+    .sort({ _id: -1 })
+    .limit(1);
+
+    // console.log(gameMode);
+    if (gameMode && req.body.newFinalLevel <= gameMode.levels) {
+        // update render level top
+        await Game.findOneAndUpdate(
+            { _id: gameMode._id },
+            { $set: resumeLevel },
+            { new: true, runValidators: true, context: 'query' }
+        );
+
+        req.flash('success', 'Game resumed');
+        res.redirect('/edit');
+    }
+    
+    req.flash('error', 'That many levels doesn\t exist');
     res.redirect('back');
 };

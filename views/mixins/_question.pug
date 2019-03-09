@@ -1,8 +1,9 @@
-mixin question(levels, user)
+mixin question(renderLevel, user)
     - const level = user.level
-    - const totalLevels = levels
     .container.pt-5
-        if (level <= totalLevels)
+        if (renderLevel == 0)
+            p Game not yet started! Please come back later.
+        else if (level <= renderLevel)
             h4 Level #{level}
             case level
                 when 1

@@ -14,6 +14,10 @@ const gameSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    renderLevel: {
+        type: Number,
+        default: 0
+    },
     author: String
 });
 

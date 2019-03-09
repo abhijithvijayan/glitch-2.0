@@ -10,6 +10,6 @@ block header
 
 block content
     //- pass the db levels total number
-    +question(levels, user)
-    if (user && user.level <= levels)
+    +question(renderLevel, user)
+    if (user && user.level <= renderLevel)
         +submitAnswer()
