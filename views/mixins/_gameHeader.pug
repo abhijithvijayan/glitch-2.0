@@ -1,16 +1,20 @@
 mixin gameHeader(user = {})
     header#header
-        nav.navbar.navbar-expand-md.navbar-dark.container
-            a.navbar-brand(href="/") Glitch 2.0
-            button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                        aria-expanded="false" aria-label="Toggle navigation")
-                span.navbar-toggler-icon
+        nav.navbar.navbar-expand.navbar-dark.container
+            a.navbar-brand(href="/play") Glitch 2.0
+            //- button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            //-             aria-expanded="false" aria-label="Toggle navigation")
+            //-     span.navbar-toggler-icon
             .collapse.navbar-collapse#navbarNav
                 ul.navbar-nav
                     if (!currentPath.startsWith('/top'))
                         li.nav-item
                             a(href="/top").nav-link Leaderboard
-                                != h.icon('computer')
+                                != h.icon('medal')
+                    else 
+                        li.nav-item
+                            a(href="/play").nav-link Play
+                                != h.icon('console')                        
                     if (user && user.permission > 10 && !currentPath.startsWith('/edit'))
                         li.nav-item
                             a(href="/edit").nav-link Edit Game

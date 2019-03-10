@@ -11,17 +11,21 @@
     
         .play__screen {
             text-align: center;
-            padding-top: calc(15em + 3vh);
+            // padding-top: calc(15em + 3vh);
+            padding-top: calc(3em + 40vh);
             .play__button {
                 font-family: $font-family-montserrat;
-                letter-spacing: 3px;
                 font-weight: $font-weight-semibold;
+                letter-spacing: 3px;
                 text-transform: uppercase;            
                 color: $color-white;
-                font-size: 20px;
-                &:hover {
-                    border-bottom: 1px dotted white;
-                }
+                font-size: 15px;
+                padding: 10px 30px;
+                border: 1px solid white;
+                border-radius: 27px;
+                // &:hover {
+                //     border-bottom: 1px dotted white;
+                // }
                 @media screen and (min-width: $screen-sm-min) {
                     font-size: 25px;
                 }

@@ -6,11 +6,11 @@ block header
     +gameHeader(user)
 
 block content
-
-    form.secondary__form.py-3(action="/resume" method="POST")
-        div
-            h2 Resume Levels
-        div.py-5
-            label.secondary__form--label.py-1_5(for="newFinalLevel") new final level
-            input.secondary__form--input#newFinalLevel(name="newFinalLevel" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")                
-        button.secondary__form--btn.mt-30#submit__info(type="submit") Resume Game
+    .container.form__holder
+        form.primary__form.py-3(action="/resume" method="POST")
+            div
+                h2 Resume Levels
+            div.py-5
+                label.primary__form--label.py-1_5.text-center(for="newFinalLevel") new final level
+                input.primary__form--input.text-center#newFinalLevel(name="newFinalLevel" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")                
+            button.primary__form--btn.mt-30#submit__info(type="submit") Resume Game

@@ -1,6 +1,12 @@
 .pt-20 {
     padding-top: 20px;
 }
+.pt-50 {
+    padding-top: 50px !important;
+}
+.pb-50 {
+    padding-bottom: 50px;
+}
 .scrambleSymbol {
     color: #757575;
 }
@@ -33,4 +39,15 @@
 }
 .mt-30 {
     margin-top: 30px !important;
+}
+.mt-50 {
+    margin-top: 50px !important;
+}
+.ft-16 {
+    @media screen and (max-width: $screen-xs-max) {      
+        font-size: 16px !important;
+        svg {
+            margin-left: 10px;
+        }
+    }
 }

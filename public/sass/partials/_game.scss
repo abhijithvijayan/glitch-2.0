@@ -1,0 +1,20 @@
+.form__holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(3em + 70vh);
+    .level__header {
+        margin-bottom: 35px;
+        span {
+            // font-size: 35px;
+            font-size: 7vw;
+            @media screen and (min-width: $screen-sm-min) {
+                font-size: 4.3vw;
+            }
+        }
+    }
+    h2 {
+        font-size: 20px;
+    }
+}

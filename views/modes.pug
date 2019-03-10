@@ -6,11 +6,11 @@ block header
     +gameHeader(user)
 
 block content
-
-    form.secondary__form.py-3(action="/options" method="POST")
-        div
-            h2 Edit Game
-        div.py-5
-            label.secondary__form--label.py-1_5(for="levels") number of levels
-            input.secondary__form--input#levels(name="levels" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")                
-        button.secondary__form--btn.mt-30#submit__info(type="submit") Save
+    .container.form__holder
+        form.primary__form.py-3(action="/options" method="POST")
+            div
+                h2= title
+            div.py-5
+                label.primary__form--label.py-1_5(for="levels") number of levels
+                input.primary__form--input#levels(name="levels" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="2")                
+            button.primary__form--btn.mt-30#submit__info(type="submit") Save

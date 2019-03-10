@@ -7,28 +7,29 @@ block header
     
 block content
     section#leaderboard
-        .row.leaderboard__holder
-            .col-md-8.leaderboard__holder--inner
-                h2 Top Players
-                table.table.table-striped.table-dark
-                    thead.table__head--holder
-                        tr.table__head--inner
-                            th(scope="col").text-center #
-                            th(scope="col") User
-                            th(scope="col").text-center Level
-                            th(scope="col") College
-                    tbody.table__body--holder
-                        each user, i in users
-                            tr.table__body--inner
-                                th(scope="row").text-center #{i+1}
-                                if (user.permission === 10)
-                                    td: div
-                                            img(src=user.photo).img-fluid.user__thumbnail
-                                            p= user.username
-                                else
-                                    td: div
-                                            != h.icon('aaroh')      
-                                            p.aaroh--text
-                                                a(href="https://aarohcea.com" target="_blank") Aaroh19
-                                td.text-center= user.level
-                                td= user.college
+        .container
+            .row.leaderboard__holder
+                .col-md-8.leaderboard__holder--inner
+                    h2 Top Players
+                    table.table.table-striped.table-dark
+                        thead.table__head--holder
+                            tr.table__head--inner
+                                th(scope="col").text-center #
+                                th(scope="col") User
+                                th(scope="col").text-center Level
+                                //- th(scope="col") College
+                        tbody.table__body--holder
+                            each user, i in users
+                                tr.table__body--inner
+                                    th(scope="row").text-center #{i+1}
+                                    if (user.permission === 10)
+                                        td: div
+                                                img(src=user.photo).img-fluid.user__thumbnail
+                                                p= user.username
+                                    else
+                                        td: div
+                                                != h.icon('aaroh')      
+                                                p.aaroh--text
+                                                    a(href="https://aarohcea.com" target="_blank") Aaroh19
+                                    td.text-center= user.level
+                                    //- td= user.college

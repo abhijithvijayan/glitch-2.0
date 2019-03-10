@@ -1,9 +1,13 @@
 #leaderboard {
+    padding-top: 3em;
     .leaderboard__holder {
         display: flex;
         justify-content: center;
         align-items: center;
         .leaderboard__holder--inner {
+            h2 {
+                font-size: 1.2em;
+            }
             .table {
                 .table__head--holder {
                     .table__head--inner {

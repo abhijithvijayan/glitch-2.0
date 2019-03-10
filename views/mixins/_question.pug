@@ -1,10 +1,12 @@
 mixin question(renderLevel, user)
     - const level = user.level
-    .container.pt-5
+    .container.form__holder
         if (renderLevel == 0)
             p Game not yet started! Please come back later.
         else if (level <= renderLevel)
-            h4 Level #{level}
+            h4.level__header
+                span # 
+                span #{level}
             case level
                 when 1
                     h2 What is 10+2?                
@@ -20,3 +22,8 @@ mixin question(renderLevel, user)
                     h2 Hi there, Please come back later.
         else
             p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.
+        if (level <= renderLevel)
+            form.primary__form.py-3(action="/play" method="POST")
+                div.pb-50
+                    input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    
+                button.primary__form--btn#submit__info(type="submit") Submit

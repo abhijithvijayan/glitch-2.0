@@ -2,14 +2,10 @@ extends layout
 
 include mixins/_gameHeader
 include mixins/_question
-include mixins/_submitAnswer
 
 block header
-    //- pre= h.dump(user)
     +gameHeader(user)
 
 block content
     //- pass the db levels total number
     +question(renderLevel, user)
-    if (user && user.level <= renderLevel)
-        +submitAnswer()

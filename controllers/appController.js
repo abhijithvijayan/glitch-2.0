@@ -57,7 +57,7 @@ exports.editGame = (req, res) => {
 
 
 exports.setGameMode = (req, res) => {
-    res.render('modes', { title: 'Set Game Options' });
+    res.render('modes', { title: 'Set Levels' });
 };
 
 
