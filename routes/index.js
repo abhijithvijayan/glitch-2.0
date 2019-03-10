@@ -100,6 +100,12 @@ router.post('/resume',
     catchErrors(appController.resumeGame)
 );
 
+router.get('/top',
+    authController.isLoggedIn,
+    catchErrors(userController.hasSubmittedInfo),
+    catchErrors(appController.getTopPlayers)
+);
+
 
 /* ----------------------------------------------------------------- */
 

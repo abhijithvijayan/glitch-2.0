@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Solution = mongoose.model('Solution');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+const promisify = require('es6-promisify');
 
 
 /* ---------------------------------------------------- */
@@ -99,16 +101,27 @@ exports.submitAnswer = async (req, res) => {
             // res.send('Right answer');            
             const newLevel = ++req.user.level;
             // update user level and time
+
+            // put on the leaderboard
+
+            
             const updates = {
                 level: newLevel,
                 timeOfScore: Date.now()
             };
             
-            await User.findOneAndUpdate(
+            const user = await User.findOneAndUpdate(
                 { _id: req.user._id },
                 { $set: updates },
                 { new: true, runValidators: true, context: 'query' }
             );
+
+            // console.log(user);
+            // update rank
+            const updateRank = promisify(user.setNext, user);
+            await updateRank('rank_counter');
+
+
             req.flash('success', 'Right answer. Hurrayyy!!!');
         } 
         else {

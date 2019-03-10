@@ -1,0 +1,50 @@
+#leaderboard {
+    .leaderboard__holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .leaderboard__holder--inner {
+            .table {
+                .table__head--holder {
+                    .table__head--inner {
+                        th {
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+                .table__body--holder {
+                    .table__body--inner {
+                        th, td {
+                            vertical-align: middle;
+                        }
+                        td {
+                            div {
+                                display: flex;
+                                align-items: center;
+                                img {
+                                    width: 30px;                                    
+                                }
+                                svg {
+                                    width: 40px;
+                                }
+                                p {
+                                    margin-bottom: 0;
+                                    padding-left: 10px;
+                                    a {
+                                        color: white;
+                                        &:hover {
+                                            border-bottom: 1px dotted white;
+                                        }
+                                    }
+                                }
+                                .aaroh--text {
+                                    padding-left: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

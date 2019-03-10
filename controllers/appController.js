@@ -263,8 +263,16 @@ exports.resumeGame = async (req, res) => {
 
         req.flash('success', 'Game resumed');
         res.redirect('/edit');
+    } else {
+        req.flash('error', 'That many levels doesn\t exist');
+        res.redirect('back');
     }
     
-    req.flash('error', 'That many levels doesn\t exist');
-    res.redirect('back');
+};
+
+
+exports.getTopPlayers = async (req, res) => {
+    const users = await User.getLeaderboard();
+    res.render('topPlayers', { title: 'Top Players', users });
+    // res.json(users);
 };

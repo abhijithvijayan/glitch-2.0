@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const userSchema = new Schema({
     username: String,
@@ -15,6 +16,10 @@ const userSchema = new Schema({
     level: {
         type: Number,
         default: 1
+    },
+    rank: {
+        type: Number,
+        default: 0
     },
     nickname: {
         type: String,
@@ -64,6 +69,18 @@ userSchema.path('contact').validate(function (number) {
     return /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/.test(number);
 }, 'Enter a valid mobile number!');
 
+
+// https://kutt.it/LAR4dL
+userSchema.plugin(AutoIncrement, {id:'rank_counter', inc_field: 'rank', disable_hooks: true, reference_fields: ['level']});
+
+
+userSchema.statics.getLeaderboard = function() {
+    return this.aggregate([
+        { $project: { photo: 1, username: 1, level: 1, rank: 1, college: 1, permission: 1, _id: 0 }}, // add these fields to output
+        // sort by levels desc and rank asc
+        { $sort: { level: -1, rank: 1 }}
+    ]);
+};
 
 
 // nice error looks
