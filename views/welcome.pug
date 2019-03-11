@@ -10,12 +10,15 @@ block content
                     - const categories = Object.keys(locals.flashes)
                     each category in categories
                         each message in flashes[category]
-                            .alert.alert-dismissible.fade.show(class=`flash--${category}` role="alert")
+                            .alert.flash(class=`flash--${category}` role="alert")
+                                != h.icon(`${category}`)                             
                                 p.flash__text!= message
-                                button.close(type="button" data-dismiss="alert" aria-label="Close") 
+                                button.flash__remove.close(type="button" data-dismiss="alert" aria-label="Close") 
                                     span(aria-hidden="true") &times; 
         .row.play__screen--holder
             .col-md-12.play__screen
                 a.btn.play__button(href="/game") Play Now
+                    != h.icon('play')                 
 
-block messages            
+block messages
+//- to hide default flashes

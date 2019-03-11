@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Outline');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Outline|Marcellus+SC');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins:400,600,700,800');
 
-$font-family-montserrat: 'Montserrat', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
+$poppins: 'Poppins', sans-serif;
+$marcellus: 'Marcellus SC', serif;
+$bungee-outline: 'Bungee Outline', cursive;
 
 $font-weight-thin:          100;
 $font-weight-exlight:       200;

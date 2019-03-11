@@ -25,11 +25,10 @@
                             div {
                                 display: flex;
                                 align-items: center;
-                                img {
-                                    width: 30px;                                    
-                                }
-                                svg {
-                                    width: 40px;
+                                img, svg {
+                                    width: 30px;        
+                                    height: 30px;                                            
+                                    border-radius: 100%;                    
                                 }
                                 p {
                                     margin-bottom: 0;
@@ -40,9 +39,6 @@
                                             border-bottom: 1px dotted white;
                                         }
                                     }
-                                }
-                                .aaroh--text {
-                                    padding-left: 2px;
                                 }
                             }
                         }

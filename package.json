@@ -9,7 +9,8 @@
     "start": "node ./start.js",
     "watch": "nodemon ./start.js --ignore public/",
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"N,W\" --prefix name",
-    "assets": "webpack --watch  --mode=production --display-max-modules=0",
+    "assets": "webpack --watch  --mode=development --display-max-modules=0",
+    "minify": "webpack --mode=production",
     "blowitallaway": "node ./data/remove-data.js --delete"
   },
   "browserslist": "last 3 versions",

@@ -1,9 +1,9 @@
 .form__holder {
+    // height: calc(3em + 70vh);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(3em + 70vh);
     .level__header {
         margin-bottom: 35px;
         span {

@@ -4,12 +4,9 @@ html(lang="en")
     title= `${title} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/styles.css')
     meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
-    //- Chrome, Firefox OS and Opera
-    <meta name="theme-color" content="#000">
-    //- Windows Phone
-    <meta name="msapplication-navbutton-color" content="#000">
-    //- iOS Safari
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+    meta(name="theme-color" content="#000")
+    meta(name="msapplication-navbutton-color" content="#000")
+    meta(name="apple-mobile-web-app-status-bar-style" content="#000")
   body
 
     block header
@@ -21,9 +18,10 @@ html(lang="en")
           - const categories = Object.keys(locals.flashes)
           each category in categories
               each message in flashes[category]
-                .alert.alert-dismissible.fade.show(class=`flash--${category}` role="alert")
+                .alert.flash(class=`flash--${category}` role="alert")
+                    != h.icon(`${category}`) 
                     p.flash__text!= message
-                    button.close(type="button" data-dismiss="alert" aria-label="Close") 
+                    button.flash__remove.close(type="button" data-dismiss="alert" aria-label="Close") 
                       span(aria-hidden="true") &times;         
 
     block content
