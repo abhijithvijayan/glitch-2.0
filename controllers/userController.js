@@ -4,7 +4,6 @@ const Solution = mongoose.model('Solution');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 const promisify = require('es6-promisify');
 
-
 /* ---------------------------------------------------- */
 
 exports.loginForm = (req, res) => {
@@ -82,29 +81,26 @@ exports.updateAccount = async (req, res) => {
 exports.submitAnswer = async (req, res) => {
     // res.json(req.body.answer);
     // res.json(req.user.level);
-    
+
+    // get ans according to user level
     const [savedSolutionData] = await Solution
     .find({
         level: req.user.level
     });
-
     
     if (savedSolutionData && savedSolutionData.answer.length) {
-        
-        // get hashed answer from db
         const savedAnswer = savedSolutionData.answer;
-        // hash the user submitted answer
+        // remove special symbols, white spaces and lowercase it
         const submitted = req.body.answer;
+        const regStr = submitted.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/\s]/gi, '');
+        const lowerStr = regStr.toLowerCase();
 
-        // check if hashes match
-        if (submitted === savedAnswer) {
+        // check if answers match
+        if (lowerStr === savedAnswer) {
             // res.send('Right answer');            
             const newLevel = ++req.user.level;
             // update user level and time
 
-            // put on the leaderboard
-
-            
             const updates = {
                 level: newLevel,
                 timeOfScore: Date.now()
@@ -116,7 +112,6 @@ exports.submitAnswer = async (req, res) => {
                 { new: true, runValidators: true, context: 'query' }
             );
 
-            // console.log(user);
             // update rank
             const updateRank = promisify(user.setNext, user);
             await updateRank('rank_counter');

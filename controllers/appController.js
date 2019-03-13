@@ -4,6 +4,13 @@ const Game = mongoose.model('Game');
 const Solution = mongoose.model('Solution');
 
 
+function purifyAnswer(str) {
+    const regStr = str.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/\s]/gi, '');
+    const lowerStr = regStr.toLowerCase();
+    return lowerStr;
+}
+
+
 exports.getHomePage = (req, res) => {
     res.render('welcome', { title: 'Let\'s begin' });
 };
@@ -161,9 +168,9 @@ exports.saveSolution = async (req, res) => {
             const levels = gameMode.levels;
             // submitted level lies between the set
             if (req.body.level <= levels) {
-            
+                const answer = purifyAnswer(req.body.answer);
                 const solution = {
-                    answer: req.body.answer,
+                    answer: answer,
                     level: req.body.level,
                     author: req.user.email
                 };
@@ -213,8 +220,10 @@ exports.editAnswers = async (req, res) => {
 exports.updateAnswers = async (req, res) => {
     // res.json(req.body);
     // res.json(req.user);
+
+    const answer = purifyAnswer(req.body.answer);
     const updatedAnswer = {
-        answer: req.body.answer,
+        answer: answer,
         lastModified: Date.now(),
         author: req.user.email
     };

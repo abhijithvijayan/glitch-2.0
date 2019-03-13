@@ -21,15 +21,9 @@ const solutionSchema = new Schema({
 });
 
 
-// solutionSchema.index({
-//     level: 'text',
-//     answer: 'text'
-// });
-
 
 // nice error looks
 solutionSchema.plugin(uniqueValidator, { message: 'Error, Already saved the answer for this level.' });
-// solutionSchema.plugin(mongodbErrorHandler);
 
 
 module.exports = mongoose.model('Solution', solutionSchema);
