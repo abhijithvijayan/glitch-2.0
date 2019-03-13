@@ -23,7 +23,7 @@ mixin question(renderLevel, user)
         else
             p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.
         if (level <= renderLevel)
-            form.primary__form.py-3(action="/play" method="POST")
+            form.primary__form.py-3#ans__submit--form(method="POST")
                 div.pb-50
                     input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    
-                button.primary__form--btn#submit__info(type="submit") Submit
+                button.primary__form--btn#answer__submit(type="submit") Submit

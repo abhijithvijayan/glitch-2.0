@@ -82,7 +82,7 @@ exports.updateAccount = async (req, res) => {
 exports.submitAnswer = async (req, res) => {
     // res.json(req.body.answer);
     // res.json(req.user.level);
-
+    
     const [savedSolutionData] = await Solution
     .find({
         level: req.user.level
@@ -121,14 +121,16 @@ exports.submitAnswer = async (req, res) => {
             const updateRank = promisify(user.setNext, user);
             await updateRank('rank_counter');
 
-
-            req.flash('success', 'Right answer. Hurrayyy!!!');
+            // send status: true
+            res.json({ status: true });            
+            // req.flash('success', 'Right answer. Hurrayyy!!!');
         } 
         else {
-            req.flash('error', 'Wrong answer, Please try again.');
+            res.json({ status: false });
+            // req.flash('error', 'Wrong answer, Please try again.');
         }
         // render out next qn        
-        res.redirect('back');
+        // res.redirect('back');
     }
     else {
         // if solution for that submission is not found!!!!
