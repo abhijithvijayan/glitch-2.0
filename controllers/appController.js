@@ -34,7 +34,8 @@ exports.renderGame = async (req, res) => {
 
     if (Options && Options.renderLevel <= totalAnswers) {
         const renderLevel = Options.renderLevel;
-        res.render('game', { title: 'Let\'s Play', renderLevel });
+        const totalLevels = Options.levels;
+        res.render('game', { title: 'Let\'s Play', renderLevel, totalLevels });
     }
     else {
         const user = await User.findOne({

@@ -1,4 +1,4 @@
-mixin question(renderLevel, user)
+mixin question(renderLevel, user, totalLevels)
     - const level = user.level
     .container.form__holder
         if (renderLevel == 0)
@@ -20,6 +20,8 @@ mixin question(renderLevel, user)
                     h2 Most awaited..
                 default
                     h2 Hi there, Please come back later.
+        else if (level > totalLevels)
+            h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
         else
             p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.
         if (level <= renderLevel)
