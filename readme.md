@@ -1,8 +1,14 @@
 # Glitch-2.0
+![GitHub](https://img.shields.io/github/license/abhijithvijayan/glitch-2.0.svg)
 
 An online game build on Node.JS
 
-## Add Questions/Levels/Answers
+# Getting Started
+
+## Authentication
+Uses [google-oauth 2.0](http://www.passportjs.org/packages/passport-google-oauth20/) with [passport.js](http://www.passportjs.org/)
+
+## Add/Modify Levels & Answers
 
 You must be an admin to make changes to the game.
 To make yourself an admin
@@ -12,10 +18,42 @@ To make yourself an admin
 
 Done, You can now see options to edit the game in the dashboard.
 
+
+## Add Questions
+Edit the `/views/mixins/_question.pug` file to your need.
+
+
+## Store Assets
+- Save your `svg's` under `/public/images/icons/`
+- Save your `images` under `/public/images/photos`
+
+<hr />
+
+# Development
+
+- Copy contents from `variables.env.sample` to `variables.env`
+- Fill in with your credentials (Generate google API key from console)
+- `npm run dev` launches express at PORT 7777
+- Visit `localhost:7777` in your browser to load the game
+
+# Production
+- Run `npm run minify` to minify `JS` and `CSS`
+- Update `PORT=80` and `NODE_ENV=production`  in `variables.env` file
+- Then run `npm start` to launch the server
+
+<hr />
+
 ## Delete Data
 
-If you have previously loaded in this data, you can wipe your database 100% clean with:
+If you have previously loaded data to your DB, you can wipe your database 100% clean with:
 
 ```bash
 npm run blowitallaway
 ```
+Also delete all the other `collections` manually with `MongoDB Compass`
+
+## Assets Used
+Glitch Effect : [Pen](https://codepen.io/knyttneve/pen/eXNbKo) by [@knyttneve](https://codepen.io/knyttneve/)
+
+## Licence
+This project is licenced under [MIT](LICENCE)
