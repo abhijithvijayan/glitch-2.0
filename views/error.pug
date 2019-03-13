@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  .inner
-    h2= status
-    p= message
+  .container.error__holder
+    .row.error__content
+      .col-md-12.error__content--inner
+        h2= status
+        p= message
   pre.error!= stackHighlighted

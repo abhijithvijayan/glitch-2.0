@@ -1,0 +1,28 @@
+.error__holder {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .error__content {
+        .error__content--inner {
+            text-align: center;
+            h2 {
+                font-size: 10vw;
+            }
+            p {
+                font-size: 8.5vw;
+            }
+        }
+    }
+}
+.error {
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    overflow: hidden;
+    color: white;
+    mark {
+        background-color: yellow;
+        color: black; 
+    }
+}
