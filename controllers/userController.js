@@ -37,7 +37,7 @@ exports.submitInfo = async (req, res) => {
         { new: true, runValidators: true, context: 'query' }
     );
 
-    req.flash('success', 'Saved successfully');
+    // req.flash('success', 'Saved successfully');
     res.redirect('/play');
 };
 
@@ -50,7 +50,7 @@ exports.isAdmin = async (req, res, next) => {
     if (user.permission > 10) {
         return next();
     }
-    req.flash('error', 'Nice try, You must be an admin to do that!');
+    // req.flash('error', 'Nice try, You must be an admin to do that!');
     res.redirect('/');
 };
 
@@ -73,7 +73,7 @@ exports.updateAccount = async (req, res) => {
         { new: true, runValidators: true, context: 'query' }
     );
     
-    req.flash('success', 'Updated successfully');
+    // req.flash('success', 'Updated successfully');
     res.redirect('back');
 };
 

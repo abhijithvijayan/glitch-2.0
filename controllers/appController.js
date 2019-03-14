@@ -12,12 +12,7 @@ function purifyAnswer(str) {
 
 
 exports.getHomePage = (req, res) => {
-    res.render('welcome', { title: 'Let\'s begin' });
-};
-
-
-exports.preCheck = (req, res) => {
-    res.redirect('/account');
+    res.render('login', { title: 'Let\'s begin' });
 };
 
 
@@ -47,7 +42,7 @@ exports.renderGame = async (req, res) => {
             return;
         }
 
-        req.flash('error', 'Game not ready yet, Please come back later.');
+        // req.flash('error', 'Game not ready yet, Please come back later.');
         res.redirect('/');
     }
 };
@@ -93,7 +88,7 @@ exports.saveGameMode = async (req, res, next) => {
     const newModel = new Game(model);
     await newModel.save();
 
-    req.flash('success', 'Game Levels set successfully');
+    // req.flash('success', 'Game Levels set successfully');
     res.redirect('/edit');
 };
 
@@ -134,7 +129,7 @@ exports.setAnswers = async (req, res) => {
             // console.log(noAnsLevels.length);
             if (!noAnsLevels.length) {
                 // exists answers for all levels
-                req.flash('error', 'No levels without any answer. Try editing existing ones.');
+                // req.flash('error', 'No levels without any answer. Try editing existing ones.');
                 res.redirect('/modify');
             }
 
@@ -149,7 +144,7 @@ exports.setAnswers = async (req, res) => {
         }
     }
     else {
-        req.flash('error', 'Please set the game options first!');
+        // req.flash('error', 'Please set the game options first!');
         res.redirect('/options');
     }
 };
@@ -180,20 +175,20 @@ exports.saveSolution = async (req, res) => {
                 const newSolution = new Solution(solution);
                 await newSolution.save();
             
-                req.flash('success', 'Solution Saved');
+                // req.flash('success', 'Solution Saved');
             } 
             else {
-                req.flash('error', `There are only ${levels} levels`);
+                // req.flash('error', `There are only ${levels} levels`);
                 res.redirect('/answers');
             }
         }
         else {
-            req.flash('error', 'Please set the game options first!');
+            // req.flash('error', 'Please set the game options first!');
             res.redirect('/options');
         }
     }
     else {
-        req.flash('error', 'Please submit an answer');
+        // req.flash('error', 'Please submit an answer');
     }
     res.redirect('back');
 };  
@@ -212,7 +207,7 @@ exports.editAnswers = async (req, res) => {
         res.render('solution', { title: 'Edit Answers', levels});
     } 
     else {
-        req.flash('error', 'No answers set to modify. Submit answers here!');
+        // req.flash('error', 'No answers set to modify. Submit answers here!');
         res.redirect('/answers');
     }
 };
@@ -235,12 +230,12 @@ exports.updateAnswers = async (req, res) => {
         { new: true, runValidators: true, context: 'query' }
     );
     
-    if (solution) {
-        req.flash('success', 'Updated successfully');
-    }
-    else {
-        req.flash('error', 'No solution for that level to modify');        
-    }
+    // if (solution) {
+    //     // req.flash('success', 'Updated successfully');
+    // }
+    // else {
+    //     // req.flash('error', 'No solution for that level to modify');        
+    // }
 
     res.redirect('back');
 };
@@ -271,10 +266,10 @@ exports.resumeGame = async (req, res) => {
             { new: true, runValidators: true, context: 'query' }
         );
 
-        req.flash('success', 'Game resumed');
+        // req.flash('success', 'Game resumed');
         res.redirect('/edit');
     } else {
-        req.flash('error', 'That many levels doesn\t exist');
+        // req.flash('error', 'That many levels doesn\t exist');
         res.redirect('back');
     }
     

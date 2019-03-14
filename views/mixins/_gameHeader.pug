@@ -17,10 +17,11 @@ mixin gameHeader(user = {})
                             a(href="/edit").nav-link Edit Game
                                 != h.icon('edit')                            
                     li.nav-item.dropdown
-                        a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown #{user.nickname}
-                            img.user__thumbnail(src=user.photo)
-                                //- != h.icon('user')
-                        .dropdown-menu(aria-labelledby="profileDropdown")
-                            if !currentPath.startsWith('/account/edit') 
-                                a(href="/account/edit").dropdown-item Edit Profile
-                            a(href="/logout").dropdown-item Logout
+                        if (user)
+                            a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown #{user.nickname}
+                                img.user__thumbnail(src=user.photo)
+                                    //- != h.icon('user')
+                            .dropdown-menu(aria-labelledby="profileDropdown")
+                                if !currentPath.startsWith('/account/edit') 
+                                    a(href="/account/edit").dropdown-item Edit Profile
+                                a(href="/logout").dropdown-item Logout

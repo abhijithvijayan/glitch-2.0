@@ -15,7 +15,7 @@ exports.redirectLogin = passport.authenticate('google', {
 
 exports.logout = (req, res) => {
     req.logout();
-    req.flash('success', 'Logged out successfully');
+    // req.flash('success', 'Logged out successfully');
     res.redirect('/');
 };
 
@@ -24,7 +24,7 @@ exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }
-    req.flash('error', 'You must log in first!');
+    // req.flash('error', 'You must log in first!');
     res.redirect('/login');
 };
 
@@ -33,6 +33,6 @@ exports.isNotLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         return next();
     }
-    req.flash('info', 'Already Logged in');
+    // req.flash('info', 'Already Logged in');
     res.redirect('/play');
 };

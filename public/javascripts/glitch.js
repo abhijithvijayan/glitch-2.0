@@ -8,12 +8,8 @@
 import 'bootstrap';
 import '../sass/main.scss';
 
-import glitch from './modules/glitchEffect';
 import ajaxCall from './modules/ajaxCall';
 
-
-// call the glitch effect for home
-glitch();
 
 
 // answer submission -> ajax call

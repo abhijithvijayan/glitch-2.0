@@ -13,18 +13,7 @@ html(lang="en")
 
     block header
 
-    block messages
-      if locals.flashes
-      .row.justify-content-center
-        .col-md-6
-          - const categories = Object.keys(locals.flashes)
-          each category in categories
-              each message in flashes[category]
-                .alert.flash(class=`flash--${category}` role="alert")
-                    != h.icon(`${category}`) 
-                    p.flash__text!= message
-                    button.flash__remove.close(type="button" data-dismiss="alert" aria-label="Close") 
-                      span(aria-hidden="true") &times;         
+    block messages  
 
     block content
 

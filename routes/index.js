@@ -12,8 +12,6 @@ const authController = require('../controllers/authController');
 // basic routes
 router.get('/', appController.getHomePage);
 
-router.get('/game', appController.preCheck);
-
 router.get('/play', 
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
@@ -101,8 +99,8 @@ router.post('/resume',
 );
 
 router.get('/top',
-    authController.isLoggedIn,
-    catchErrors(userController.hasSubmittedInfo),
+    // authController.isLoggedIn,
+    // catchErrors(userController.hasSubmittedInfo),
     catchErrors(appController.getTopPlayers)
 );
 

@@ -68,15 +68,21 @@
                     align-items: center;
                     color: $color-white;
                     width: 250px;
-                    border: 1px solid #0097e6;                        
-                    color: #506569;
-                    background: white;
+                    border: 1px solid #0097e6;     
+                    color: #fff;                   
                     border-radius: 50px;
                     cursor: pointer;
                     justify-content: space-evenly;
 
                     &:focus {
                         outline: none;
+                        color: #506569;
+                        background: white;
+                    }
+
+                    &:hover {
+                        color: #506569;
+                        background: white;
                     }
 
                     svg,
