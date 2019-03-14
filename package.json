@@ -37,6 +37,7 @@
     "passport-google-oauth20": "^1.0.0",
     "popper.js": "^1.14.7",
     "pug": "^2.0.3",
+    "sweetalert2": "^8.3.0",
     "uuid": "^3.3.2",
     "validator": "^10.11.0"
   },
