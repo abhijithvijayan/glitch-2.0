@@ -42,11 +42,12 @@ function ajaxCall(e) {
         })
         .catch(err => {
             console.log(err);
+            $('.spinner').fadeOut('slow');
                     // time out
             if (err.code === 'ECONNABORTED') {
                 sweetAlert(error, timeout, 0);
-                $('.spinner').fadeOut('slow');
             }
+            $('.screen__overlay').fadeOut(2000);
         });
 }
 

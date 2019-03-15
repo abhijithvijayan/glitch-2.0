@@ -132,11 +132,12 @@ exports.setAnswers = async (req, res) => {
                 // req.flash('error', 'No levels without any answer. Try editing existing ones.');
                 res.redirect('/modify');
             }
-
-            let levels = noAnsLevels;
-            // console.log(levels);
-            // render to collect answers of the levels that doesn't have an answer saved
-            res.render('solution', { title: 'Set Answers', levels });
+            else {
+                let levels = noAnsLevels;
+                // console.log(levels);
+                // render to collect answers of the levels that doesn't have an answer saved
+                res.render('solution', { title: 'Set Answers', levels });
+            }
         }
         else {
             // render to collect answers of all levels

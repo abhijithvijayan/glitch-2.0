@@ -53,7 +53,9 @@ npm run blowitallaway
 Also delete all the other `collections` manually with `MongoDB Compass`
 
 ## Assets Used
-Glitch Effect : [Pen](https://codepen.io/knyttneve/pen/eXNbKo) by [@knyttneve](https://codepen.io/knyttneve/)
+
+- Text Scramble Effect : [Pen](https://codepen.io/soulwire/pen/mErPAK) by [@soulwire](https://codepen.io/soulwire/)
+- Parallax Star background : [Pen](https://codepen.io/saransh/pen/BKJun) by [@saransh](https://codepen.io/saransh/)
 
 ## Licence
 This project is licenced under [MIT](LICENCE)

@@ -55,7 +55,7 @@ exports.isAdmin = async (req, res, next) => {
 };
 
 exports.editProfile = async (req, res) => {
-    res.render('account', { title: 'Edit Details' });
+    res.render('account', { title: 'Edit Profile' });
 };
 
 

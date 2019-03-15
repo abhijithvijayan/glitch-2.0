@@ -71,7 +71,7 @@ const phrases = [
     'Hey you,',
     'sooner or later',
     'you\'re going to realize',
-    'just as I did',
+    'just as everyone',
     'that there\'s a difference',
     'between knowing the path',
     'and walking the path.',
