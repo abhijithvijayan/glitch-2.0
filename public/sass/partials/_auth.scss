@@ -3,11 +3,11 @@
     display: flex;
     align-items: center;
     user-select: none;
-    @media screen and (min-width: $screen-sm-min) {        
-        background: url('/images/photos/bg-shade.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+    // @media screen and (min-width: $screen-sm-min) {        
+    //     background: url('/images/photos/bg-shade.png');
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    // }
     background-color: #000;
     .auth__holder {
         font-family: $poppins;

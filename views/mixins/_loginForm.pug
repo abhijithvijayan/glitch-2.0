@@ -7,7 +7,9 @@ mixin loginForm()
                     h1 Aaroh 19            
                 .col-md-4.auth__content--right
                     h1.login__glitch(data-text="Glitch") Glitch
-                    //- h2 Login to your account
-                    a(href="/auth/google" class="google__login--btn")
-                        //- != h.icon('google')
-                        span Continue with Google 
+                    if (user)
+                        a(href="/play" class="google__login--btn")
+                            span Continue Playing
+                    else
+                        a(href="/auth/google" class="google__login--btn")
+                            span Continue with Google 
