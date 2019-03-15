@@ -45,16 +45,3 @@
         transform: scaleY(1.0);
     }
 }
-
-.screen__overlay {
-    display: none;
-    z-index: 9;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    background-size: 1000px 2px;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-}

@@ -1,35 +1,70 @@
 .pt-20 {
     padding-top: 20px;
 }
+
 .pt-50 {
     padding-top: 50px !important;
 }
+
 .pb-50 {
     padding-bottom: 50px;
 }
+
 .scrambleSymbol {
     color: #757575;
 }
+
 .user__thumbnail {
     border-radius: 100%;
 }
+
 .alert {
     margin-bottom: 0;
 }
+
 .py-1_5 {
     padding-top: 1.5rem !important;
 }
+
 .mt-30 {
     margin-top: 30px !important;
 }
+
 .mt-50 {
     margin-top: 50px !important;
 }
+
 .ft-16 {
-    @media screen and (max-width: $screen-xs-max) {      
+    @media screen and (max-width: $screen-xs-max) {
         font-size: 16px !important;
+
         svg {
             margin-left: 10px;
         }
     }
+}
+
+.screen__overlay {
+    display: none;
+    z-index: 9;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background-size: 1000px 2px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.dark__overlay {
+    z-index: 9;
+    background: black !important;
+    background-size: 1000px 2px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }

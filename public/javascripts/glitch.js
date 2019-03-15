@@ -8,9 +8,12 @@
 import 'bootstrap';
 import '../sass/main.scss';
 
+import glitch from './modules/texteffect';
 import ajaxCall from './modules/ajaxCall';
 
 
+
+glitch();
 
 // answer submission -> ajax call
 $("#ans__submit--form").on("submit", ajaxCall);    

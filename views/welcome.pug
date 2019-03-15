@@ -1,1 +1,15 @@
 extends layout
+
+include mixins/_loginHeader
+include mixins/_loginForm
+include mixins/_glitch
+
+block header
+    +loginHeader()
+
+block glitch
+    .dark__overlay
+    +glitch()
+
+block content
+    +loginForm()

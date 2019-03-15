@@ -1,4 +1,5 @@
 #header {
+    user-select: none;
     .navbar {
         @media screen and (max-width: $screen-xs-max) {      
             padding-top: 20px;

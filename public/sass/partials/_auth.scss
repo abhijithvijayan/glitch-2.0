@@ -2,6 +2,7 @@
     height: calc(3em + 80vh);
     display: flex;
     align-items: center;
+    user-select: none;
     @media screen and (min-width: $screen-sm-min) {        
         background: url('/images/photos/bg-shade.png');
         background-size: cover;
@@ -42,6 +43,7 @@
             }
 
             .auth__content--right {
+                opacity: 0.9;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -57,33 +59,30 @@
                     padding-bottom: 0.3em;
                 }
 
-                // h2 {
-                //     font-size: 1.5rem;
-                //     padding-bottom: 0.5em;
-                // }
-
                 .google__login--btn {
-                    padding: 15px;
+                    padding: 14px;
                     display: flex;
                     align-items: center;
                     color: $color-white;
-                    width: 250px;
-                    border: 1px solid #0097e6;     
-                    color: #fff;                   
+                    width: 250px;    
+                    color: rgba($color: #fff, $alpha: 0.9);                   
                     border-radius: 50px;
                     cursor: pointer;
                     justify-content: space-evenly;
+                    border: 1px solid rgba($color: #fff, $alpha: 0.8);
 
-                    &:focus {
-                        outline: none;
-                        color: #506569;
-                        background: white;
-                    }
 
-                    &:hover {
-                        color: #506569;
-                        background: white;
-                    }
+                    // &:focus {
+                    //     outline: none;
+                    //     color: #506569;
+                    //     background: white;
+                    // }
+                    
+                    // &:hover {
+                    //     outline: none;
+                    //     color: #506569;
+                    //     background: white;
+                    // }
 
                     svg,
                     img {
@@ -93,10 +92,12 @@
                     }
 
                     span {
-                        font-family: $poppins;
+                        font-family: 'Roboto Mono', monospace;
+                        font-weight: 100;
                         font-size: 1rem;
-                        font-weight: 700;
-                        margin-left: 10px;
+                        // font-family: $poppins;
+                        // font-weight: 700;
+                        // margin-left: 10px;
                     }
                 }                
             }

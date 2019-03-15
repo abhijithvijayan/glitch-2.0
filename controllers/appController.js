@@ -12,7 +12,7 @@ function purifyAnswer(str) {
 
 
 exports.getHomePage = (req, res) => {
-    res.render('login', { title: 'Let\'s begin' });
+    res.render('welcome', { title: 'Let\'s begin' });
 };
 
 
