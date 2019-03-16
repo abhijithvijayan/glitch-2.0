@@ -25,10 +25,16 @@ glitch();
 $("#ans__submit--form").on("submit", ajaxCall);    
 
 
+// Rules Page
+$('#rules__open--btn').on('click', () => {
+    $('#information').fadeToggle('slow');;
+    $('#auth').fadeToggle('slow');
+});
 
-
-
-
+$('#rules__close--btn').on('click', () => {
+    $('#auth').fadeIn();
+    $('#information').fadeOut('slow');
+});
 
 
 

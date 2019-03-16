@@ -1,0 +1,49 @@
+#information {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    .screen__overlay--dark {
+
+        .screen__overlay--holder {
+            padding: 2em 0;
+            .screen__overlay--inner {
+                h2 {
+                    font-size: 2rem;
+                    text-align: center;
+                    padding-bottom: 2rem;
+                    @media screen and (max-width: $screen-xxs-max) {
+                        font-size: 1.7rem;
+                    }
+                }
+
+                ul {
+
+                    li {   
+                        padding-bottom: 1.2em;                 
+                        &::before {
+                            font-weight: 700;
+                            counter-increment: section;
+                            content: "Rule "counter(section) ": ";
+                        }
+                    }
+                }
+
+                div {
+                    text-align: center;
+                    a {
+                        cursor: pointer;
+                        margin-top: 20px;
+                        display: inline-block;
+                        color: white;
+                        padding: 12px 40px;
+                        border: 2px solid white;
+                        color: white;
+                        border-color: #fff;
+                        border-radius: 27px;                      
+                    }
+                }
+            }
+        }
+    }
+}
