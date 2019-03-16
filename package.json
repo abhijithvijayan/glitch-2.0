@@ -37,15 +37,16 @@
     "passport-google-oauth20": "^1.0.0",
     "popper.js": "^1.14.7",
     "pug": "^2.0.3",
-    "sweetalert2": "^8.3.0",
+    "sweetalert2": "^8.5.0",
     "uuid": "^3.3.2",
-    "validator": "^10.11.0"
+    "validator": "^10.11.0",
+    "web-push": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
-    "autoprefixer": "^9.4.10",
+    "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "concurrently": "^4.1.0",

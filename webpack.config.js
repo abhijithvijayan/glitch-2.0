@@ -7,7 +7,9 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env, options) => ({
   entry: {
-    main: './public/javascripts/glitch.js'
+    main: './public/javascripts/glitch.js',
+    client: './public/javascripts/modules/client.js',
+    worker: './public/javascripts/modules/sw.js'
   },
   devtool: options.mode === 'production' ? false : 'inline-source-map',
   performance: {
@@ -84,6 +86,6 @@ module.exports = (env, options) => ({
   },
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].js'
   }
 });

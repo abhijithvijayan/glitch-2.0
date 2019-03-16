@@ -57,5 +57,13 @@ Also delete all the other `collections` manually with `MongoDB Compass`
 - Text Scramble Effect : [Pen](https://codepen.io/soulwire/pen/mErPAK) by [@soulwire](https://codepen.io/soulwire/)
 - Parallax Star background : [Pen](https://codepen.io/saransh/pen/BKJun) by [@saransh](https://codepen.io/saransh/)
 
+## ToDo
+- [ ] Fix Push Notification (service-worker registration)
+- [ ] Ban Users Feature
+- [ ] T&C Page
+- [ ] Time Lag issue on Some browsers
+- [ ] Instructions and Rules Page
+- [ ] Refactor Leaderboard Page
+
 ## Licence
 This project is licenced under [MIT](LICENCE)

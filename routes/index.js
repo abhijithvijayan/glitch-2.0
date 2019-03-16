@@ -12,13 +12,13 @@ const authController = require('../controllers/authController');
 // basic routes
 router.get('/', appController.getHomePage);
 
-router.get('/play', 
+router.get('/play',
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
     catchErrors(appController.renderGame)
 );
 
-router.post('/play', 
+router.post('/play',
     authController.isLoggedIn,
     // catchErrors(userController.hasSubmittedInfo),
     catchErrors(userController.submitAnswer)
@@ -35,7 +35,7 @@ router.post('/account',
     catchErrors(userController.submitInfo)
 );
 
-router.get('/account/edit', 
+router.get('/account/edit',
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
     catchErrors(userController.editProfile)
@@ -44,27 +44,27 @@ router.get('/account/edit',
 /* ----------------------------------------------------------------- */
 
 // game routes
-router.get('/edit', 
+router.get('/edit',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     appController.editGame
 );
 
-router.get('/options', 
+router.get('/options',
     authController.isLoggedIn,
-    catchErrors(userController.isAdmin),    
+    catchErrors(userController.isAdmin),
     appController.setGameMode
 );
 
-router.post('/options', 
+router.post('/options',
     authController.isLoggedIn,
-    catchErrors(userController.isAdmin),    
+    catchErrors(userController.isAdmin),
     catchErrors(appController.saveGameMode)
 );
 
 router.get('/answers',
     authController.isLoggedIn,
-    catchErrors(userController.isAdmin), 
+    catchErrors(userController.isAdmin),
     catchErrors(appController.setAnswers)
 );
 
@@ -74,27 +74,27 @@ router.post('/answers',
     catchErrors(appController.saveSolution)
 );
 
-router.get('/modify', 
+router.get('/modify',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.editAnswers)
 );
 
-router.post('/modify', 
+router.post('/modify',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.updateAnswers)
 );
 
-router.get('/resume', 
+router.get('/resume',
     authController.isLoggedIn,
-    catchErrors(userController.isAdmin),    
+    catchErrors(userController.isAdmin),
     appController.updateEndPoint
 );
 
-router.post('/resume', 
+router.post('/resume',
     authController.isLoggedIn,
-    catchErrors(userController.isAdmin),    
+    catchErrors(userController.isAdmin),
     catchErrors(appController.resumeGame)
 );
 
@@ -108,7 +108,7 @@ router.get('/top',
 /* ----------------------------------------------------------------- */
 
 // Authentication routes
-router.get('/login', 
+router.get('/login',
     authController.isNotLoggedIn,
     userController.loginForm
 );
@@ -119,5 +119,13 @@ router.get('/auth/google/callback', authController.redirectLogin); // login redi
 
 router.get('/logout', authController.logout);
 
+/* ----------------------------------------------------------------- */
+
+// Push Notification
+router.post('/subscribe', catchErrors(appController.pushNotification));
+
+
+
+/* ----------------------------------------------------------------- */
 
 module.exports = router;

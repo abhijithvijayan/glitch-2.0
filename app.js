@@ -12,6 +12,10 @@ const expressValidator = require('express-validator');
 const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+const webpush = require('web-push');
+
+
+webpush.setVapidDetails(process.env.MAIL_ID , process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY);
 
 // our passport config
 require('./handlers/passport');
