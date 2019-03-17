@@ -1,14 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env, options) => ({
   entry: {
     main: './public/javascripts/glitch.js',
-    texteffect: './public/javascripts/modules/texteffect.js',
+    // texteffect: './public/javascripts/modules/texteffect.js',
     // client: './public/javascripts/modules/client.js',
     // worker: './public/javascripts/modules/sw.js'
   },
@@ -17,13 +19,24 @@ module.exports = (env, options) => ({
     hints: false
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'img/'
+                }
+            }
+        ]
       },
       {
         test: /\.(scss)$/,
@@ -52,7 +65,7 @@ module.exports = (env, options) => ({
     new MiniCssExtractPlugin({
       filename: "styles.css"
     }),
-    new CleanWebpackPlugin(['public/dist']),
+    new CleanWebpackPlugin(['client']),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -60,6 +73,16 @@ module.exports = (env, options) => ({
       Popper: ['popper.js', 'default'],
       Util: 'exports-loader?Util!bootstrap/js/dist/util',
       Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown'
+    }),
+    new CompressionPlugin({
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.7
+    }),
+    new BrotliPlugin({
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.7
     })
   ],
   optimization: {
@@ -82,11 +105,12 @@ module.exports = (env, options) => ({
       new TerserPlugin({
         cache: true,
         parallel: true
-      })
+      }),
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'public', 'dist'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'client', 'dist'),
+    filename: '[name].js',
+    // publicPath: '/'
   }
 });

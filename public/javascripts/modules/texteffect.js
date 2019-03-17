@@ -110,7 +110,7 @@ const glitch = () => {
 };
 
 
-glitch();
+// glitch();
 
 
-// export default glitch;
+export default glitch;

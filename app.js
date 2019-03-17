@@ -13,9 +13,10 @@ const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 const webpush = require('web-push');
+const expressStaticGzip = require("express-static-gzip");
 
 
-webpush.setVapidDetails(process.env.MAIL_ID , process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY);
+webpush.setVapidDetails(process.env.MAIL_ID, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY);
 
 // our passport config
 require('./handlers/passport');
@@ -28,11 +29,25 @@ app.set('views', path.join(__dirname, 'views')); // this is the folder where we 
 app.set('view engine', 'pug'); // we use the engine pug
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// for text compression
+// https://kutt.it/EfFHwH
+// https://kutt.it/fcRnUg
+// https://kutt.it/5xYveK
+app.use('/client/dist', expressStaticGzip(path.join(__dirname, 'client', 'dist'), {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz'],
+  setHeaders: function (res, path) {
+    res.setHeader("Cache-Control", "public, max-age=31536000");
+  }
+}));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
 app.use(expressValidator());
@@ -47,7 +62,9 @@ app.use(session({
   key: process.env.KEY,
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
 }));
 
 // // Passport JS is what we use to handle our logins

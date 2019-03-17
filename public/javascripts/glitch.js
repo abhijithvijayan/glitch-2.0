@@ -7,16 +7,19 @@
 
 import 'bootstrap';
 import '../sass/main.scss';
+import '../images/photos/bg-shade.png';
+import '../images/photos/bg-login.jpg';
+import '../images/photos/logo-compressed.png';
 
 
 import ajaxCall from './modules/ajaxCall';
-// import glitch from './modules/texteffect';
+import glitch from './modules/texteffect';
 
 // import './modules/client';
 // import './modules/worker';
 
 
-// glitch();
+glitch();
 
 // answer submission -> ajax call
 $("#ans__submit--form").on("submit", ajaxCall);    
