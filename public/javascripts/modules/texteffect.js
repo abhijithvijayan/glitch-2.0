@@ -90,13 +90,13 @@ const glitch = () => {
     if (el) {
         if (counter == phrases.length-1) {
             fx.setText(phrases[counter]).then(() => {
-                setTimeout(glitch, 1100);
+                setTimeout(glitch, 500);
             })
             counter = (counter + 1);        
         }
         else if (counter < phrases.length) {
             fx.setText(phrases[counter]).then(() => {
-                setTimeout(glitch, 500);
+                setTimeout(glitch, 370);
             })
             counter = (counter + 1);
         }
