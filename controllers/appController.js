@@ -354,3 +354,8 @@ exports.pushNotification = async (req, res) => {
         data: 'Push triggered successfully'
     });
 };
+
+
+exports.privacyPolicy = (req, res) => {
+    res.render('privacy', { title: 'Privacy Policy '});
+};

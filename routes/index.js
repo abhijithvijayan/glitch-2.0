@@ -124,7 +124,8 @@ router.get('/logout', authController.logout);
 // Push Notification
 router.post('/subscribe', catchErrors(appController.pushNotification));
 
-
+// Privacy policy
+router.get('/privacy', appController.privacyPolicy);
 
 /* ----------------------------------------------------------------- */
 
