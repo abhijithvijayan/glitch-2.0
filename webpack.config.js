@@ -8,6 +8,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = (env, options) => ({
   entry: {
     main: './public/javascripts/glitch.js',
+    texteffect: './public/javascripts/modules/texteffect.js',
     // client: './public/javascripts/modules/client.js',
     // worker: './public/javascripts/modules/sw.js'
   },

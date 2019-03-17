@@ -103,10 +103,14 @@ const glitch = () => {
         else {
             // hide it after one cycle is complete
             el.style.display = 'none';
-            $('.dark__overlay').fadeOut('slow');
+            document.querySelector('.dark__overlay').style.display = 'none';
+            // $('.dark__overlay').fadeOut('slow');
         }
     }
 };
 
 
-export default glitch;
+glitch();
+
+
+// export default glitch;

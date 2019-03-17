@@ -10,11 +10,15 @@ block header
 
 block glitch
     .dark__overlay
-    #stars
-    #stars2
-    #stars3
+    //- #stars
+    //- #stars2
+    //- #stars3
     +glitch()
 
 block content
     +rules()
     +loginForm()
+
+block scripts
+    script(src="/dist/texteffect.js")
+    script(src="/dist/main.js")
