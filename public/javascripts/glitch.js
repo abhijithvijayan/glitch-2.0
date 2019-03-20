@@ -16,7 +16,7 @@ import ajaxCall from './modules/ajaxCall';
 import glitch from './modules/texteffect';
 
 // import './modules/client';
-// import './modules/worker';
+// import './modules/sw';
 
 
 glitch();

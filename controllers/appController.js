@@ -330,6 +330,8 @@ exports.pushNotification = async (req, res) => {
         title: 'test'
     });
 
+    // console.log('Endpoint received: ' + req.body.endpoint);
+
     const pushSubscription = {
         endpoint: req.body.endpoint,
         expirationTime: req.body.expirationTime,

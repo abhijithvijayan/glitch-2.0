@@ -32,44 +32,55 @@ function urlBase64ToUint8Array(base64String) {
 
 async function run() {
     console.log('Registering service worker');
+
     const registration = await navigator.serviceWorker.
-    register('/dist/worker.js', {
-        scope: '/dist/'
+    register('/client/dist/worker.js', {
+        scope: '/client/dist/'
     });
+
     console.log('Registered service worker');
 
     console.log('Registering push');
-    
-    const subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
-    }).catch(function(e) {
-      if (Notification.permission === 'denied') {
-        console.warn('Permission for notifications was denied');
-      } else { 
-        console.error('Unable to subscribe to push', e);
-      }
-    });
 
-    console.log('Registered push');
+    const convertedVapidKey = urlBase64ToUint8Array(publicVapidKey);
 
-    // console.log(JSON.stringify(subscription));
+    // console.log('ApplicationServerKey : ', convertedVapidKey);
 
-    console.log('Sending push');
+    await registration.pushManager.getSubscription()
+        .then(function (subscription) {
 
-    await axios({
-            method: 'post',
-            url: '/subscribe',
-            data: JSON.stringify(subscription)
-            ,
-            headers: {
-                'content-type': 'application/json'
+            if (subscription) {
+                return subscription;
             }
+
+            return registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: convertedVapidKey
+            });
         })
-        .then(res => {
-            console.log(res.data.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        .then(function (subscription) {
+            // console.log(subscription);
+
+            console.log('Registered push');
+
+            console.log('Sending push');
+
+            axios({
+                    method: 'post',
+                    url: '/subscribe',
+                    data: JSON.stringify(subscription),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then(res => {
+                    console.log(res.data.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+
 }
+
+/* ----------------------------------------------------------------------- */

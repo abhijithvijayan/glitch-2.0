@@ -11,8 +11,8 @@ module.exports = (env, options) => ({
   entry: {
     main: './public/javascripts/glitch.js',
     // texteffect: './public/javascripts/modules/texteffect.js',
-    // client: './public/javascripts/modules/client.js',
-    // worker: './public/javascripts/modules/sw.js'
+    client: './public/javascripts/modules/client.js',
+    worker: './public/javascripts/modules/sw.js'
   },
   devtool: options.mode === 'production' ? false : 'inline-source-map',
   performance: {
@@ -27,7 +27,7 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
             {
                 loader: 'file-loader',
@@ -73,16 +73,6 @@ module.exports = (env, options) => ({
       Popper: ['popper.js', 'default'],
       Util: 'exports-loader?Util!bootstrap/js/dist/util',
       Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown'
-    }),
-    new CompressionPlugin({
-      test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.7
-    }),
-    new BrotliPlugin({
-      test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.7
     })
   ],
   optimization: {
@@ -106,6 +96,16 @@ module.exports = (env, options) => ({
         cache: true,
         parallel: true
       }),
+      new CompressionPlugin({
+        test: /\.js$|\.css$/,
+        threshold: 10240,
+        minRatio: 0.7
+      }),
+      new BrotliPlugin({
+        test: /\.js$|\.css$/,
+        threshold: 10240,
+        minRatio: 0.7
+      })
     ]
   },
   output: {
