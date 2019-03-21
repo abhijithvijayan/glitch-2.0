@@ -6,6 +6,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const appController = require('../controllers/appController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const alertController = require('../controllers/alertController');
 
 /* ----------------------------------------------------------------- */
 
@@ -96,6 +97,7 @@ router.post('/resume',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.resumeGame)
+    // send push messages
 );
 
 router.get('/top',
@@ -121,8 +123,11 @@ router.get('/logout', authController.logout);
 
 /* ----------------------------------------------------------------- */
 
+router.post('/subscribe', catchErrors(alertController.saveSubscription));
+
 // Push Notification
-router.post('/subscribe', catchErrors(appController.pushNotification));
+// verify if admin ???
+router.post('/push', catchErrors(alertController.pushNotification));
 
 // Privacy policy
 router.get('/privacy', appController.privacyPolicy);

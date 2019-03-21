@@ -321,43 +321,6 @@ exports.getTopPlayers = async (req, res) => {
 };
 
 
-/* ---------------------------------------------------------------- */
-
-exports.pushNotification = async (req, res) => {
-    // console.log(req.body);
-    // res.status(201).json({});
-    const pushPayload = JSON.stringify({
-        title: 'test'
-    });
-
-    // console.log('Endpoint received: ' + req.body.endpoint);
-
-    const pushSubscription = {
-        endpoint: req.body.endpoint,
-        expirationTime: req.body.expirationTime,
-        keys: req.body.keys
-    };
-
-    // console.log(pushSubscription);
-    // console.log(pushPayload);
-
-    await webPush.sendNotification(
-            pushSubscription,
-            pushPayload
-        )
-        // .then((val) => {
-        //     console.log(val);
-        // })
-        .catch((err) => {
-            console.log(err);
-        });
-
-    res.json({
-        data: 'Push triggered successfully'
-    });
-};
-
-
 exports.privacyPolicy = (req, res) => {
     res.render('privacy', { title: 'Privacy Policy '});
 };

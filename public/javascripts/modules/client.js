@@ -3,6 +3,8 @@ import axios from 'axios';
 // Hard-coded, replace with your public key
 const publicVapidKey = 'BIAk3Xj7DLM1oSY_xjWnOO4ggVW2eBDzHguxW9BC3hTwM2sm__qAD44H3O3kudlP0PV_mdj_htIPdhrXkupiHNs';
 
+const title = 'Glitch 2.0';
+
 if ('serviceWorker' in navigator) {
     console.log('Starting service worker registration');
     run().catch(error => console.error(error));
@@ -39,48 +41,50 @@ async function run() {
     });
 
     console.log('Registered service worker');
-
     console.log('Registering push');
 
     const convertedVapidKey = urlBase64ToUint8Array(publicVapidKey);
 
     // console.log('ApplicationServerKey : ', convertedVapidKey);
+    let isSubscribed = false;
 
     await registration.pushManager.getSubscription()
-        .then(function (subscription) {
+        .then((subscription) => {
+            isSubscribed = (subscription === null);
 
-            if (subscription) {
-                return subscription;
+            if (isSubscribed) {
+
+                registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: convertedVapidKey
+                    })
+                    .then((subscription) => {
+                        // console.log(subscription);
+                        console.log('Registered push');
+                        console.log('Sending push');
+
+                        // push notification
+                        axios({
+                                method: 'post',
+                                url: '/subscribe',
+                                data: {
+                                    subscription,
+                                    title
+                                },
+                                headers: {
+                                    'content-type': 'application/json'
+                                }
+                            })
+                            .then(res => {
+                                console.log(res.data.data);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                    });
+            } else {
+                console.log('User is subscribed!');
             }
-
-            return registration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: convertedVapidKey
-            });
-        })
-        .then(function (subscription) {
-            // console.log(subscription);
-
-            console.log('Registered push');
-
-            console.log('Sending push');
-
-            axios({
-                    method: 'post',
-                    url: '/subscribe',
-                    data: JSON.stringify(subscription),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                })
-                .then(res => {
-                    console.log(res.data.data);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
         });
-
 }
-
 /* ----------------------------------------------------------------------- */
