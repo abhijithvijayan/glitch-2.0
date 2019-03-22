@@ -3,6 +3,12 @@
 
 An online game build on Node.JS
 
+## Browser Support
+
+[![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](https://chrome.google.com/webstore/detail/kutt/pklakpjfiegjacoppcodencchehlfnpd) | [![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](https://addons.mozilla.org/firefox/addon/kutt/) | [![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png)](CONTRIBUTING.md#for-opera-users) |
+--- | --- | --- | --- | --- | --- |
+49 & later ✔ | 47 & later ✔ | 36 & later ✔
+
 # Getting Started
 
 ## Authentication
@@ -55,15 +61,14 @@ Also delete all the other `collections` manually with `MongoDB Compass`
 ## Assets Used
 
 - Text Scramble Effect : [Pen](https://codepen.io/soulwire/pen/mErPAK) by [@soulwire](https://codepen.io/soulwire/)
-- Parallax Star background : [Pen](https://codepen.io/saransh/pen/BKJun) by [@saransh](https://codepen.io/saransh/)
+<!-- - Parallax Star background : [Pen](https://codepen.io/saransh/pen/BKJun) by [@saransh](https://codepen.io/saransh/) -->
 
 ## ToDo
-- [ ] Fix Push Notification (service-worker registration)
-- [ ] Ban Users Feature
-- [ ] T&C Page
+- [x] Push Notification
 - [ ] Time Lag issue on Some browsers
 - [ ] Instructions and Rules Page
 - [ ] Refactor Leaderboard Page
+- [ ] New Stage Countdown timer
 
 ## Licence
 This project is licenced under [MIT](LICENCE)

@@ -76,14 +76,14 @@ async function run() {
                                 }
                             })
                             .then(res => {
-                                console.log(res.data.data);
+                                console.log(res.data);
                             })
                             .catch(err => {
                                 console.log(err);
                             });
                     });
             } else {
-                console.log('User is subscribed!');
+                console.log('User is already subscribed!');
             }
         });
 }

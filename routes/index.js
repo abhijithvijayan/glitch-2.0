@@ -109,7 +109,7 @@ router.get('/top',
 
 /* ----------------------------------------------------------------- */
 
-// Authentication routes
+// Authentication Routes
 router.get('/login',
     authController.isNotLoggedIn,
     userController.loginForm
@@ -123,11 +123,21 @@ router.get('/logout', authController.logout);
 
 /* ----------------------------------------------------------------- */
 
+// Notification Routes
+router.get('/notify', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),
+    alertController.sendMessage
+);
+
 router.post('/subscribe', catchErrors(alertController.saveSubscription));
 
 // Push Notification
-// verify if admin ???
-router.post('/push', catchErrors(alertController.pushNotification));
+router.post('/push', 
+    authController.isLoggedIn,
+    catchErrors(userController.isAdmin),
+    catchErrors(alertController.pushNotification)
+);
 
 // Privacy policy
 router.get('/privacy', appController.privacyPolicy);

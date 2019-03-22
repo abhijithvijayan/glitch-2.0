@@ -3,6 +3,10 @@ const webPush = require('web-push');
 const Subscription = mongoose.model('Subscription');
 
 
+exports.sendMessage = (req, res) => {
+    res.render('notification', { title: 'Send Alert' });
+};
+
 
 exports.saveSubscription = async (req, res) => {
     const data = {
@@ -11,6 +15,9 @@ exports.saveSubscription = async (req, res) => {
     };
     const subscriber = new Subscription(data);
     await subscriber.save();
+    res.json({
+        data: 'Device Registered.'
+    });
 };
 
 
@@ -18,23 +25,16 @@ exports.pushNotification = async (req, res) => {
 
     // console.log(req.body);
     // res.status(201).json({});
-    // const pushPayload = JSON.stringify({
-    //     title: req.body.title,
-    //     message: req.body.message
-    // });
-
-    // temp data
     const pushPayload = JSON.stringify({
         title: "Glitch 2.0",
-        message: "Hello world"
+        message: req.body.alertMessage
     });
-
-    console.log(req.body);
 
     // iterate through the db
     const subscribers = await Subscription.find({});
     // console.log(subscribers);
 
+    // traverse through all users and alert them
     subscribers.map(async (subscriber) => {
         // console.log(subscriber.keys);
 
@@ -49,17 +49,18 @@ exports.pushNotification = async (req, res) => {
         await webPush.sendNotification(
                 pushSubscription,
                 pushPayload
-            )
-            // .then((val) => {
-            //     console.log(val);
+            );
+            // .then((res) => {
+            //     console.log('Push triggered successfully');
             // })
-            .catch((err) => {
-                console.log(err);
-            });
+            // .catch((err) => {
+            //     console.log('Failed to trigger push message');
+            // });
 
     });
 
-    res.json({
-        data: 'Push triggered successfully'
-    });
+    res.redirect('/edit');
+    // res.json({
+    //     data: 'Push triggered successfully'
+    // });
 };

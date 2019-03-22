@@ -6,7 +6,8 @@
         display: flex;
         justify-content: center;
         .game__mode--btns {
-            font-size: 2vw;
+            white-space: nowrap;
+            font-size: 1.8vw;
             // font-size: 2rem;
             // margin-top: 35px;
             padding: .25em 0.25em;
