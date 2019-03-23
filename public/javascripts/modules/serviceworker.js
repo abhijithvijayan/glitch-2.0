@@ -6,7 +6,7 @@ self.addEventListener('push', e => {
     console.log('Push received', data);
     e.waitUntil(self.registration.showNotification(data.title, {
         body: data.message,
-        icon: 'https://mongoosejs.com/docs/images/mongoose5_62x30_transparent.png',
+        icon: 'https://glitch.aarohcea.com/client/dist/img/logo-6kb.png',
         url: 'https://glitch.aarohcea.com'
         })
     );

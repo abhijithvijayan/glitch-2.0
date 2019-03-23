@@ -7,6 +7,8 @@
 
 import 'bootstrap';
 import '../sass/main.scss';
+import '../images/icons/favicon.ico';
+import '../images/photos/logo-6kb.png';
 import '../images/photos/bg-shade.png';
 import '../images/photos/bg-login.jpg';
 import '../images/photos/logo-compressed.png';

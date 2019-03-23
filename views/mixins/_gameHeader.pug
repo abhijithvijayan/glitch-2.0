@@ -15,7 +15,11 @@ mixin gameHeader(user = {})
                     if (user && user.permission > 10 && !currentPath.startsWith('/edit'))
                         li.nav-item
                             a(href="/edit").nav-link Edit Game
-                                != h.icon('edit')                            
+                                != h.icon('edit')             
+                    else
+                        li.nav-item
+                            a(href="https://www.facebook.com/aaroh19").nav-link Clues
+                                != h.icon('clues')                                       
                     li.nav-item.dropdown
                         if (user)
                             a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle#profileDropdown #{user.nickname}

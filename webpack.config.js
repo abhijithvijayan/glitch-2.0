@@ -27,7 +27,7 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|ico|jpe?g|gif|svg)$/,
         use: [
             {
                 loader: 'file-loader',
@@ -37,6 +37,18 @@ module.exports = (env, options) => ({
                 }
             }
         ]
+      },
+      {
+        test: /\.(mp3|ttf|wav)$/,
+        use: [
+          {
+              loader: 'file-loader',
+              options: {
+                  name: '[name].[ext]',
+                  outputPath: 'assets/'
+              }
+          }
+        ]        
       },
       {
         test: /\.(scss)$/,
