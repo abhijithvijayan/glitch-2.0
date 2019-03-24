@@ -16,6 +16,7 @@ import '../images/photos/logo-compressed.png';
 
 import ajaxCall from './modules/ajaxCall';
 import glitch from './modules/texteffect';
+import timer from './modules/roundTimer';
 
 
 glitch();
@@ -36,9 +37,8 @@ $('#rules__close--btn').on('click', () => {
 });
 
 
-
-
-
+// Countdown timer
+timer();
 
 
 

@@ -2,7 +2,7 @@ mixin question(renderLevel, user, totalLevels)
     - const level = user.level
     .container.form__holder
         if (renderLevel == 0)
-            p Game not yet started! Please come back later.
+            p.text-center Game not yet started! Please come back later.
         else if (level <= renderLevel)
             h4.level__header
                 span # 
@@ -23,7 +23,13 @@ mixin question(renderLevel, user, totalLevels)
         else if (level > totalLevels)
             h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
         else
-            p This Stage has Completed. #[br] Other sets of questions will be up soon. #[br] Follow our Facebook Page to know about the next stages.
+            p.hide__this This Round has Completed.
+            p.hide__this Other sets of questions will be up in
+            h2#countdown__timer
+            br
+            br
+            p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
+            
         if (level <= renderLevel)
             form.primary__form.py-3#ans__submit--form(method="POST")
                 div.pb-50
