@@ -2,12 +2,14 @@ extends layout
 
 include mixins/_loginHeader
 include mixins/_loginForm
+include mixins/_rules
 
 block header
     +loginHeader()
 
 block content
-    #stars
-    #stars2
-    #stars3
+    //- #stars
+    //- #stars2
+    //- #stars3
+    +rules()
     +loginForm()

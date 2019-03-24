@@ -17,25 +17,22 @@ import '../images/photos/logo-compressed.png';
 import ajaxCall from './modules/ajaxCall';
 import glitch from './modules/texteffect';
 
-// import './modules/client';
-// import './modules/sw';
-
 
 glitch();
 
 // answer submission -> ajax call
-$("#ans__submit--form").on("submit", ajaxCall);    
+$("#ans__submit--form").on("submit", ajaxCall);
 
 
 // Rules Page
 $('#rules__open--btn').on('click', () => {
-    $('#information').fadeToggle('slow');;
+    $('#information').fadeToggle('slow');
     $('#auth').fadeToggle('slow');
 });
 
 $('#rules__close--btn').on('click', () => {
     $('#auth').fadeIn();
-    $('#information').fadeOut('slow');
+    $('#information').fadeOut();
 });
 
 

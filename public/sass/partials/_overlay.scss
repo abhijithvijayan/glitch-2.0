@@ -1,4 +1,5 @@
 #information {
+    height: calc(8.9em + 67vh);
     display: none;
     position: absolute;
     width: 100%;
@@ -6,7 +7,7 @@
     .screen__overlay--dark {
 
         .screen__overlay--holder {
-            padding: 2em 0;
+            padding: 1em 0 2em 0;
             .screen__overlay--inner {
                 h2 {
                     font-size: 2rem;
@@ -20,27 +21,43 @@
                 ul {
 
                     li {   
-                        padding-bottom: 1.2em;                 
+                        padding-bottom: 1.2em;     
+                        line-height: 1.38;            
                         &::before {
                             font-weight: 700;
                             counter-increment: section;
-                            content: "Rule "counter(section) ": ";
+                            content: "-> ";
                         }
                     }
                 }
 
-                div {
-                    text-align: center;
+                .close__btn--holder {
+                    margin-bottom: 1em;
+                    display: flex;
                     a {
-                        cursor: pointer;
-                        margin-top: 20px;
-                        display: inline-block;
-                        color: white;
+                        margin-left: auto;
                         padding: 12px 40px;
-                        border: 2px solid white;
-                        color: white;
-                        border-color: #fff;
-                        border-radius: 27px;                      
+                        cursor: pointer;
+                        width: 28px;
+                        height: 28px;
+                        opacity: 0.3;
+                        &:hover {
+                            opacity: 1;
+                        }
+                        &:before, &:after {
+                            top: 0;
+                            position: absolute;
+                            content: ' ';
+                            height: 28px;
+                            width: 2px;
+                            background-color: rgb(255, 255, 255);
+                        }
+                        &:before {
+                            transform: rotate(45deg);
+                        }
+                        &:after {
+                            transform: rotate(-45deg);
+                        }
                     }
                 }
             }

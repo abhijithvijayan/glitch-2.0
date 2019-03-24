@@ -50,7 +50,7 @@ e.exports=function(e){return null!=e&&(n(e)||function(e){return"function"==typeo
  * @license  MIT
  *
  */
-Object(o.a)(),e("#ans__submit--form").on("submit",t.a),e("#rules__open--btn").on("click",()=>{e("#information").fadeToggle("slow"),e("#auth").fadeToggle("slow")}),e("#rules__close--btn").on("click",()=>{e("#auth").fadeIn(),e("#information").fadeOut("slow")}),console.log("%cCrafted and Coded by abhijithvijayan","color: white; background: black; padding: 5px 20px")}.call(this,n(9))},function(e,t,n){
+Object(o.a)(),e("#ans__submit--form").on("submit",t.a),e("#rules__open--btn").on("click",()=>{e("#information").fadeToggle("slow"),e("#auth").fadeToggle("slow")}),e("#rules__close--btn").on("click",()=>{e("#auth").fadeIn(),e("#information").fadeOut()}),console.log("%cCrafted and Coded by abhijithvijayan","color: white; background: black; padding: 5px 20px")}.call(this,n(9))},function(e,t,n){
 /*!
   * Bootstrap v4.3.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)

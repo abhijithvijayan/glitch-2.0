@@ -15,4 +15,4 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // Some details about the site
-exports.siteName = `Glitch`;
+exports.siteName = `Glitch 2.0`;
