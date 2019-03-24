@@ -6,7 +6,7 @@ self.addEventListener('push', e => {
     console.log('Push received', data);
     e.waitUntil(self.registration.showNotification(data.title, {
         body: data.message,
-        icon: 'https://glitch.aarohcea.com/client/dist/img/logo-6kb.png',
+        icon: 'https://glitch.aarohcea.com/client/dist/img/favicon.ico',
         url: 'https://glitch.aarohcea.com'
         })
     );
@@ -16,6 +16,7 @@ self.addEventListener('push', e => {
 //notification url redirect event click
 self.addEventListener('notificationclick', (e) => {
     e.notification.close();
+    const notificationUrl = 'https://glitch.aarohcea.com/play';
 
     e.waitUntil(
         clients.matchAll({
