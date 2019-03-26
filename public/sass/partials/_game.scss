@@ -3,11 +3,11 @@
     // height: calc(3em + 70vh);
     // height: calc(11em + 67vh);
     font-family: $marcellus;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     .level__header {
+        .level__num {
+            padding-left: 10px;
+        }
+        text-align: center;
         margin-bottom: 35px;
         span {
             // font-size: 35px;

@@ -1,37 +1,39 @@
 mixin question(renderLevel, user, totalLevels)
     - const level = user.level
-    .container.form__holder
-        if (renderLevel == 0)
-            p.text-center Game not yet started! Please come back later.
-        else if (level <= renderLevel)
-            h4.level__header
-                span # 
-                span #{level}
-            case level
-                when 1
-                    h2 30 years of ....                
-                when 2
-                    h2 22B Baker Street
-                when 3
-                    h2 It is coming.
-                when 4
-                    h2 New Block?
-                when 5
-                    h2 Most awaited..
-                default
-                    h2 Hi there, Please come back later.
-        else if (level > totalLevels)
-            h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
-        else
-            p.hide__this This Round has Completed.
-            p.hide__this Other sets of questions will be up in
-            h2#countdown__timer
-            br
-            br
-            p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
-            
+    .container.form__holder.py-5.py-md-0
+        .row.d-center
+            .col-11.col-sm-5.col-md-6.col-lg-5
+                if (renderLevel == 0)
+                    p.text-center Game not yet started! Please come back later.
+                else if (level <= renderLevel)
+                    h4.level__header
+                        span Level
+                        span.level__num #{level}
+                    case level
+                        when 1
+                            img.img-fluid(src="/client/dist/img/l1.jpg" alt="image")                
+                        when 2
+                            h2 22B Baker Street
+                        when 3
+                            h2 It is coming.
+                        when 4
+                            h2 New Block?
+                        when 5
+                            h2 Most awaited..
+                        default
+                            h2 Hi there, Please come back later.
+                else if (level > totalLevels)
+                    h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
+                else
+                    p.hide__this This Round has Completed.
+                    p.hide__this Other sets of questions will be up in
+                    h2#countdown__timer
+                    br
+                    br
+                    p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
+                    
         if (level <= renderLevel)
-            form.primary__form.py-3#ans__submit--form(method="POST")
+            form.primary__form.py-4.py-md-0#ans__submit--form(method="POST")
                 div.pb-50
                     input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    
                 button.primary__form--btn#answer__submit(type="submit") Submit

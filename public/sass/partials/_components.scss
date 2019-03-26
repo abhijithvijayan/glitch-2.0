@@ -82,3 +82,10 @@
 .pt-vh-5 {
     padding-top: 5h !important;
 }
+
+.d-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
