@@ -26,15 +26,16 @@ function ajaxCall(e) {
         .then(res => {
             // stop preloader
             $('.spinner').fadeOut('slow');
-            randNum = Math.floor(Math.random() * 12 + 1);
             // console.log(res);
             if (res.data.status === true) {
+                randNum = Math.floor(Math.random() * 12 + 1);
                 fileName = 's' + randNum;
                 sweetAlert(success, successMsg, false, fileName);
                 // $('.spinner').fadeIn();
                 // render new qn
                 location.reload(true);
             } else {
+                randNum = Math.floor(Math.random() * 24 + 1);
                 fileName = 'f' + randNum;
                 // clear input field
                 $('#answer').val('');
@@ -44,7 +45,7 @@ function ajaxCall(e) {
             }
         })
         .catch(err => {
-            randNum = Math.floor(Math.random() * 12 + 1);
+            randNum = Math.floor(Math.random() * 24 + 1);
             console.log(err);
             $('.spinner').fadeOut('slow');
                     // time out

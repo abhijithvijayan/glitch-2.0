@@ -35,6 +35,18 @@ import '../images/photos/fail/f9.jpg';
 import '../images/photos/fail/f10.jpg';
 import '../images/photos/fail/f11.jpg';
 import '../images/photos/fail/f12.jpg';
+import '../images/photos/fail/f13.jpg';
+import '../images/photos/fail/f14.jpg';
+import '../images/photos/fail/f15.jpg';
+import '../images/photos/fail/f16.jpg';
+import '../images/photos/fail/f17.jpg';
+import '../images/photos/fail/f18.jpg';
+import '../images/photos/fail/f19.jpg';
+import '../images/photos/fail/f20.jpg';
+import '../images/photos/fail/f21.jpg';
+import '../images/photos/fail/f22.jpg';
+import '../images/photos/fail/f23.jpg';
+import '../images/photos/fail/f24.jpg';
 
 import '../images/photos/success/s1.jpg';
 import '../images/photos/success/s2.jpg';
