@@ -1,8 +1,8 @@
 mixin question(renderLevel, user, totalLevels)
     - const level = user.level
-    .container.form__holder.py-5.py-md-0
+    .container.form__holder.py-3.py-md-0
         .row.d-center
-            .col-11.col-sm-5.col-md-6.col-lg-5
+            .col-11.col-sm-5.col-md-6.col-lg-5.d-center
                 if (renderLevel == 0)
                     p.text-center Game not yet started! Please come back later.
                 else if (level <= renderLevel)
@@ -11,27 +11,36 @@ mixin question(renderLevel, user, totalLevels)
                         span.level__num #{level}
                     case level
                         when 1
-                            img.img-fluid(src="/client/dist/img/l1.jpg" alt="image")                
+                            img.img-fluid.pb-3(src="/client/dist/img/level1.png" alt="image")                
                         when 2
-                            h2 22B Baker Street
+                            img.img-fluid.pb-3(src="/client/dist/img/level2.jpg" alt="image")
                         when 3
-                            h2 It is coming.
+                            .row.align-items-center.justify-content-center.pb-3
+                                .col-5
+                                    img.img-fluid(src="/client/dist/img/level3.jpg" alt="image")
+                                .col-6
+                                    img.img-fluid(src="/client/dist/img/level3.jpeg" alt="image")
                         when 4
-                            h2 New Block?
+                            img.img-fluid.pb-3(src="/client/dist/img/level4.jpg" alt="image")
                         when 5
-                            h2 Most awaited..
+                            p audio file here
+                            //- audio.w-100.my-4(controls)
+                            //-     //- source(src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg")
+                            //-     //- source(src="/client/dist/audio/test.mp3" type="audio/mpeg")
+                            //-     | Your browser does not support playing audio.                        
                         default
                             h2 Hi there, Please come back later.
                 else if (level > totalLevels)
                     h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
                 else
-                    p.hide__this This Round has Completed.
-                    p.hide__this Other sets of questions will be up in
-                    h2#countdown__timer
-                    br
-                    br
-                    p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
-                    
+                    div.pt-vh-10.text-center
+                        p.hide__this This Round has Completed.
+                        p.hide__this New Round will begin in
+                        h2#countdown__timer
+                        br
+                        br
+                        p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
+                        p Enquiries? Visit Aaroh19's #[a(href="https://aarohcea.com" target="_blank" rel="noopener") Website] or email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com]
         if (level <= renderLevel)
             form.primary__form.py-4.py-md-0#ans__submit--form(method="POST")
                 div.pb-50

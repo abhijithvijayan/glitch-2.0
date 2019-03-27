@@ -17,6 +17,7 @@
                 // float: right;
                 // align-items: center;
                 .nav-item {
+                    white-space: nowrap;
                     padding-left: 10px;
                     @media screen and (min-width: $screen-sm-min) {                        
                         padding: 20px;

@@ -39,13 +39,13 @@ module.exports = (env, options) => ({
         ]
       },
       {
-        test: /\.(mp3|ttf|wav)$/,
+        test: /\.(mp3|wav|ogg|m4a)$/,
         use: [
           {
               loader: 'file-loader',
               options: {
                   name: '[name].[ext]',
-                  outputPath: 'assets/'
+                  outputPath: 'audio/'
               }
           }
         ]        

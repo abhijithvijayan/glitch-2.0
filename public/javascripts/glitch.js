@@ -14,7 +14,12 @@ import '../images/photos/bg-shade.png';
 import '../images/photos/bg-login.jpg';
 import '../images/photos/logo-compressed.png';
 // question assets
-import '../images/photos/l1.jpg';
+import '../images/photos/level1.png';
+import '../images/photos/level2.jpg';
+import '../images/photos/level3.jpeg';
+import '../images/photos/level3.jpg';
+import '../images/photos/level4.jpg';
+import '../audio/level5.m4a';
 
 
 import ajaxCall from './modules/ajaxCall';
