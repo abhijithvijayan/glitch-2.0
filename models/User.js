@@ -84,7 +84,7 @@ userSchema.plugin(AutoIncrement, {id:'rank_counter', inc_field: 'rank', disable_
 
 userSchema.statics.getLeaderboard = function() {
     return this.aggregate([
-        { $project: { photo: 1, username: 1, level: 1, rank: 1, college: 1, permission: 1, _id: 0 }}, // add these fields to output
+        { $project: { photo: 1, username: 1, level: 1, rank: 1, college: 1, permission: 1, isBanned: 1, _id: 0 }}, // add these fields to output
         // sort by levels desc and rank asc
         { $sort: { level: -1, rank: 1 }}
     ]);

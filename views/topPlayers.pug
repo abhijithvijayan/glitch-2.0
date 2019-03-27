@@ -26,9 +26,17 @@ block content
                                         td.table__body--user
                                             div.user__profile--holder
                                                 img(src=user.photo).img-fluid.user__thumbnail
-                                                p= user.username
+                                                if (user.isBanned)                                                
+                                                    p #[strike #{user.username}] 
+                                                else
+                                                    p= user.username
                                             div.user__college--holder
-                                                p.user__college= user.college
+                                                //- pre= h.dump(user)
+                                                if (user.isBanned)
+                                                    p.user__college Banned
+                                                else
+                                                    p.user__college #{user.college}
+                                                    //- p= isBanned
                                     else
                                         td.table__body--user: div.user__profile--holder
                                                 != h.icon('letter-a')     

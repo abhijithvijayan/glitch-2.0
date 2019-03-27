@@ -22,6 +22,7 @@ router.get('/play',
 router.post('/play',
     authController.isLoggedIn,
     // catchErrors(userController.hasSubmittedInfo),
+    catchErrors(userController.isBanned),
     catchErrors(userController.submitAnswer)
 );
 

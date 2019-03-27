@@ -55,6 +55,21 @@ exports.isAdmin = async (req, res, next) => {
 };
 
 
+exports.isBanned = async (req, res, next) => {
+    const user = await User.findOne({
+        _id: req.user._id
+    });
+
+    // console.log(user.isBanned);
+
+    if (!user.isBanned) {
+        return next();
+    }
+    // req.flash('error', 'Nice try, You are banned!');
+    res.redirect('/play');
+};
+
+
 exports.editProfile = async (req, res) => {
     res.render('account', { title: 'Edit Profile' });
 };
