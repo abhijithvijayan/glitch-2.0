@@ -54,6 +54,7 @@ exports.isAdmin = async (req, res, next) => {
     res.redirect('/');
 };
 
+
 exports.editProfile = async (req, res) => {
     res.render('account', { title: 'Edit Profile' });
 };
@@ -87,6 +88,11 @@ exports.submitAnswer = async (req, res) => {
     .find({
         level: req.user.level
     });
+
+    let arr = req.user.ansLog;
+    arr.push({level: req.user.level, ans: req.body.answer});
+    
+    // console.log('submitted data' + req.user.ansLog);
     
     if (savedSolutionData && savedSolutionData.answer.length) {
         const savedAnswer = savedSolutionData.answer;
@@ -103,7 +109,8 @@ exports.submitAnswer = async (req, res) => {
 
             const updates = {
                 level: newLevel,
-                timeOfScore: Date.now()
+                timeOfScore: Date.now(),
+                ansLog: arr
             };
             
             const user = await User.findOneAndUpdate(
@@ -121,6 +128,17 @@ exports.submitAnswer = async (req, res) => {
             // req.flash('success', 'Right answer. Hurrayyy!!!');
         } 
         else {
+
+            const log = {
+                ansLog: arr
+            };
+
+            await User.findOneAndUpdate(
+                { _id: req.user._id },
+                { $set: log },
+                { new: true, runValidators: true, context: 'query' }
+            );
+
             res.json({ status: false });
             // req.flash('error', 'Wrong answer, Please try again.');
         }

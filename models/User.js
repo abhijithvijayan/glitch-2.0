@@ -47,6 +47,10 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
+    ansLog: {
+        type: Array,
+        default: []
+    },
     timeOfScore: {
         type: Date,
         default: Date.now
