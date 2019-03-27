@@ -43,6 +43,10 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
+    isBanned: {
+        type: Number,
+        default: 0
+    },
     timeOfScore: {
         type: Date,
         default: Date.now

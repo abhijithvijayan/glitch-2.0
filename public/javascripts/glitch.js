@@ -7,6 +7,7 @@
 
 import 'bootstrap';
 import '../sass/main.scss';
+
 // general images
 import '../images/icons/favicon.ico';
 import '../images/photos/logo-6kb.png';
@@ -19,7 +20,37 @@ import '../images/photos/level2.jpg';
 import '../images/photos/level3.jpeg';
 import '../images/photos/level3.jpg';
 import '../images/photos/level4.jpg';
-import '../audio/level5.m4a';
+import '../audio/level5.mp3';
+import '../audio/level5.ogg';
+// Troll images
+import '../images/photos/fail/f1.jpg';
+import '../images/photos/fail/f2.jpg';
+import '../images/photos/fail/f3.jpg';
+import '../images/photos/fail/f4.jpg';
+import '../images/photos/fail/f5.jpg';
+import '../images/photos/fail/f6.jpg';
+import '../images/photos/fail/f7.jpg';
+import '../images/photos/fail/f8.jpg';
+import '../images/photos/fail/f9.jpg';
+import '../images/photos/fail/f10.jpg';
+import '../images/photos/fail/f11.jpg';
+import '../images/photos/fail/f12.jpg';
+
+import '../images/photos/success/s1.jpg';
+import '../images/photos/success/s2.jpg';
+import '../images/photos/success/s3.jpg';
+import '../images/photos/success/s4.jpg';
+import '../images/photos/success/s5.jpg';
+import '../images/photos/success/s6.jpg';
+import '../images/photos/success/s7.jpg';
+import '../images/photos/success/s8.jpg';
+import '../images/photos/success/s9.jpg';
+import '../images/photos/success/s10.jpg';
+import '../images/photos/success/s11.jpg';
+import '../images/photos/success/s12.jpg';
+
+
+
 
 
 import ajaxCall from './modules/ajaxCall';

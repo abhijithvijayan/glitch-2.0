@@ -3,12 +3,20 @@ import Swal from 'sweetalert2';
 
 let timerInterval;
 
-function sweetAlert(type, title, status) {
+function sweetAlert(type, title, status, name) {
     Swal.fire({
         title: title,
-        type: type,
+        imageUrl: `/client/dist/img/${name}.jpg`,
+        imageWidth: 360,
+        imageHeight: 220,
+        imageAlt: 'Image',
+        animation: false,
         showConfirmButton: false,
-        timer: 1500,
+        // confirmButtonText: 'Hurray',
+        showCancelButton: true,
+        cancelButtonText: type,
+        // timer: 3000,
+        // type: type,
     });
     // .then((result) => {
         // if (result.dismiss === Swal.DismissReason.timer) {

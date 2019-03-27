@@ -8,11 +8,12 @@ function ajaxCall(e) {
     $('.spinner').fadeIn();
 
     const answer = $('#answer').val();
-    const success = 'success';
-    const error = 'error';
+    const success = 'Hurray';
+    const error = 'Oh C\'mon!';
     const successMsg = 'Right Answer!';
     const errorMsg = 'Wrong Answer!';
     const timeout = 'Something not right!!';
+    let randNum, fileName;
     // ajax call
     axios({
             method: 'post',
@@ -25,27 +26,31 @@ function ajaxCall(e) {
         .then(res => {
             // stop preloader
             $('.spinner').fadeOut('slow');
-
+            randNum = Math.floor(Math.random() * 12 + 1);
             // console.log(res);
             if (res.data.status === true) {
-                sweetAlert(success, successMsg, 1);
+                fileName = 's' + randNum;
+                sweetAlert(success, successMsg, false, fileName);
                 // $('.spinner').fadeIn();
                 // render new qn
                 location.reload(true);
             } else {
+                fileName = 'f' + randNum;
                 // clear input field
                 $('#answer').val('');
                 $('.screen__overlay').fadeOut('slow');
                 // show a popup
-                sweetAlert(error, errorMsg, 0);
+                sweetAlert(error, errorMsg, true, fileName);
             }
         })
         .catch(err => {
+            randNum = Math.floor(Math.random() * 12 + 1);
             console.log(err);
             $('.spinner').fadeOut('slow');
                     // time out
             if (err.code === 'ECONNABORTED') {
-                sweetAlert(error, timeout, 0);
+                fileName = 'f' + randNum;
+                sweetAlert(error, timeout, true, fileName);
             }
             $('.screen__overlay').fadeOut(2000);
         });

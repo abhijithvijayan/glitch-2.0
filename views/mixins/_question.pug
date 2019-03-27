@@ -23,15 +23,18 @@ mixin question(renderLevel, user, totalLevels)
                         when 4
                             img.img-fluid.pb-3(src="/client/dist/img/level4.jpg" alt="image")
                         when 5
-                            p audio file here
-                            //- audio.w-100.my-4(controls)
-                            //-     //- source(src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg")
-                            //-     //- source(src="/client/dist/audio/test.mp3" type="audio/mpeg")
-                            //-     | Your browser does not support playing audio.                        
+                            audio.w-100.my-4(controls)
+                                source(src="/client/dist/audio/level5.ogg" type="audio/ogg")
+                                source(src="/client/dist/audio/level5.mp3" type="audio/mpeg")
+                                | Your browser does not support playing audio.                        
                         default
                             h2 Hi there, Please come back later.
                 else if (level > totalLevels)
-                    h2 Congrats on completing the game. #[br] You can check the leaderboard to find the winner.  #[br] Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
+                    div.pt-vh-10.text-center
+                        h2 Congrats on completing the game. 
+                        h2 You can check the leaderboard to find the winner. 
+                        h2 Prize will be awarded to both 'Away' and 'Home' winners. 
+                        h2 Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
                 else
                     div.pt-vh-10.text-center
                         p.hide__this This Round has Completed.
