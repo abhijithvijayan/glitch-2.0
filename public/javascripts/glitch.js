@@ -15,13 +15,13 @@ import '../images/photos/bg-shade.png';
 import '../images/photos/bg-login.jpg';
 import '../images/photos/logo-compressed.png';
 // question assets
-import '../images/photos/level1.png';
-import '../images/photos/level2.jpg';
-import '../images/photos/level3.jpeg';
-import '../images/photos/level3.jpg';
-import '../images/photos/level4.jpg';
-import '../audio/level5.mp3';
-import '../audio/level5.ogg';
+import '../images/photos/level-1.png';
+import '../images/photos/level-2.jpg';
+import '../images/photos/level-3.jpeg';
+import '../images/photos/level-3.jpg';
+import '../images/photos/level-4.jpg';
+import '../audio/level-5.mp3';
+import '../audio/level-5.ogg';
 // Troll images
 import '../images/photos/fail/f1.jpg';
 import '../images/photos/fail/f2.jpg';

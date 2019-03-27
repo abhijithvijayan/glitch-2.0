@@ -6,28 +6,30 @@ mixin question(renderLevel, user, totalLevels)
             .col-11.col-sm-5.col-md-6.col-lg-5.d-center
                 if (!isBanned)
                     if (renderLevel == 0)
-                        p.text-center Game not yet started! Please come back later.
+                        div.pt-vh-10.text-center
+                            p Game will start in 
+                            h2#countdown__timer
                     else if (level <= renderLevel)
                         h4.level__header
                             span Level
                             span.level__num #{level}
                         case level
                             when 1
-                                img.img-fluid.pb-3(src="/client/dist/img/level1.png" alt="image")                
+                                img.img-fluid.pb-3(src="/client/dist/img/level-1.png" alt="image")                
                             when 2
-                                img.img-fluid.pb-3(src="/client/dist/img/level2.jpg" alt="image")
+                                img.img-fluid.pb-3(src="/client/dist/img/level-2.jpg" alt="image")
                             when 3
                                 .row.align-items-center.justify-content-center.pb-3
                                     .col-5
-                                        img.img-fluid(src="/client/dist/img/level3.jpg" alt="image")
+                                        img.img-fluid(src="/client/dist/img/level-3.jpg" alt="image")
                                     .col-6
-                                        img.img-fluid(src="/client/dist/img/level3.jpeg" alt="image")
+                                        img.img-fluid(src="/client/dist/img/level-3.jpeg" alt="image")
                             when 4
-                                img.img-fluid.pb-3(src="/client/dist/img/level4.jpg" alt="image")
+                                img.img-fluid.pb-3(src="/client/dist/img/level-4.jpg" alt="image")
                             when 5
                                 audio.w-100.my-4(controls)
-                                    source(src="/client/dist/audio/level5.ogg" type="audio/ogg")
-                                    source(src="/client/dist/audio/level5.mp3" type="audio/mpeg")
+                                    source(src="/client/dist/audio/level-5.ogg" type="audio/ogg")
+                                    source(src="/client/dist/audio/level-5.mp3" type="audio/mpeg")
                                     | Your browser does not support playing audio.                        
                             default
                                 h2 Hi there, Please come back later.
@@ -40,8 +42,8 @@ mixin question(renderLevel, user, totalLevels)
                     else
                         div.pt-vh-10.text-center
                             p.hide__this This Round has Completed.
-                            p.hide__this New Round will begin in
-                            h2#countdown__timer
+                            p.hide__this New Round will begin on Mar 29 at 8:00pm.
+                            //- h2#countdown__timer
                             br
                             br
                             p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
