@@ -9,27 +9,30 @@ block content
     section#leaderboard
         .container
             .row.leaderboard__holder
-                .col-md-8.leaderboard__holder--inner
+                .col-md-9.leaderboard__holder--inner
                     h2 Top Players
-                    table.table.table-striped.table-dark
+                    table.table__main
                         thead.table__head--holder
                             tr.table__head--inner
-                                th(scope="col").text-center #
-                                th(scope="col") User
-                                th(scope="col").text-center Level
+                                th(scope="col").table__head--rank #
+                                th(scope="col").table__head--username User
+                                th(scope="col").table__head--level Level
                                 //- th(scope="col") College
                         tbody.table__body--holder
                             each user, i in users
                                 tr.table__body--inner
-                                    th(scope="row").text-center #{i+1}
+                                    td(scope="row").table__body--rank #{i+1}
                                     if (user.permission === 10)
-                                        td: div
+                                        td.table__body--user
+                                            div.user__profile--holder
                                                 img(src=user.photo).img-fluid.user__thumbnail
                                                 p= user.username
+                                            div.user__college--holder
+                                                p.user__college= user.college
                                     else
-                                        td: div
+                                        td.table__body--user: div.user__profile--holder
                                                 != h.icon('letter-a')     
                                                 p
                                                     a(href="https://aarohcea.com" target="_blank") Aaroh19
-                                    td.text-center= user.level
+                                    td.table__body--level= user.level
                                     //- td= user.college

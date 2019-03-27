@@ -1,47 +1,151 @@
 #leaderboard {
+    background-color: #000;
+    min-height: 95vh;
     user-select: none;
     padding-top: 3em;
+    padding-bottom: 3em;
+
     .leaderboard__holder {
         display: flex;
         justify-content: center;
         align-items: center;
+
         .leaderboard__holder--inner {
             h2 {
                 font-size: 1.2em;
+                padding-left: 1em;
+                margin-bottom: 1em;
             }
-            .table {
+
+            .table__main {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                border-radius: 12px;
+                color: $color-white;
+
                 .table__head--holder {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    border-bottom: 1px solid rgb(234, 234, 234);
+
                     .table__head--inner {
+                        display: flex;
+                        justify-content: space-between;
+                        flex: 1 1 auto;
+                        padding: 0px 1.25em;
+
                         th {
                             text-transform: uppercase;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            padding: 16px 0px;
+                        }
+
+                        .table__head--rank {
+                            flex-basis: 1.74em;
+                            justify-content: flex-start;
+                            align-items: center;
+                            // flex: 1 1 0px;
+                        }
+
+                        .table__head--username {
+                            justify-content: flex-start;
+                            align-items: center;
+                            flex: 2 2 0px;
+                            padding-left: 25px;
+                        }
+
+                        .table__head--level {
+                            display: flex;
+                            position: relative;
                         }
                     }
                 }
+
                 .table__body--holder {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
                     .table__body--inner {
-                        th, td {
+                        display: flex;
+                        justify-content: space-between;
+                        flex: 1 1 auto;
+                        padding: 0px 1.25em;
+                        border-bottom: 1px solid #eaeaea;
+
+                        th,
+                        td {
                             vertical-align: middle;
                         }
+
                         td {
-                            div {
+                            position: relative;
+                            display: flex;
+                            flex-direction: column;
+                            // align-items: center;
+                            padding: 16px 0px;
+                        }
+
+                        .table__body--rank {
+                            white-space: nowrap;
+                            flex-basis: 1.74em;
+                            justify-content: center;
+                            // flex: 1 1 0px;
+                            overflow: hidden;
+                            position: relative;
+                        }
+
+                        .table__body--user {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            flex: 2 2 0px;
+                            position: relative;
+                            padding-left: 25px;
+
+                            .user__profile--holder {
                                 display: flex;
-                                align-items: center;
-                                img, svg {
-                                    width: 30px;        
-                                    height: 30px;                                            
-                                    border-radius: 100%;                    
+                                // align-items: center;
+
+                                img,
+                                svg {
+                                    width: 30px;
+                                    height: 30px;
+                                    border-radius: 100%;
                                 }
+
                                 p {
                                     margin-bottom: 0;
                                     padding-left: 10px;
+
                                     a {
                                         color: white;
+
                                         &:hover {
                                             border-bottom: 1px dotted white;
                                         }
                                     }
                                 }
+
+
                             }
+
+                            .user__college--holder {
+                                .user__college {
+                                    padding-left: 40px;
+                                    font-size: 12px;
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+
+                        .table__body--level {
+                            justify-content: center;
+                            flex-basis: 2.5em;
+                            padding-left: 0.74em;
                         }
                     }
                 }
