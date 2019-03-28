@@ -25,7 +25,7 @@ block content
                                     if (user.permission === 10)
                                         td.table__body--user
                                             div.user__profile--holder
-                                                img(src=user.photo).img-fluid.user__thumbnail
+                                                //- img(src=user.photo).img-fluid.user__thumbnail
                                                 if (user.isBanned)                                                
                                                     p #[strike #{user.username}] 
                                                 else
@@ -36,10 +36,9 @@ block content
                                                     p.user__college Banned
                                                 else
                                                     p.user__college #{user.college}
-                                                    //- p= isBanned
                                     else
                                         td.table__body--user: div.user__profile--holder
-                                                != h.icon('letter-a')     
+                                                //- != h.icon('letter-a')     
                                                 p
                                                     a(href="https://aarohcea.com" target="_blank") Aaroh19
                                     td.table__body--level= user.level
