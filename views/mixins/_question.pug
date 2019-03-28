@@ -15,7 +15,7 @@ mixin question(renderLevel, user, totalLevels)
                             span.level__num #{level}
                         case level
                             when 1
-                                img.img-fluid.pb-3(src="/client/dist/img/level-1.png" alt="image")                
+                                img.img-fluid.pb-3(src="/client/dist/img/level-1.png" alt="image")     
                             when 2
                                 img.img-fluid.pb-3(src="/client/dist/img/level-2.jpg" alt="image")
                             when 3
@@ -30,7 +30,19 @@ mixin question(renderLevel, user, totalLevels)
                                 audio.w-100.my-4(controls)
                                     source(src="/client/dist/audio/level-5.ogg" type="audio/ogg")
                                     source(src="/client/dist/audio/level-5.mp3" type="audio/mpeg")
-                                    | Your browser does not support playing audio.                        
+                                    | Your browser does not support playing audio.      
+                            when 6
+                                img.img-fluid.pb-3(src="/client/dist/img/level-6.jpg" alt="image")   
+                            when 7
+                                //- image and youtube(named) video
+                                img.img-fluid.pb-3(src="/client/dist/img/level-7.jpg" alt="image")   
+                                a(href="https://www.youtube.com/watch?v=ryrEPzsx1gQ" target="_blank" rel="noopener") https://www.youtube.com/watch?v=ryrEPzsx1gQ
+                            when 8
+                                img.img-fluid.pb-3(src="/client/dist/img/level-8.jpg" alt="image")   
+                            when 9
+                                iframe(src="https://drive.google.com/file/d/1CnXdcgl4ZA79LcrouwurCpjaw6biuVp1/preview" width="320" height="240")           
+                            when 10
+                                h2 Coming soon
                             default
                                 h2 Hi there, Please come back later.
                     else if (level > totalLevels)

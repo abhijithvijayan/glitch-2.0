@@ -22,6 +22,9 @@ import '../images/photos/level-3.jpg';
 import '../images/photos/level-4.jpg';
 import '../audio/level-5.mp3';
 import '../audio/level-5.ogg';
+import '../images/photos/level-6.jpg';
+import '../images/photos/level-7.jpg';
+import '../images/photos/level-8.jpg';
 // Troll images
 import '../images/photos/fail/f1.jpg';
 import '../images/photos/fail/f2.jpg';
