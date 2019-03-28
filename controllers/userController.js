@@ -105,7 +105,9 @@ exports.submitAnswer = async (req, res) => {
     });
 
     let arr = req.user.ansLog;
-    arr.push({level: req.user.level, ans: req.body.answer});
+    let curDate = new Date();
+    // console.log(curDate);
+    arr.push({level: req.user.level, ans: req.body.answer, time: curDate});
     
     // console.log('submitted data' + req.user.ansLog);
     
