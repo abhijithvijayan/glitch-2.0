@@ -17,9 +17,10 @@ mixin gameHeader(user = {})
                             a(href="/edit").nav-link Edit Game
                                 != h.icon('edit')             
                     else
-                        li.nav-item
-                            a#rules__open--btn.nav-link Rules
-                                != h.icon('rules')
+                        if (currentPath.startsWith('/play'))
+                            li.nav-item
+                                a#rules__open--btn.nav-link Rules
+                                    != h.icon('rules')
                         li.nav-item
                             a(href="https://www.instagram.com/aaroh19").nav-link Clues
                                 != h.icon('clues')                                       

@@ -41,9 +41,18 @@ mixin question(renderLevel, user, totalLevels)
                                 when 8
                                     img.img-fluid.pb-3(src="/client/dist/img/level-8.jpg" alt="image")   
                                 when 9
-                                    iframe(width="320" height="240" src="https://www.youtube.com/embed/CX17qmYO0o0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)                        
+                                    .row.align-items-center.justify-content-center.pb-3
+                                        .col-12.text-center
+                                            //- width="320" height="240" 
+                                            iframe.img-fluid(src="https://www.youtube.com/embed/AUDZbT97SOI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)                        
+                                        .col-6
+                                            img.img-fluid.pt-3(src="/client/dist/img/level-9.jpg" alt="image")                                  
                                 when 10
-                                    h2 Coming soon
+                                    .row.align-items-center.justify-content-center.pb-3
+                                        .col-5
+                                            img.img-fluid(src="/client/dist/img/level-10-a.jpg" alt="image")
+                                        .col-7
+                                            img.img-fluid(src="/client/dist/img/level-10-b.jpg" alt="image")
                                 default
                                     h2 Hi there, Please come back later.
                         else if (level > totalLevels)
