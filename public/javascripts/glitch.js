@@ -81,11 +81,13 @@ $("#ans__submit--form").on("submit", ajaxCall);
 
 // Rules Page
 $('#rules__open--btn').on('click', () => {
+    $('#main__game').fadeToggle('slow');
     $('#information').fadeToggle('slow');
     $('#auth').fadeToggle('slow');
 });
 
 $('#rules__close--btn').on('click', () => {
+    $('#main__game').fadeIn();
     $('#auth').fadeIn();
     $('#information').fadeOut();
 });

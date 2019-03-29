@@ -18,6 +18,9 @@ mixin gameHeader(user = {})
                                 != h.icon('edit')             
                     else
                         li.nav-item
+                            a#rules__open--btn.nav-link Rules
+                                != h.icon('rules')
+                        li.nav-item
                             a(href="https://www.instagram.com/aaroh19").nav-link Clues
                                 != h.icon('clues')                                       
                     li.nav-item.dropdown

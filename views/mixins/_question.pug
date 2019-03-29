@@ -1,72 +1,73 @@
 mixin question(renderLevel, user, totalLevels)
     - const level = user.level
     - const isBanned = user.isBanned
-    .container.form__holder.py-3.py-md-0
-        .row.d-center
-            .col-11.col-sm-5.col-md-6.col-lg-5.d-center
-                if (!isBanned)
-                    if (renderLevel == 0)
+    section#main__game
+        .container.form__holder.py-3.py-md-0
+            .row.d-center
+                .col-11.col-sm-5.col-md-6.col-lg-5.d-center
+                    if (!isBanned)
+                        if (renderLevel == 0)
+                            div.pt-vh-10.text-center
+                                p Game has already started
+                                //- h2#countdown__timer
+                        else if (level <= renderLevel)
+                            h4.level__header
+                                span Level
+                                span.level__num #{level}
+                            case level
+                                when 1
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-1.png" alt="image")     
+                                when 2
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-2.jpg" alt="image")
+                                when 3
+                                    .row.align-items-center.justify-content-center.pb-3
+                                        .col-5
+                                            img.img-fluid(src="/client/dist/img/level-3.jpg" alt="image")
+                                        .col-6
+                                            img.img-fluid(src="/client/dist/img/level-3.jpeg" alt="image")
+                                when 4
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-4.jpg" alt="image")
+                                when 5
+                                    audio.w-100.my-4(controls)
+                                        source(src="/client/dist/audio/level-5.ogg" type="audio/ogg")
+                                        source(src="/client/dist/audio/level-5.mp3" type="audio/mpeg")
+                                        | Your browser does not support playing audio.      
+                                when 6
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-6.jpg" alt="image")   
+                                when 7
+                                    //- image and youtube(named) video
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-7.jpg" alt="image")   
+                                    a(href="https://www.youtube.com/watch?v=ryrEPzsx1gQ" target="_blank" rel="noopener") https://www.youtube.com/watch?v=ryrEPzsx1gQ
+                                when 8
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-8.jpg" alt="image")   
+                                when 9
+                                    iframe(width="320" height="240" src="https://www.youtube.com/embed/CX17qmYO0o0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)                        
+                                when 10
+                                    h2 Coming soon
+                                default
+                                    h2 Hi there, Please come back later.
+                        else if (level > totalLevels)
+                            div.pt-vh-10.text-center
+                                h2 Congrats on completing the game. 
+                                h2 You can check the leaderboard to find the winner. 
+                                h2 Prize will be awarded to both 'Away' and 'Home' winners. 
+                                h2 Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
+                        else
+                            div.pt-vh-10.text-center
+                                p.hide__this This Round has Completed.
+                                p.hide__this New Round will be up in
+                                h2#countdown__timer
+                                br
+                                br
+                                p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
+                                p Enquiries? Visit Aaroh19's #[a(href="https://aarohcea.com" target="_blank" rel="noopener") Website] or email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com]
+                    else 
                         div.pt-vh-10.text-center
-                            p Game has already started
-                            //- h2#countdown__timer
-                    else if (level <= renderLevel)
-                        h4.level__header
-                            span Level
-                            span.level__num #{level}
-                        case level
-                            when 1
-                                img.img-fluid.pb-3(src="/client/dist/img/level-1.png" alt="image")     
-                            when 2
-                                img.img-fluid.pb-3(src="/client/dist/img/level-2.jpg" alt="image")
-                            when 3
-                                .row.align-items-center.justify-content-center.pb-3
-                                    .col-5
-                                        img.img-fluid(src="/client/dist/img/level-3.jpg" alt="image")
-                                    .col-6
-                                        img.img-fluid(src="/client/dist/img/level-3.jpeg" alt="image")
-                            when 4
-                                img.img-fluid.pb-3(src="/client/dist/img/level-4.jpg" alt="image")
-                            when 5
-                                audio.w-100.my-4(controls)
-                                    source(src="/client/dist/audio/level-5.ogg" type="audio/ogg")
-                                    source(src="/client/dist/audio/level-5.mp3" type="audio/mpeg")
-                                    | Your browser does not support playing audio.      
-                            when 6
-                                img.img-fluid.pb-3(src="/client/dist/img/level-6.jpg" alt="image")   
-                            when 7
-                                //- image and youtube(named) video
-                                img.img-fluid.pb-3(src="/client/dist/img/level-7.jpg" alt="image")   
-                                a(href="https://www.youtube.com/watch?v=ryrEPzsx1gQ" target="_blank" rel="noopener") https://www.youtube.com/watch?v=ryrEPzsx1gQ
-                            when 8
-                                img.img-fluid.pb-3(src="/client/dist/img/level-8.jpg" alt="image")   
-                            when 9
-                                iframe(src="https://drive.google.com/file/d/1CnXdcgl4ZA79LcrouwurCpjaw6biuVp1/preview" width="320" height="240")           
-                            when 10
-                                h2 Coming soon
-                            default
-                                h2 Hi there, Please come back later.
-                    else if (level > totalLevels)
-                        div.pt-vh-10.text-center
-                            h2 Congrats on completing the game. 
-                            h2 You can check the leaderboard to find the winner. 
-                            h2 Prize will be awarded to both 'Away' and 'Home' winners. 
-                            h2 Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
-                    else
-                        div.pt-vh-10.text-center
-                            p.hide__this This Round has Completed.
-                            p.hide__this New Round will be up in
-                            h2#countdown__timer
-                            br
-                            br
-                            p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
-                            p Enquiries? Visit Aaroh19's #[a(href="https://aarohcea.com" target="_blank" rel="noopener") Website] or email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com]
-                else 
-                    div.pt-vh-10.text-center
-                        h1 Oops!!
-                        h2 You are banned from Glitch 2.0
-                        h2 If this is a mistake, kindly email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com] stating supportive reasons.
-        if (level <= renderLevel && !isBanned)
-            form.primary__form.py-4.py-md-0#ans__submit--form(method="POST")
-                div.pb-50
-                    input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    
-                button.primary__form--btn#answer__submit(type="submit") Submit
+                            h1 Oops!!
+                            h2 You are banned from Glitch 2.0
+                            h2 If this is a mistake, kindly email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com] stating supportive reasons.
+            if (level <= renderLevel && !isBanned)
+                form.primary__form.py-4.py-md-0#ans__submit--form(method="POST")
+                    div.pb-50
+                        input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    
+                    button.primary__form--btn#answer__submit(type="submit") Submit
