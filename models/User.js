@@ -31,7 +31,7 @@ const userSchema = new Schema({
         type: String,
         required: 'Please give the name of your college',
         trim: true,
-        default: 'College'
+        default: ' '
     },
     contact: {
         type: String,

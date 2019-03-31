@@ -10,6 +10,7 @@ function ajaxCall(e) {
     const answer = $('#answer').val();
     const success = 'Hurray';
     const error = 'Oh C\'mon!';
+    const tryAgain = 'Try Again';
     const successMsg = 'Right Answer!';
     const errorMsg = 'Wrong Answer!';
     const timeout = 'Something not right!!';
@@ -18,7 +19,7 @@ function ajaxCall(e) {
     axios({
             method: 'post',
             url: '/play',
-            timeout: 10000,
+            timeout: 100,
             data: {
                 answer
             }
@@ -45,15 +46,17 @@ function ajaxCall(e) {
             }
         })
         .catch(err => {
-            randNum = Math.floor(Math.random() * 24 + 1);
+            // clear input field
+            $('#answer').val('');
             console.log(err);
             $('.spinner').fadeOut('slow');
                     // time out
             if (err.code === 'ECONNABORTED') {
-                fileName = 'f' + randNum;
-                sweetAlert(error, timeout, true, fileName);
+                fileName = 'error';
+                sweetAlert(tryAgain, timeout, true, fileName);
             }
             $('.screen__overlay').fadeOut(2000);
+            // location.reload(true);
         });
 }
 

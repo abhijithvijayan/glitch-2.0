@@ -11,9 +11,11 @@ import '../sass/main.scss';
 // general images
 import '../images/icons/favicon.ico';
 import '../images/photos/logo-6kb.png';
+import '../images/photos/error.jpg';
 import '../images/photos/bg-shade.png';
 import '../images/photos/bg-login.jpg';
 import '../images/photos/logo-compressed.png';
+
 // question assets
 import '../images/photos/level-1.png';
 import '../images/photos/level-2.jpg';
@@ -28,6 +30,7 @@ import '../images/photos/level-8.jpg';
 import '../images/photos/level-9.jpg';
 import '../images/photos/level-10-a.jpg';
 import '../images/photos/level-10-b.jpg';
+
 // Troll images
 import '../images/photos/fail/f1.jpg';
 import '../images/photos/fail/f2.jpg';
@@ -76,7 +79,8 @@ import glitch from './modules/texteffect';
 import timer from './modules/roundTimer';
 
 
-glitch();
+// glitch effect
+// glitch();
 
 // answer submission -> ajax call
 $("#ans__submit--form").on("submit", ajaxCall);
