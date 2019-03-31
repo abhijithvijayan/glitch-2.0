@@ -19,7 +19,7 @@ function ajaxCall(e) {
     axios({
             method: 'post',
             url: '/play',
-            timeout: 100,
+            timeout: 10000,
             data: {
                 answer
             }
