@@ -17,19 +17,19 @@ import '../images/photos/bg-login.jpg';
 import '../images/photos/logo-compressed.png';
 
 // question assets
-import '../images/photos/level-1.png';
-import '../images/photos/level-2.jpg';
-import '../images/photos/level-3.jpeg';
-import '../images/photos/level-3.jpg';
-import '../images/photos/level-4.jpg';
-import '../audio/level-5.mp3';
-import '../audio/level-5.ogg';
-import '../images/photos/level-6.jpg';
-import '../images/photos/level-7.jpg';
-import '../images/photos/level-8.jpg';
-import '../images/photos/level-9.jpg';
-import '../images/photos/level-10-a.jpg';
-import '../images/photos/level-10-b.jpg';
+import '../images/photos/level-1-a54116a32e811aab1546327a75b63dbe.png';
+import '../images/photos/level-2-0ee4ab50599475fcbb78d285f84dff1e.jpg';
+import '../images/photos/level-3-b-54415b6498c50af608a1b4760cbfa727.jpeg';
+import '../images/photos/level-3-a-05a93841687c0b81f3338e59e2236c02.jpg';
+import '../images/photos/level-4-9a3804593d27a8b503acc52d1bf09743.jpg';
+import '../audio/level-5-9be922b0b7bd4c831634777092f7e1a5.mp3';
+import '../audio/level-5-9be922b0b7bd4c831634777092f7e1a5.ogg';
+import '../images/photos/level-6-79543b02f54e17cdd3c638f27dc8325d.jpg';
+import '../images/photos/level-7-51688c2a34aa283744f17d1b451b5e56.jpg';
+import '../images/photos/level-8-e766495f86819a660a6d67551694afc2.jpg';
+import '../images/photos/level-9-adc77aa30367cc9bfc769bd00c364367.jpg';
+import '../images/photos/level-10-a-f67e97f4b593e28be51cf829a7079950.jpg';
+import '../images/photos/level-10-b-2544f77bacf19a219300b6ff3a5ce039.jpg';
 
 // Troll images
 import '../images/photos/fail/f1.jpg';
