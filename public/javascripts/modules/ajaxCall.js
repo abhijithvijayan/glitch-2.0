@@ -13,8 +13,9 @@ function ajaxCall(e) {
     const tryAgain = 'Try Again';
     const successMsg = 'Right Answer!';
     const errorMsg = 'Wrong Answer!';
-    const timeout = 'Something not right!!';
-    let randNum, fileName;
+    const timeout = 'Timeout! Please try again';
+    const catchErr = 'Something not right!!'
+    let randNum, file;
     // ajax call
     axios({
             method: 'post',
@@ -30,19 +31,19 @@ function ajaxCall(e) {
             // console.log(res);
             if (res.data.status === true) {
                 randNum = Math.floor(Math.random() * 12 + 1);
-                fileName = 's' + randNum;
-                sweetAlert(success, successMsg, false, fileName);
-                // $('.spinner').fadeIn();
+                file = 's' + randNum;
+                sweetAlert(success, successMsg, false, file);
+                $('.spinner').fadeIn();
                 // render new qn
                 location.reload(true);
             } else {
                 randNum = Math.floor(Math.random() * 24 + 1);
-                fileName = 'f' + randNum;
+                file = 'f' + randNum;
                 // clear input field
                 $('#answer').val('');
                 $('.screen__overlay').fadeOut('slow');
                 // show a popup
-                sweetAlert(error, errorMsg, true, fileName);
+                sweetAlert(error, errorMsg, true, file);
             }
         })
         .catch(err => {
@@ -50,13 +51,15 @@ function ajaxCall(e) {
             $('#answer').val('');
             console.log(err);
             $('.spinner').fadeOut('slow');
-                    // time out
+            file = 'error';
+            // time out
             if (err.code === 'ECONNABORTED') {
-                fileName = 'error';
-                sweetAlert(tryAgain, timeout, true, fileName);
+                sweetAlert(tryAgain, timeout, true, file);
+            } else {
+                sweetAlert(tryAgain, catchErr, true, file);
             }
-            $('.screen__overlay').fadeOut(2000);
-            // location.reload(true);
+            $('.spinner').fadeIn();
+            location.reload(true);
         });
 }
 
