@@ -104,6 +104,16 @@ $('#rules__close--btn').on('click', () => {
 timer();
 
 
+$('.leaderboard__tabs a').on('show.bs.tab', function (){
+    // alert('New tab will be visible now!');
+    $('.spinner').fadeIn();
+});
+
+$('.leaderboard__tabs a').on('shown.bs.tab', function (){
+    // alert('New tab is now visible!');
+    $('.spinner').fadeOut();
+});
+
 
 
 

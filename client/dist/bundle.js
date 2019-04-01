@@ -50,7 +50,7 @@ e.exports=function(e){return null!=e&&(n(e)||function(e){return"function"==typeo
  * @license  MIT
  *
  */
-e("#ans__submit--form").on("submit",t.a),e("#rules__open--btn").on("click",()=>{e("#main__game").fadeToggle("slow"),e("#information").fadeToggle("slow"),e("#auth").fadeToggle("slow")}),e("#rules__close--btn").on("click",()=>{e("#main__game").fadeIn(),e("#auth").fadeIn(),e("#information").fadeOut()}),Object(o.a)(),console.log("%cCrafted and Coded by abhijithvijayan","color: white; background: black; padding: 5px 20px")}.call(this,n(9))},function(e,t,n){
+e("#ans__submit--form").on("submit",t.a),e("#rules__open--btn").on("click",()=>{e("#main__game").fadeToggle("slow"),e("#information").fadeToggle("slow"),e("#auth").fadeToggle("slow")}),e("#rules__close--btn").on("click",()=>{e("#main__game").fadeIn(),e("#auth").fadeIn(),e("#information").fadeOut()}),Object(o.a)(),e(".leaderboard__tabs a").on("show.bs.tab",function(){e(".spinner").fadeIn()}),e(".leaderboard__tabs a").on("shown.bs.tab",function(){e(".spinner").fadeOut()}),console.log("%cCrafted and Coded by abhijithvijayan","color: white; background: black; padding: 5px 20px")}.call(this,n(9))},function(e,t,n){
 /*!
   * Bootstrap v4.3.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
