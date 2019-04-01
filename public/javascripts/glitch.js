@@ -104,14 +104,17 @@ $('#rules__close--btn').on('click', () => {
 timer();
 
 
+// Leaderboard preloader
 $('.leaderboard__tabs a').on('show.bs.tab', function (){
     // alert('New tab will be visible now!');
-    $('.spinner').fadeIn();
+    $('.screen__overlay').show();
+    $('.spinner').show();
 });
 
 $('.leaderboard__tabs a').on('shown.bs.tab', function (){
     // alert('New tab is now visible!');
-    $('.spinner').fadeOut();
+    $('.spinner').hide();
+    $('.screen__overlay').hide();
 });
 
 
