@@ -17,7 +17,7 @@ function timer()  {
             if (distance < 0) {
                 clearInterval(x);
                 $('.hide__this').fadeOut();
-                document.getElementById("countdown__timer").innerHTML = "Please refresh this Page";
+                document.getElementById("countdown__timer").innerHTML = "Please refresh this Page, if still no luck, then come back later";
             }
         }
     }, 1000);
