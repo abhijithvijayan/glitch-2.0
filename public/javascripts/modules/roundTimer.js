@@ -1,7 +1,7 @@
 function timer()  {
 
     // timer for new round
-    const countDownDate = new Date("Apr 2, 2019 22:00:00").getTime();
+    const countDownDate = new Date("Apr 3, 2019 20:00:00").getTime();
     
     const x = setInterval(function () {
         const now = new Date().getTime();

@@ -55,6 +55,10 @@ mixin question(renderLevel, user, totalLevels)
                                             img.img-fluid(src="/client/dist/img/level-10-b-2544f77bacf19a219300b6ff3a5ce039.jpg" alt="image")
                                 when 11
                                     img.img-fluid.pb-3(src="/client/dist/img/level-11-d57dc6f528d4db40dd72c7dd9bde86f6.jpg" alt="image")                                    
+                                when 12
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-12-ad997b43943afdf4907221c1a003c9a4.jpg" alt="image")                                    
+                                when 13
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-13-d187ba0ec03cf0b69e6f5850204196a1.jpg" alt="image")                                    
                                 default
                                     h2 Hi there, Please come back later.
                         else if (level > totalLevels)
@@ -66,8 +70,8 @@ mixin question(renderLevel, user, totalLevels)
                         else
                             div.pt-vh-10.text-center
                                 p.hide__this This Round has Completed.
-                                p.hide__this The Final Round will begin soon...
-                                //- h2#countdown__timer
+                                p.hide__this The Final Round will be up in
+                                h2#countdown__timer
                                 br
                                 br
                                 p.text-center Follow our #[a(href="https://www.facebook.com/aaroh19" target="_blank" rel="noopener") Facebook] & #[a(href="https://www.instagram.com/aaroh19" target="_blank" rel="noopener") Instagram] Pages to stay notified.
