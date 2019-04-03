@@ -30,6 +30,7 @@ import '../images/photos/level-8-e766495f86819a660a6d67551694afc2.jpg';
 import '../images/photos/level-9-adc77aa30367cc9bfc769bd00c364367.jpg';
 import '../images/photos/level-10-a-f67e97f4b593e28be51cf829a7079950.jpg';
 import '../images/photos/level-10-b-2544f77bacf19a219300b6ff3a5ce039.jpg';
+import '../images/photos/level-11-d57dc6f528d4db40dd72c7dd9bde86f6.jpg';
 
 // Troll images
 import '../images/photos/fail/f1.jpg';

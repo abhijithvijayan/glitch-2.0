@@ -53,6 +53,8 @@ mixin question(renderLevel, user, totalLevels)
                                             img.img-fluid(src="/client/dist/img/level-10-a-f67e97f4b593e28be51cf829a7079950.jpg" alt="image")
                                         .col-7
                                             img.img-fluid(src="/client/dist/img/level-10-b-2544f77bacf19a219300b6ff3a5ce039.jpg" alt="image")
+                                when 11
+                                    img.img-fluid.pb-3(src="/client/dist/img/level-11-d57dc6f528d4db40dd72c7dd9bde86f6.jpg" alt="image")                                    
                                 default
                                     h2 Hi there, Please come back later.
                         else if (level > totalLevels)
@@ -64,7 +66,7 @@ mixin question(renderLevel, user, totalLevels)
                         else
                             div.pt-vh-10.text-center
                                 p.hide__this This Round has Completed.
-                                p.hide__this The Final Round will be up soon
+                                p.hide__this The Final Round will begin soon...
                                 //- h2#countdown__timer
                                 br
                                 br
