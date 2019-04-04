@@ -5,7 +5,13 @@ mixin question(renderLevel, user, totalLevels)
         .container.form__holder.py-3.py-md-0
             .row.d-center
                 .col-11.col-sm-5.col-md-6.col-lg-5.d-center
-                    if (!isBanned)
+                    if (isEnded)
+                        div.pt-vh-10.text-center
+                            h2 Glich 2.0 has been #[u completed]
+                            h2 You can check the leaderboard to find the #[u winner]
+                            h2 Prize will be awarded to both 'Away' and 'Home' winners. 
+                            h2 Also visit #[a(href="https://aarohcea.com/events" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
+                    else if (!isBanned)
                         if (renderLevel == 0)
                             div.pt-vh-10.text-center
                                 p Game has already started
@@ -66,7 +72,7 @@ mixin question(renderLevel, user, totalLevels)
                                 h2 Congrats on completing the game. 
                                 h2 You can check the leaderboard to find the winner. 
                                 h2 Prize will be awarded to both 'Away' and 'Home' winners. 
-                                h2 Also visit #[a(href="https://aarohcea.com" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
+                                h2 Also visit #[a(href="https://aarohcea.com/events" target="_blank" rel="noopener") aarohcea.com] to know about the techno-cultural fest and it's events.
                         else
                             div.pt-vh-10.text-center
                                 p.hide__this This Round has Completed.
@@ -81,7 +87,7 @@ mixin question(renderLevel, user, totalLevels)
                             h1 Oops!!
                             h2 You are banned from Glitch 2.0
                             h2 If this is a mistake, kindly email us at #[a(href="mailto:glitch@aarohcea.com") glitch@aarohcea.com] stating supportive reasons.
-            if (level <= renderLevel && !isBanned)
+            if (level <= renderLevel && !isBanned &&!isEnded)
                 form.primary__form.py-4.py-md-0#ans__submit--form(method="POST")
                     div.pb-50
                         input.primary__form--input.text-center#answer(placeholder="answer" name="answer" type="text" spellcheck="false" autocomplete="off" required autofocus maxlength="25")    

@@ -18,6 +18,10 @@ const gameSchema = new Schema({
         type: Number,
         default: 0
     },
+    isEnded: {
+        type: Number,
+        default: 0
+    },
     author: String
 });
 
