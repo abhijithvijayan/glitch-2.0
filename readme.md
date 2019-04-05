@@ -28,10 +28,17 @@ Done, You can now see options to edit the game in the dashboard.
 ## Add Questions
 Edit the `/views/mixins/_question.pug` file to your need.
 
+## End Game
+Set `isEnded` flag under `Game` Model in DB to `1`.
+
+## Send Notificatiions
+Use the `Send Alert` option in Admin Panel.
 
 ## Store Assets
 - Save your `svg's` under `/public/images/icons/`
 - Save your `images` under `/public/images/photos`
+- Save your `audio files` under `/public/images/audio`
+- Import your static assets to `/public/javascripts/glitch.js`
 
 <hr />
 
@@ -46,6 +53,34 @@ Edit the `/views/mixins/_question.pug` file to your need.
 - Run `npm run minify` to minify `JS` and `CSS`
 - Update `PORT=80` and `NODE_ENV=production`  in `variables.env` file
 - Then run `npm start` to launch the server
+
+## Credentials
+
+#### MongoDB
+Create a MongoDB admin in mongo shell
+```
+> mongo
+> use admin
+> db.createUser(
+  {
+    user: "abhijithvijayan",
+    pwd: "fBxY3oEA3DCeVN0Pe1PMORx3Td18WNdOy6B5s223C",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+```
+Create a database and user for `Glitch`
+```
+> use glitch
+> db.createUser(
+  {
+    user: "glitchAdmin",
+    pwd: "ADbTfu6vbaDR08775pQSk9uAwhHpo8wBsmAKdSiql7",
+    roles: [ { role: "readWrite", db: "glitch" } ]
+  }
+)
+```
+### Update these credentials to `variables.env`
 
 <hr />
 
@@ -62,13 +97,6 @@ Also delete all the other `collections` manually with `MongoDB Compass`
 
 - Text Scramble Effect : [Pen](https://codepen.io/soulwire/pen/mErPAK) by [@soulwire](https://codepen.io/soulwire/)
 <!-- - Parallax Star background : [Pen](https://codepen.io/saransh/pen/BKJun) by [@saransh](https://codepen.io/saransh/) -->
-
-## ToDo
-- [x] Push Notification
-- [ ] Time Lag issue on Some browsers
-- [ ] Instructions and Rules Page
-- [ ] Refactor Leaderboard Page
-- [ ] New Stage Countdown timer
 
 ## Licence
 This project is licenced under [MIT](LICENCE)

@@ -12,7 +12,6 @@ module.exports = (env, options) => ({
     bundle: './public/javascripts/glitch.js',
     client: './public/javascripts/modules/client.js',
     worker: './public/javascripts/modules/serviceworker.js'
-    // texteffect: './public/javascripts/modules/texteffect.js',
   },
   devtool: options.mode === 'production' ? false : 'inline-source-map',
   performance: {

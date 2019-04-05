@@ -83,7 +83,7 @@ import timer from './modules/roundTimer';
 
 
 // glitch effect
-// glitch();
+glitch();
 
 // answer submission -> ajax call
 $("#ans__submit--form").on("submit", ajaxCall);
