@@ -1,12 +1,21 @@
 # Glitch-2.0
 ![GitHub](https://img.shields.io/github/license/abhijithvijayan/glitch-2.0.svg)
 
-An online game build on Node.JS
+An online Treasure Hunt build for the techno-cultural fest @aaroh19.
+
+### Stack Used:
+- Node.JS
+- Express.JS
+- Passport.js
+- MongoDB
+- Webpack Bundler
+- SASS
+- Pug Templating Engine
 
 ## Browser Support
 
 [![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](https://chrome.google.com/webstore/detail/kutt/pklakpjfiegjacoppcodencchehlfnpd) | [![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](https://addons.mozilla.org/firefox/addon/kutt/) | [![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png)](CONTRIBUTING.md#for-opera-users) |
---- | --- | --- | --- | --- | --- |
+--- | --- | --- |
 49 & later ✔ | 47 & later ✔ | 36 & later ✔
 
 # Getting Started
