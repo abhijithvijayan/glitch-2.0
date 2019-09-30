@@ -11,10 +11,12 @@
   "scripts": {
     "start": "node ./start.js",
     "watch": "nodemon ./start.js --ignore public/",
-    "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"N,W\" --prefix name",
+    "dev": "concurrently \"yarn run watch\" \"yarn run assets\" --names \"N,W\" --prefix name",
     "assets": "webpack --watch  --mode=development --display-max-modules=0",
     "minify": "webpack --mode=production",
-    "blowitallaway": "node ./data/remove-data.js --delete"
+    "blowitallaway": "node ./data/remove-data.js --delete",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@babel/runtime": "^7.6.2",
