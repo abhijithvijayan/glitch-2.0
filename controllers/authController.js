@@ -2,7 +2,7 @@ const passport = require('passport');
 
 // auth with google
 exports.login = passport.authenticate('google', {
-    scope: ['email', 'profile']
+    scope: ['email', 'profile'],
 });
 
 // after login -> comes here(get url code) // callback fn fires
@@ -10,7 +10,7 @@ exports.redirectLogin = passport.authenticate('google', {
     successFlash: 'You are now Logged In',
     successRedirect: '/account',
     failureFlash: 'Failed to Login!',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
 });
 
 exports.logout = (req, res) => {

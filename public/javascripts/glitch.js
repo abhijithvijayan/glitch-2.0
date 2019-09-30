@@ -73,21 +73,15 @@ import '../images/photos/success/s10.jpg';
 import '../images/photos/success/s11.jpg';
 import '../images/photos/success/s12.jpg';
 
-
-
-
-
 import ajaxCall from './modules/ajaxCall';
 import glitch from './modules/texteffect';
 import timer from './modules/roundTimer';
-
 
 // glitch effect
 glitch();
 
 // answer submission -> ajax call
-$("#ans__submit--form").on("submit", ajaxCall);
-
+$('#ans__submit--form').on('submit', ajaxCall);
 
 // Rules Page
 $('#rules__open--btn').on('click', () => {
@@ -102,35 +96,20 @@ $('#rules__close--btn').on('click', () => {
     $('#information').fadeOut();
 });
 
-
 // Countdown timer
 timer();
 
-
 // Leaderboard preloader
-$('.leaderboard__tabs a').on('show.bs.tab', function (){
+$('.leaderboard__tabs a').on('show.bs.tab', function() {
     // alert('New tab will be visible now!');
     $('.screen__overlay').show();
     $('.spinner').show();
 });
 
-$('.leaderboard__tabs a').on('shown.bs.tab', function (){
+$('.leaderboard__tabs a').on('shown.bs.tab', function() {
     // alert('New tab is now visible!');
     $('.spinner').hide();
     $('.screen__overlay').hide();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 console.log('%cCrafted and Coded by abhijithvijayan', 'color: white; background: black; padding: 5px 20px');

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define, no-shadow */
 import axios from 'axios';
 
 // Hard-coded, replace with your public key
@@ -7,26 +8,26 @@ const title = 'Glitch 2.0';
 
 if ('serviceWorker' in navigator) {
     console.log('Starting service worker registration');
-    run().catch(error => console.error(error));
+    run().catch(error => {
+        return console.error(error);
+    });
 }
 
 /**
  * urlBase64ToUint8Array
- * 
+ *
  * @param {string} base64String a public vavid key
- * 
+ *
  */
 
 function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
-    const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
 
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
 
-    for (let i = 0; i < rawData.length; ++i) {
+    for (let i = 0; i < rawData.length; i += 1) {
         outputArray[i] = rawData.charCodeAt(i);
     }
     return outputArray;
@@ -35,9 +36,8 @@ function urlBase64ToUint8Array(base64String) {
 async function run() {
     console.log('Registering service worker');
 
-    const registration = await navigator.serviceWorker.
-    register('/client/dist/worker.js', {
-        scope: '/client/dist/'
+    const registration = await navigator.serviceWorker.register('/client/dist/worker.js', {
+        scope: '/client/dist/',
     });
 
     console.log('Registered service worker');
@@ -48,43 +48,42 @@ async function run() {
     // console.log('ApplicationServerKey : ', convertedVapidKey);
     let isSubscribed = false;
 
-    await registration.pushManager.getSubscription()
-        .then((subscription) => {
-            isSubscribed = (subscription === null);
+    await registration.pushManager.getSubscription().then(subscription => {
+        isSubscribed = subscription === null;
 
-            if (isSubscribed) {
+        if (isSubscribed) {
+            registration.pushManager
+                .subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: convertedVapidKey,
+                })
+                .then(subscription => {
+                    // console.log(subscription);
+                    console.log('Registered push');
+                    console.log('Sending push');
 
-                registration.pushManager.subscribe({
-                        userVisibleOnly: true,
-                        applicationServerKey: convertedVapidKey
+                    // push notification
+                    axios({
+                        method: 'post',
+                        url: '/subscribe',
+                        data: {
+                            subscription,
+                            title,
+                        },
+                        headers: {
+                            'content-type': 'application/json',
+                        },
                     })
-                    .then((subscription) => {
-                        // console.log(subscription);
-                        console.log('Registered push');
-                        console.log('Sending push');
-
-                        // push notification
-                        axios({
-                                method: 'post',
-                                url: '/subscribe',
-                                data: {
-                                    subscription,
-                                    title
-                                },
-                                headers: {
-                                    'content-type': 'application/json'
-                                }
-                            })
-                            .then(res => {
-                                console.log(res.data);
-                            })
-                            .catch(err => {
-                                console.log(err);
-                            });
-                    });
-            } else {
-                console.log('User is already subscribed!');
-            }
-        });
+                        .then(res => {
+                            console.log(res.data);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                });
+        } else {
+            console.log('User is already subscribed!');
+        }
+    });
 }
 /* ----------------------------------------------------------------------- */

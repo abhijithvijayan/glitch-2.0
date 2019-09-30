@@ -1,28 +1,25 @@
 const mongoose = require('mongoose');
+
 const User = mongoose.model('User');
 const Game = mongoose.model('Game');
 const Solution = mongoose.model('Solution');
-const webPush = require('web-push');
 
 function purifyAnswer(str) {
-    const regStr = str.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/\s]/gi, '');
+    const regStr = str.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/\s]/gi, '');
     const lowerStr = regStr.toLowerCase();
     return lowerStr;
 }
 
-
 exports.getHomePage = (req, res) => {
     res.render('welcome', {
-        title: 'Let\'s begin'
+        title: "Let's begin",
     });
 };
 
-
 exports.renderGame = async (req, res) => {
-    const gameOptionsPromise = Game
-        .find()
+    const gameOptionsPromise = Game.find()
         .sort({
-            _id: -1
+            _id: -1,
         })
         .limit(1);
 
@@ -32,18 +29,18 @@ exports.renderGame = async (req, res) => {
     const [Options] = gameOptions;
 
     if (Options && Options.renderLevel <= totalAnswers) {
-        const renderLevel = Options.renderLevel;
+        const { renderLevel } = Options;
         const totalLevels = Options.levels;
-        const isEnded = Options.isEnded;
+        const { isEnded } = Options;
         res.render('game', {
-            title: 'Let\'s Play',
+            title: "Let's Play",
             renderLevel,
             totalLevels,
-            isEnded
+            isEnded,
         });
     } else {
         const user = await User.findOne({
-            _id: req.user._id
+            _id: req.user._id,
         });
 
         if (user.permission > 10) {
@@ -56,35 +53,29 @@ exports.renderGame = async (req, res) => {
     }
 };
 
-
 exports.startGame = (req, res) => {
     res.redirect('/play');
 };
 
-
 exports.editGame = (req, res) => {
     // res.send('Time to break the wheel');
     res.render('options', {
-        title: 'Add'
+        title: 'Add',
     });
 };
-
 
 exports.setGameMode = (req, res) => {
     res.render('modes', {
-        title: 'Set Levels'
+        title: 'Set Levels',
     });
 };
 
-
 exports.saveGameMode = async (req, res, next) => {
-
     let renderLevel;
     // fetch end level from db (if it exists)
-    const [gameMode] = await Game
-        .find()
+    const [gameMode] = await Game.find()
         .sort({
-            _id: -1
+            _id: -1,
         })
         .limit(1);
 
@@ -97,7 +88,7 @@ exports.saveGameMode = async (req, res, next) => {
     const model = {
         levels: req.body.levels,
         author: req.user.email,
-        renderLevel: renderLevel
+        renderLevel,
     };
 
     const newModel = new Game(model);
@@ -107,32 +98,30 @@ exports.saveGameMode = async (req, res, next) => {
     res.redirect('/edit');
 };
 
-
 exports.setAnswers = async (req, res) => {
     // get latest game mode
-    const [gameMode] = await Game
-        .find()
+    const [gameMode] = await Game.find()
         .sort({
-            _id: -1
+            _id: -1,
         })
         .limit(1);
 
     if (gameMode) {
-        const levels = gameMode.levels;
+        let { levels } = gameMode;
         const totalLevels = levels;
         // get levels that has answers
-        const levelsObj = await Solution
-            .find({}, 'level -_id')
-            .sort({
-                level: 1
-            });
+        const levelsObj = await Solution.find({}, 'level -_id').sort({
+            level: 1,
+        });
 
         // console.log(levelsObj);
 
         if (levelsObj.length) {
             // extract from array of objects
-            let hasAnsLevels = levelsObj.map(a => a.level);
-            let noAnsLevels = [];
+            const hasAnsLevels = levelsObj.map(a => {
+                return a.level;
+            });
+            const noAnsLevels = [];
             // console.log(hasAnsLevels);
 
             let i = 1;
@@ -142,7 +131,7 @@ exports.setAnswers = async (req, res) => {
                     // console.log(i);
                     noAnsLevels.push(i);
                 }
-                ++i;
+                i += 1;
             }
 
             // console.log(noAnsLevels.length);
@@ -151,19 +140,19 @@ exports.setAnswers = async (req, res) => {
                 // req.flash('error', 'No levels without any answer. Try editing existing ones.');
                 res.redirect('/modify');
             } else {
-                let levels = noAnsLevels;
+                levels = noAnsLevels;
                 // console.log(levels);
                 // render to collect answers of the levels that doesn't have an answer saved
                 res.render('solution', {
                     title: 'Set Answers',
-                    levels
+                    levels,
                 });
             }
         } else {
             // render to collect answers of all levels
             res.render('solution', {
                 title: 'Set Answers',
-                levels
+                levels,
             });
         }
     } else {
@@ -172,28 +161,24 @@ exports.setAnswers = async (req, res) => {
     }
 };
 
-
 exports.saveSolution = async (req, res) => {
-
     if (req.body.answer) {
-
         // find alterations (check if level is below the saved in db : Game Model)
-        const [gameMode] = await Game
-            .find()
+        const [gameMode] = await Game.find()
             .sort({
-                _id: -1
+                _id: -1,
             })
             .limit(1);
 
         if (gameMode) {
-            const levels = gameMode.levels;
+            const { levels } = gameMode;
             // submitted level lies between the set
             if (req.body.level <= levels) {
                 const answer = purifyAnswer(req.body.answer);
                 const solution = {
-                    answer: answer,
+                    answer,
                     level: req.body.level,
-                    author: req.user.email
+                    author: req.user.email,
                 };
 
                 // save to db
@@ -215,22 +200,21 @@ exports.saveSolution = async (req, res) => {
     res.redirect('back');
 };
 
-
 exports.editAnswers = async (req, res) => {
     // get submitted answer levels
-    const levelsObj = await Solution
-        .find({}, 'level -_id')
-        .sort({
-            level: 1
-        });
+    const levelsObj = await Solution.find({}, 'level -_id').sort({
+        level: 1,
+    });
 
     if (levelsObj.length) {
         // extract from array of objects
-        let levels = levelsObj.map(a => a.level);
+        const levels = levelsObj.map(a => {
+            return a.level;
+        });
         // console.log(levels);
         res.render('solution', {
             title: 'Edit Answers',
-            levels
+            levels,
         });
     } else {
         // req.flash('error', 'No answers set to modify. Submit answers here!');
@@ -238,70 +222,74 @@ exports.editAnswers = async (req, res) => {
     }
 };
 
-
 exports.updateAnswers = async (req, res) => {
     // res.json(req.body);
     // res.json(req.user);
 
     const answer = purifyAnswer(req.body.answer);
     const updatedAnswer = {
-        answer: answer,
+        answer,
         lastModified: Date.now(),
-        author: req.user.email
+        author: req.user.email,
     };
 
-    const solution = await Solution.findOneAndUpdate({
-        level: req.body.level
-    }, {
-        $set: updatedAnswer
-    }, {
-        new: true,
-        runValidators: true,
-        context: 'query'
-    });
+    const solution = await Solution.findOneAndUpdate(
+        {
+            level: req.body.level,
+        },
+        {
+            $set: updatedAnswer,
+        },
+        {
+            new: true,
+            runValidators: true,
+            context: 'query',
+        }
+    );
 
     // if (solution) {
     //     // req.flash('success', 'Updated successfully');
     // }
     // else {
-    //     // req.flash('error', 'No solution for that level to modify');        
+    //     // req.flash('error', 'No solution for that level to modify');
     // }
 
     res.redirect('back');
 };
 
-
 exports.updateEndPoint = (req, res) => {
     res.render('renderLevel', {
-        title: 'Resume Game'
+        title: 'Resume Game',
     });
 };
 
-
 exports.resumeGame = async (req, res) => {
     const resumeLevel = {
-        renderLevel: req.body.newFinalLevel
+        renderLevel: req.body.newFinalLevel,
     };
     // get latest game options (1 entry)
-    const [gameMode] = await Game
-        .find()
+    const [gameMode] = await Game.find()
         .sort({
-            _id: -1
+            _id: -1,
         })
         .limit(1);
 
     // console.log(gameMode);
     if (gameMode && req.body.newFinalLevel <= gameMode.levels) {
         // update render level top
-        await Game.findOneAndUpdate({
-            _id: gameMode._id
-        }, {
-            $set: resumeLevel
-        }, {
-            new: true,
-            runValidators: true,
-            context: 'query'
-        });
+        await Game.findOneAndUpdate(
+            {
+                _id: gameMode._id,
+            },
+            {
+                $set: resumeLevel,
+            },
+            {
+                new: true,
+                runValidators: true,
+                context: 'query',
+            }
+        );
 
         // req.flash('success', 'Game resumed');
         res.redirect('/edit');
@@ -309,20 +297,17 @@ exports.resumeGame = async (req, res) => {
         // req.flash('error', 'That many levels doesn\t exist');
         res.redirect('back');
     }
-
 };
-
 
 exports.getTopPlayers = async (req, res) => {
     const users = await User.getLeaderboard();
     res.render('topPlayers', {
         title: 'Top Players',
-        users
+        users,
     });
     // res.json(users);
 };
 
-
 exports.privacyPolicy = (req, res) => {
-    res.render('privacy', { title: 'Privacy Policy '});
+    res.render('privacy', { title: 'Privacy Policy ' });
 };

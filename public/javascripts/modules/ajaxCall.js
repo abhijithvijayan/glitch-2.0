@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 import axios from 'axios';
 import sweetAlert from './sweetalert';
 
@@ -9,36 +11,37 @@ function ajaxCall(e) {
 
     const answer = $('#answer').val();
     const success = 'Hurray';
-    const error = 'Oh C\'mon!';
+    const error = "Oh C'mon!";
     const tryAgain = 'Try Again';
     const successMsg = 'Right Answer!';
     const errorMsg = 'Wrong Answer!';
     const timeout = 'Timeout! Please try again';
-    const catchErr = 'Something not right!!'
-    let randNum, file;
+    const catchErr = 'Something not right!!';
+    let randNum;
+    let file;
     // ajax call
     axios({
-            method: 'post',
-            url: '/play',
-            timeout: 10000,
-            data: {
-                answer
-            }
-        })
+        method: 'post',
+        url: '/play',
+        timeout: 10000,
+        data: {
+            answer,
+        },
+    })
         .then(res => {
             // stop preloader
             $('.spinner').fadeOut('slow');
             // console.log(res);
             if (res.data.status === true) {
                 randNum = Math.floor(Math.random() * 12 + 1);
-                file = 's' + randNum;
+                file = `s${randNum}`;
                 sweetAlert(success, successMsg, false, file);
                 $('.spinner').fadeIn();
                 // render new qn
                 location.reload(true);
             } else {
                 randNum = Math.floor(Math.random() * 24 + 1);
-                file = 'f' + randNum;
+                file = `f${randNum}`;
                 // clear input field
                 $('#answer').val('');
                 $('.screen__overlay').fadeOut('slow');
@@ -62,8 +65,5 @@ function ajaxCall(e) {
             location.reload(true);
         });
 }
-
-
-
 
 export default ajaxCall;
