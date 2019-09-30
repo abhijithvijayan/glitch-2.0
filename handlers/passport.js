@@ -11,8 +11,6 @@ const validateUser = async (accessToken, refreshToken, profile, done) => {
         googleId: profile.id,
     });
     if (!foundUser) {
-        // console.log(profile);
-        // console.log(profile.emails[0].value);
         const newUser = await new User({
             username: profile.displayName,
             googleId: profile.id,
@@ -24,7 +22,6 @@ const validateUser = async (accessToken, refreshToken, profile, done) => {
             done(null, newUser);
         }
     } else {
-        // console.log(foundUser);
         done(null, foundUser); // move to serialize method
     }
 };

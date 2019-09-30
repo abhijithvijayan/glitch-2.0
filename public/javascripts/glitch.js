@@ -112,4 +112,4 @@ $('.leaderboard__tabs a').on('shown.bs.tab', function() {
     $('.screen__overlay').hide();
 });
 
-console.log('%cCrafted and Coded by abhijithvijayan', 'color: white; background: black; padding: 5px 20px');
+console.log('%cDesigned & Developed by abhijithvijayan', 'color: white; background: black; padding: 5px 20px');

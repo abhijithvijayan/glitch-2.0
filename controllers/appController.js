@@ -81,7 +81,6 @@ exports.saveGameMode = async (req, res, next) => {
 
     // store new model with old end level
     if (gameMode) {
-        // console.log(gameMode);
         renderLevel = gameMode.renderLevel;
     }
 
@@ -114,34 +113,28 @@ exports.setAnswers = async (req, res) => {
             level: 1,
         });
 
-        // console.log(levelsObj);
-
         if (levelsObj.length) {
             // extract from array of objects
             const hasAnsLevels = levelsObj.map(a => {
                 return a.level;
             });
             const noAnsLevels = [];
-            // console.log(hasAnsLevels);
 
             let i = 1;
             // find levels that don't have answers
             while (i <= totalLevels) {
                 if (!hasAnsLevels.includes(i)) {
-                    // console.log(i);
                     noAnsLevels.push(i);
                 }
                 i += 1;
             }
 
-            // console.log(noAnsLevels.length);
             if (!noAnsLevels.length) {
                 // exists answers for all levels
                 // req.flash('error', 'No levels without any answer. Try editing existing ones.');
                 res.redirect('/modify');
             } else {
                 levels = noAnsLevels;
-                // console.log(levels);
                 // render to collect answers of the levels that doesn't have an answer saved
                 res.render('solution', {
                     title: 'Set Answers',
@@ -211,7 +204,6 @@ exports.editAnswers = async (req, res) => {
         const levels = levelsObj.map(a => {
             return a.level;
         });
-        // console.log(levels);
         res.render('solution', {
             title: 'Edit Answers',
             levels,
@@ -274,7 +266,6 @@ exports.resumeGame = async (req, res) => {
         })
         .limit(1);
 
-    // console.log(gameMode);
     if (gameMode && req.body.newFinalLevel <= gameMode.levels) {
         // update render level top
         await Game.findOneAndUpdate(

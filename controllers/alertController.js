@@ -20,8 +20,6 @@ exports.saveSubscription = async (req, res) => {
 };
 
 exports.pushNotification = async (req, res) => {
-    // console.log(req.body);
-    // res.status(201).json({});
     const pushPayload = JSON.stringify({
         title: 'Glitch 2.0',
         message: req.body.alertMessage,
@@ -29,31 +27,17 @@ exports.pushNotification = async (req, res) => {
 
     // iterate through the db
     const subscribers = await Subscription.find({});
-    // console.log(subscribers);
 
     // traverse through all users and alert them
     subscribers.map(async subscriber => {
-        // console.log(subscriber.keys);
-
         const pushSubscription = {
             endpoint: subscriber.endpoint,
             keys: subscriber.keys,
         };
 
-        // console.log(pushSubscription);
-        // console.log(pushPayload);
-
+        // ToDo: try - catch
         await webPush.sendNotification(pushSubscription, pushPayload);
-        // .then((res) => {
-        //     console.log('Push triggered successfully');
-        // })
-        // .catch((err) => {
-        //     console.log('Failed to trigger push message');
-        // });
     });
 
     res.redirect('/edit');
-    // res.json({
-    //     data: 'Push triggered successfully'
-    // });
 };

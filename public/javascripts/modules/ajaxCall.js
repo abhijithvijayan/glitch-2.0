@@ -31,7 +31,7 @@ function ajaxCall(e) {
         .then(res => {
             // stop preloader
             $('.spinner').fadeOut('slow');
-            // console.log(res);
+
             if (res.data.status === true) {
                 randNum = Math.floor(Math.random() * 12 + 1);
                 file = `s${randNum}`;

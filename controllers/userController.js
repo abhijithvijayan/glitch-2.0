@@ -57,8 +57,6 @@ exports.isBanned = async (req, res, next) => {
         _id: req.user._id,
     });
 
-    // console.log(user.isBanned);
-
     if (!user.isBanned) {
         return next();
     }
@@ -99,10 +97,8 @@ exports.submitAnswer = async (req, res) => {
 
     const arr = req.user.ansLog;
     const curDate = new Date();
-    // console.log(curDate);
-    arr.push({ level: req.user.level, ans: req.body.answer, time: curDate, rank: req.user.rank });
 
-    // console.log('submitted data' + req.user.ansLog);
+    arr.push({ level: req.user.level, ans: req.body.answer, time: curDate, rank: req.user.rank });
 
     if (savedSolutionData && savedSolutionData.answer.length) {
         const savedAnswer = savedSolutionData.answer;
@@ -133,7 +129,6 @@ exports.submitAnswer = async (req, res) => {
             const updateRank = promisify(user.setNext, user);
             await updateRank('rank_counter');
 
-            // send status: true
             res.json({ status: true });
             // req.flash('success', 'Right answer. Hurrayyy!!!');
         } else {
