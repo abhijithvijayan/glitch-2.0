@@ -1,19 +1,23 @@
 // ——————————————————————————————————————————————————
-// TextScramble
+//                  TextScramble
 // ——————————————————————————————————————————————————
 
 class TextScramble {
+    // eslint-disable-next-line no-shadow
     constructor(el) {
         this.el = el;
         this.chars = '!<>-_\\/[]{}—=+*^?#________';
         this.update = this.update.bind(this);
     }
+
     setText(newText) {
         const oldText = this.el.innerText;
         const length = Math.max(oldText.length, newText.length);
-        const promise = new Promise((resolve) => this.resolve = resolve);
+        const promise = new Promise(resolve => {
+            return (this.resolve = resolve);
+        });
         this.queue = [];
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < length; i += 1) {
             const from = oldText[i] || '';
             const to = newText[i] || '';
             const start = Math.floor(Math.random() * 40);
@@ -22,7 +26,7 @@ class TextScramble {
                 from,
                 to,
                 start,
-                end
+                end,
             });
         }
         cancelAnimationFrame(this.frameRequest);
@@ -30,19 +34,14 @@ class TextScramble {
         this.update();
         return promise;
     }
+
     update() {
         let output = '';
         let complete = 0;
-        for (let i = 0, n = this.queue.length; i < n; i++) {
-            let {
-                from,
-                to,
-                start,
-                end,
-                char
-            } = this.queue[i];
+        for (let i = 0, n = this.queue.length; i < n; i += 1) {
+            let { from, to, start, end, char } = this.queue[i];
             if (this.frame >= end) {
-                complete++;
+                complete += 1;
                 output += to;
             } else if (this.frame >= start) {
                 if (!char || Math.random() < 0.28) {
@@ -59,23 +58,24 @@ class TextScramble {
             this.resolve();
         } else {
             this.frameRequest = requestAnimationFrame(this.update);
-            this.frame++;
+            this.frame += 1;
         }
     }
+
     randomChar() {
-        return this.chars[Math.floor(Math.random() * this.chars.length)]
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
     }
 }
 
 const phrases = [
     'Hey you,',
     'sooner or later',
-    'you\'re going to realize',
+    "you're going to realize",
     'just as everyone',
-    'that there\'s a difference',
+    "that there's a difference",
     'between knowing the path',
     'and walking the path.',
-    'Welcome to Glitch 2.0'
+    'Welcome to Glitch 2.0',
 ];
 
 const el = document.querySelector('.glitch__scramble');
@@ -84,23 +84,20 @@ if (el) {
     fx = new TextScramble(el);
 }
 
-
 let counter = 0;
 const glitch = () => {
     if (el) {
-        if (counter == phrases.length-1) {
+        if (counter === phrases.length - 1) {
             fx.setText(phrases[counter]).then(() => {
                 setTimeout(glitch, 470);
-            })
-            counter = (counter + 1);        
-        }
-        else if (counter < phrases.length) {
+            });
+            counter += 1;
+        } else if (counter < phrases.length) {
             fx.setText(phrases[counter]).then(() => {
                 setTimeout(glitch, 340);
-            })
-            counter = (counter + 1);
-        }
-        else {
+            });
+            counter += 1;
+        } else {
             // hide it after one cycle is complete
             el.style.display = 'none';
             document.querySelector('.dark__overlay').style.display = 'none';
@@ -108,6 +105,5 @@ const glitch = () => {
         }
     }
 };
-
 
 export default glitch;

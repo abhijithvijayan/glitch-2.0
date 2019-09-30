@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 
 const { catchErrors } = require('../handlers/errorHandlers');
@@ -13,31 +14,32 @@ const alertController = require('../controllers/alertController');
 // basic routes
 router.get('/', appController.getHomePage);
 
-router.get('/play',
+router.get(
+    '/play',
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
     catchErrors(appController.renderGame)
 );
 
-router.post('/play',
+router.post(
+    '/play',
     authController.isLoggedIn,
     // catchErrors(userController.hasSubmittedInfo),
     catchErrors(userController.isBanned),
     catchErrors(userController.submitAnswer)
 );
 
-router.get('/account',
+router.get(
+    '/account',
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
     appController.startGame
 );
 
-router.post('/account',
-    authController.isLoggedIn,
-    catchErrors(userController.submitInfo)
-);
+router.post('/account', authController.isLoggedIn, catchErrors(userController.submitInfo));
 
-router.get('/account/edit',
+router.get(
+    '/account/edit',
     authController.isLoggedIn,
     catchErrors(userController.hasSubmittedInfo),
     catchErrors(userController.editProfile)
@@ -46,75 +48,66 @@ router.get('/account/edit',
 /* ----------------------------------------------------------------- */
 
 // game routes
-router.get('/edit',
-    authController.isLoggedIn,
-    catchErrors(userController.isAdmin),
-    appController.editGame
-);
+router.get('/edit', authController.isLoggedIn, catchErrors(userController.isAdmin), appController.editGame);
 
-router.get('/options',
-    authController.isLoggedIn,
-    catchErrors(userController.isAdmin),
-    appController.setGameMode
-);
+router.get('/options', authController.isLoggedIn, catchErrors(userController.isAdmin), appController.setGameMode);
 
-router.post('/options',
+router.post(
+    '/options',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.saveGameMode)
 );
 
-router.get('/answers',
+router.get(
+    '/answers',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.setAnswers)
 );
 
-router.post('/answers',
+router.post(
+    '/answers',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.saveSolution)
 );
 
-router.get('/modify',
+router.get(
+    '/modify',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.editAnswers)
 );
 
-router.post('/modify',
+router.post(
+    '/modify',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.updateAnswers)
 );
 
-router.get('/resume',
-    authController.isLoggedIn,
-    catchErrors(userController.isAdmin),
-    appController.updateEndPoint
-);
+router.get('/resume', authController.isLoggedIn, catchErrors(userController.isAdmin), appController.updateEndPoint);
 
-router.post('/resume',
+router.post(
+    '/resume',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(appController.resumeGame)
     // send push messages
 );
 
-router.get('/top',
+router.get(
+    '/top',
     // authController.isLoggedIn,
     // catchErrors(userController.hasSubmittedInfo),
     catchErrors(appController.getTopPlayers)
 );
 
-
 /* ----------------------------------------------------------------- */
 
 // Authentication Routes
-router.get('/login',
-    authController.isNotLoggedIn,
-    userController.loginForm
-);
+router.get('/login', authController.isNotLoggedIn, userController.loginForm);
 
 router.get('/auth/google', authController.login); // login
 
@@ -125,16 +118,13 @@ router.get('/logout', authController.logout);
 /* ----------------------------------------------------------------- */
 
 // Notification Routes
-router.get('/notify', 
-    authController.isLoggedIn,
-    catchErrors(userController.isAdmin),
-    alertController.sendMessage
-);
+router.get('/notify', authController.isLoggedIn, catchErrors(userController.isAdmin), alertController.sendMessage);
 
 router.post('/subscribe', catchErrors(alertController.saveSubscription));
 
 // Push Notification
-router.post('/push', 
+router.post(
+    '/push',
     authController.isLoggedIn,
     catchErrors(userController.isAdmin),
     catchErrors(alertController.pushNotification)
