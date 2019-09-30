@@ -1,92 +1,91 @@
 .primary__form {
-    // padding: 10vh 0;
-    // height: 100%;
-    font-family: $montserrat;
+  // padding: 10vh 0;
+  // height: 100%;
+  font-family: $montserrat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .primary__form--label {
+    // padding: 3.125rem 0 1.5rem;
+    padding: 2rem 0 1rem;
+    width: 100%;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0.125rem;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0.25, 0.8, 0.3) 0.05s;
+    font-size: 1.125rem;
+    margin-bottom: 0;
+  }
+
+  .primary__form--input {
+    font-size: 3vw;
+    padding: 0.25rem 0;
+    border: 0;
+    border-bottom: 1px solid white;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    letter-spacing: 0.125rem;
+    display: block;
+    width: 70vw;
+    transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
+    &:focus {
+      z-index: 10;
+    }
+    &::selection {
+      background: rgba(#bb1515, 0.5);
+    }
+    @media screen and (max-width: $screenXxsMax) {
+      line-height: 2.5rem;
+      font-size: 5.3vw;
+    }
+    @media screen and (min-width: $screenSmMin) {
+      line-height: 3.5rem;
+      width: 50vw;
+    }
+  }
+
+  .primary__form--selectors {
+    // width: 70vw;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
-
-    .primary__form--label {
-        // padding: 3.125rem 0 1.5rem;
-        padding: 2rem 0 1rem;
-        width: 100%;
-        text-transform: uppercase;
-        color: #fff;
-        font-weight: 300;
-        letter-spacing: .125rem;
-        pointer-events: none;
-        transition: all .4s cubic-bezier(.4, .25, .8, .3) .05s;
-        font-size: 1.125rem;
-        margin-bottom: 0;
+    #levels__selector {
+      padding: 8px 40px;
     }
-
-    .primary__form--input {
-        font-size: 3vw;
-        padding: .25rem 0;
-        border: 0;
-        border-bottom: 1px solid white;
-        outline: 0;
-        background: transparent;
-        color: #fff;
-        letter-spacing: .125rem;
-        display: block;
-        width: 70vw;
-        transition: all .5s cubic-bezier(.4, .25, .8, .3);
-        &:focus {
-            z-index: 10;
-        }
-        &::selection {
-            background: rgba(#bb1515, 0.5);
-        }
-        @media screen and (max-width: $screen-xxs-max) {
-            line-height: 2.5rem;
-            font-size: 5.3vw;
-        }
-        @media screen and (min-width: $screen-sm-min) { 
-            line-height: 3.5rem;
-            width: 50vw;
-        }
+    .primary__form--menu {
+      background: rgba(#bb1515, 0.25);
+      border: 1px solid #bb1515;
+      color: white;
+      display: block;
+      option {
+        color: #000;
+        padding: 12px 0;
+        background: rgba(#bb1515, 0.25);
+      }
     }
+  }
 
-    .primary__form--selectors {
-        // width: 70vw;
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        #levels__selector {
-            padding: 8px 40px;
-        }
-        .primary__form--menu {
-            background: rgba(#bb1515, 0.25);
-            border: 1px solid #bb1515;
-            color: white;
-            display: block;
-            option {
-                color: #000;
-                padding: 12px 0;
-                background: rgba(#bb1515, 0.25);
-            }
-        }
+  .primary__form--btn {
+    // line-height: 3rem;
+    // box-shadow: 0 3px 5px 1px rgba(#000, 0.25);
+    // padding: 0.5em 3em;
+    user-select: none;
+    padding: 10px 30px;
+    font-size: 2.5vw;
+    border: 1px solid white;
+    border-radius: 50px;
+    background: transparent;
+    outline: 0;
+    color: rgba(#fff, 0.85);
+    letter-spacing: 0.0625rem;
+    transition: all 0.4s cubic-bezier(0.4, 0.25, 0.8, 0.3) 0.05s;
+    @media screen and (max-width: $screenXxsMax) {
+      font-size: 4vw;
     }
-
-    .primary__form--btn {
-        // line-height: 3rem;
-        // box-shadow: 0 3px 5px 1px rgba(#000, 0.25);        
-        // padding: 0.5em 3em;
-        user-select: none;
-        padding: 10px 30px;
-        font-size: 2.5vw;
-        border: 1px solid white;
-        border-radius: 50px;
-        background: transparent;
-        outline: 0;
-        color: rgba(#fff, 0.85);
-        letter-spacing: .0625rem;
-        transition: all .4s cubic-bezier(.4, .25, .8, .3) .05s;
-        @media screen and (max-width: $screen-xxs-max) {
-            font-size: 4vw;
-        }
-    }
-
+  }
 }

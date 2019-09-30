@@ -1,59 +1,61 @@
 #header {
-    user-select: none;
-    .navbar {
-        @media screen and (max-width: $screen-xs-max) {      
-            padding-top: 20px;
-        }
-        .navbar-brand {
-            color: $color-white;
-        }
-        .navbar-toggler {
-            color: rgba(255, 255, 255, 0.5);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        #navbarNav {
-            justify-content: flex-end;
-            .navbar-nav {
-                // float: right;
-                // align-items: center;
-                .nav-item {
-                    white-space: nowrap;
-                    padding-left: 10px;
-                    @media screen and (min-width: $screen-sm-min) {                        
-                        padding: 20px;
-                    }
-                    // padding-bottom: 5px;
-                    .nav-link {
-                        color: aliceblue;
-                        cursor: pointer;
-                        // do not show for mobile devices
-                        font-size: 0px;
-                        border-bottom: 1px dotted rgba(255, 255, 255, 0);;
-                        &:hover {
-                            border-bottom: 1px dotted rgba(255, 255, 255, 0.5);;
-                        }
-                        @media screen and (min-width: $screen-sm-min) {
-                            font-size: 18px;
-                            svg, img {
-                                margin-left: 10px;
-                            }
-                        }
-                        svg, img {
-                            width: 25px;
-                            height: 25px;
-                            color: aliceblue;
-                        }
-                    }
-                    .dropdown-menu {
-                        left: auto;
-                        right: 0;
-                        .dropdown-item {
-                            padding-top: 6px;
-                            padding-bottom: 6px;
-                        }
-                    }
-                }
-            }
-        }
+  user-select: none;
+  .navbar {
+    @media screen and (max-width: $screenXsMax) {
+      padding-top: 20px;
     }
+    .navbar-brand {
+      color: $white;
+    }
+    .navbar-toggler {
+      color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    #navbarNav {
+      justify-content: flex-end;
+      .navbar-nav {
+        // float: right;
+        // align-items: center;
+        .nav-item {
+          white-space: nowrap;
+          padding-left: 10px;
+          @media screen and (min-width: $screenSmMin) {
+            padding: 20px;
+          }
+          // padding-bottom: 5px;
+          .nav-link {
+            color: aliceblue;
+            cursor: pointer;
+            // do not show for mobile devices
+            font-size: 0px;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0);
+            &:hover {
+              border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+            }
+            @media screen and (min-width: $screenSmMin) {
+              font-size: 18px;
+              svg,
+              img {
+                margin-left: 10px;
+              }
+            }
+            svg,
+            img {
+              width: 25px;
+              height: 25px;
+              color: aliceblue;
+            }
+          }
+          .dropdown-menu {
+            left: auto;
+            right: 0;
+            .dropdown-item {
+              padding-top: 6px;
+              padding-bottom: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

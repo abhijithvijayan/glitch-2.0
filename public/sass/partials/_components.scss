@@ -1,95 +1,95 @@
 .pt-20 {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .pt-50 {
-    padding-top: 50px !important;
+  padding-top: 50px !important;
 }
 
 .pb-50 {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .scrambleSymbol {
-    color: #757575;
+  color: #757575;
 }
 
 .user__thumbnail {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 
 .alert {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .py-1_5 {
-    padding-top: 1.5rem !important;
+  padding-top: 1.5rem !important;
 }
 
 .mt-30 {
-    margin-top: 30px !important;
+  margin-top: 30px !important;
 }
 
 .mt-50 {
-    margin-top: 50px !important;
+  margin-top: 50px !important;
 }
 
 .ft-16 {
-    @media screen and (max-width: $screen-xs-max) {
-        font-size: 16px !important;
+  @media screen and (max-width: $screenXsMax) {
+    font-size: 16px !important;
 
-        svg {
-            margin-left: 10px;
-        }
+    svg {
+      margin-left: 10px;
     }
+  }
 }
 
 .screen__overlay {
-    display: none;
-    z-index: 9;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    // background-size: 1000px 2px;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+  display: none;
+  z-index: 9;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  // background-size: 1000px 2px;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .dark__overlay {
-    height: 100vh;
-    z-index: 9;
-    background: black !important;
-    // background-size: 1000px 2px;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+  height: 100vh;
+  z-index: 9;
+  background: black !important;
+  // background-size: 1000px 2px;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .black__header {
-    background: black !important;
+  background: black !important;
 }
 
 .pmy-vh-10 {
-    margin-bottom: 10vh !important;
-    padding-top: 10vh !important;
+  margin-bottom: 10vh !important;
+  padding-top: 10vh !important;
 }
 
 .pt-vh-5 {
-    padding-top: 5vh !important;
+  padding-top: 5vh !important;
 }
 
 .pt-vh-10 {
-    padding-top: 10vh !important;
+  padding-top: 10vh !important;
 }
 
 .d-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

@@ -1,175 +1,172 @@
 #auth {
-    height: calc(8.9em + 67vh);
-    // height: calc(10em + 70vh);
-    // height: calc(3em + 80vh);
-    display: flex;
-    align-items: center;
-    user-select: none;
-    // @media screen and (min-width: $screen-sm-min) {        
-    //     background: url('/images/photos/bg-shade.png');
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    // }
-    background-color: #000;
-    .auth__holder {
-        font-family: $poppins;
-        padding-top: 1vh;
+  height: calc(8.9em + 67vh);
+  // height: calc(10em + 70vh);
+  // height: calc(3em + 80vh);
+  display: flex;
+  align-items: center;
+  user-select: none;
+  // @media screen and (min-width: $screenSmMin) {
+  //     background: url('/images/photos/bg-shade.png');
+  //     background-size: cover;
+  //     background-repeat: no-repeat;
+  // }
+  background-color: #000;
+  .auth__holder {
+    font-family: $poppins;
+    padding-top: 1vh;
 
-        .auth__content--head {
-            justify-content: space-between;
+    .auth__content--head {
+      justify-content: space-between;
 
-            .auth__content--left {
-                margin-bottom: 1em;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-                opacity: 0.5;
+      .auth__content--left {
+        margin-bottom: 1em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0.5;
 
-                h1 {
-                    white-space: nowrap;
-                    font-size: 5.5vw;
-                    color: rgba($color: #add8e6, $alpha: 1.0);
-                    letter-spacing: 6px;
-                    font-weight: $font-weight-exbold;
-                    text-transform: uppercase;
-                    padding-top: 0.1em;
-                    // padding-left: 18px;
-                    @media screen and (min-width: $screen-sm-min) {     
-                        font-size: 5vw;
-                    }
-                }
-
-                img {
-                    width: 50vw;
-                }
-            }
-
-            .auth__content--right {
-                opacity: 0.9;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding-bottom: 3em;
-
-                .login__glitch {
-                    font-size: 4em;
-                    font-family: $bungee-outline;
-                    letter-spacing: 6px;
-                    font-weight: $font-weight-regular;
-                    text-transform: uppercase;
-                    padding-bottom: 0.3em;
-                }
-
-                .google__login--btn {
-                    padding: 14px;
-                    display: flex;
-                    align-items: center;
-                    color: $color-white;
-                    width: 250px;    
-                    color: rgba($color: #fff, $alpha: 0.9);                   
-                    border-radius: 50px;
-                    cursor: pointer;
-                    justify-content: space-evenly;
-                    border: 1px solid rgba($color: #fff, $alpha: 0.8);
-
-
-                    // &:focus {
-                    //     outline: none;
-                    //     color: #506569;
-                    //     background: white;
-                    // }
-                    
-                    // &:hover {
-                    //     outline: none;
-                    //     color: #506569;
-                    //     background: white;
-                    // }
-
-                    svg,
-                    img {
-                        width: 26px;
-                        transition: all 0.2s;
-                        fill: white;
-                    }
-
-                    span {
-                        font-family: 'Roboto Mono', monospace;
-                        font-weight: 100;
-                        font-size: 1rem;
-                        // font-family: $poppins;
-                        // font-weight: 700;
-                        // margin-left: 10px;
-                    }
-                }                
-            }
+        h1 {
+          white-space: nowrap;
+          font-size: 5.5vw;
+          color: rgba($color: #add8e6, $alpha: 1);
+          letter-spacing: 6px;
+          font-weight: $font-weight-exbold;
+          text-transform: uppercase;
+          padding-top: 0.1em;
+          // padding-left: 18px;
+          @media screen and (min-width: $screenSmMin) {
+            font-size: 5vw;
+          }
         }
+
+        img {
+          width: 50vw;
+        }
+      }
+
+      .auth__content--right {
+        opacity: 0.9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3em;
+
+        .login__glitch {
+          font-size: 4em;
+          font-family: $bungee-outline;
+          letter-spacing: 6px;
+          font-weight: $font-weight-regular;
+          text-transform: uppercase;
+          padding-bottom: 0.3em;
+        }
+
+        .google__login--btn {
+          padding: 14px;
+          display: flex;
+          align-items: center;
+          color: $white;
+          width: 250px;
+          color: rgba($color: #fff, $alpha: 0.9);
+          border-radius: 50px;
+          cursor: pointer;
+          justify-content: space-evenly;
+          border: 1px solid rgba($color: #fff, $alpha: 0.8);
+
+          // &:focus {
+          //     outline: none;
+          //     color: #506569;
+          //     background: white;
+          // }
+
+          // &:hover {
+          //     outline: none;
+          //     color: #506569;
+          //     background: white;
+          // }
+
+          svg,
+          img {
+            width: 26px;
+            transition: all 0.2s;
+            fill: white;
+          }
+
+          span {
+            font-family: "Roboto Mono", monospace;
+            font-weight: 100;
+            font-size: 1rem;
+            // font-family: $poppins;
+            // font-weight: 700;
+            // margin-left: 10px;
+          }
+        }
+      }
     }
+  }
 }
 
-
-
 @mixin glitchCopy {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .login__glitch {
-    position: relative;
-    color: white;
-    font-size: 4em;
-    letter-spacing: .5em;
-    animation: glitch-skew 1s infinite linear alternate-reverse;
+  position: relative;
+  color: white;
+  font-size: 4em;
+  letter-spacing: 0.5em;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
 
-    &::before {
-        @include glitchCopy;
-        left: 2px;
-        text-shadow: -2px 0 #ff00c1;
-        clip: rect(44px, 450px, 56px, 0);
-        animation: glitch-anim 5s infinite linear alternate-reverse;
-    }
+  &::before {
+    @include glitchCopy;
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
 
-    &::after {
-        @include glitchCopy;
-        left: -2px;
-        text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-        animation: glitch-anim2 1s infinite linear alternate-reverse;
-    }
+  &::after {
+    @include glitchCopy;
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+  }
 }
 
 @keyframes glitch-anim {
-    $steps: 20;
+  $steps: 20;
 
-    @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-            clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-            transform: skew((random(100) / 100) + deg);
-        }
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+      transform: skew((random(100) / 100) + deg);
     }
+  }
 }
 
 @keyframes glitch-anim2 {
-    $steps: 20;
+  $steps: 20;
 
-    @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-            clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-            transform: skew((random(100) / 100) + deg);
-        }
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+      transform: skew((random(100) / 100) + deg);
     }
+  }
 }
 
 @keyframes glitch-skew {
-    $steps: 10;
+  $steps: 10;
 
-    @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-            transform: skew((random(10) - 5) + deg);
-        }
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      transform: skew((random(10) - 5) + deg);
     }
+  }
 }

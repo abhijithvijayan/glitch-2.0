@@ -6,6 +6,7 @@
  */
 
 import 'bootstrap';
+import 'normalize.css';
 import '../sass/main.scss';
 
 // general images

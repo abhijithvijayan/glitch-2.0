@@ -1,32 +1,32 @@
 .game__mode--holders {
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  .game__btn--holder {
+    display: flex;
     justify-content: center;
-    align-items: center;
-    height: 80vh;
-    .game__btn--holder {
-        display: flex;
-        justify-content: center;
-        .game__mode--btns {
-            white-space: nowrap;
-            font-size: 1.8vw;
-            // font-size: 2rem;
-            // margin-top: 35px;
-            padding: .25em 0.25em;
-            border: 0;
-            outline: 0;
-            color: rgba(#fff, 0.85);
-            line-height: 3.6rem;
-            letter-spacing: .0625rem;
-            border-bottom: 1px dotted transparent;
-            &:hover {
-                border-bottom: 1px dotted white;
-            }
-            @media screen and (max-width: $screen-xs-max) {
-                font-size: 2.3rem;
-            }
-            @media screen and (max-width: $screen-xxs-max) {
-                text-align: center;
-                font-size: 1.8rem;
-            }
-        }
+    .game__mode--btns {
+      white-space: nowrap;
+      font-size: 1.8vw;
+      // font-size: 2rem;
+      // margin-top: 35px;
+      padding: 0.25em 0.25em;
+      border: 0;
+      outline: 0;
+      color: rgba(#fff, 0.85);
+      line-height: 3.6rem;
+      letter-spacing: 0.0625rem;
+      border-bottom: 1px dotted transparent;
+      &:hover {
+        border-bottom: 1px dotted white;
+      }
+      @media screen and (max-width: $screenXsMax) {
+        font-size: 2.3rem;
+      }
+      @media screen and (max-width: $screenXxsMax) {
+        text-align: center;
+        font-size: 1.8rem;
+      }
     }
+  }
 }
