@@ -13,7 +13,7 @@
     "watch": "nodemon ./start.js --ignore public/",
     "dev": "concurrently \"yarn run watch\" \"yarn run assets\" --names \"N,W\" --prefix name",
     "assets": "webpack --watch  --mode=development --display-max-modules=0",
-    "minify": "webpack --mode=production",
+    "build": "webpack --mode=production",
     "blowitallaway": "node ./data/remove-data.js --delete",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
