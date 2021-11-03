@@ -46,7 +46,7 @@
     "pug": "^2.0.4",
     "sweetalert2": "^8.18.0",
     "uuid": "^3.3.3",
-    "validator": "^10.11.0",
+    "validator": "^13.7.0",
     "web-push": "^3.4.0"
   },
   "devDependencies": {
