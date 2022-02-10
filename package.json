@@ -73,7 +73,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.19.3",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
